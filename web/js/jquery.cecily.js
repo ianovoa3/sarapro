@@ -718,9 +718,7 @@ jQuery.Luna = function (Datos, selector) {
                     for (var i = 0; i < jsSelect.length; i++) {
                         data = jsSelect[i].id_tipo_formato + "$$" + jsSelect[i].nom_tipo_formato + "$$" + jsSelect[i].urlimgtipoformato;
                         table = selector.dataTable().fnAddData([
-                            i + 1,
                             jsSelect[i].nom_tipo_formato,
-                            jsSelect[i].urlImgtipoformato,
                             "<button id='" + data + "' class='btnModificarTipoFor btn btn-info'>Modificar</button>"
                         ]);
                     }

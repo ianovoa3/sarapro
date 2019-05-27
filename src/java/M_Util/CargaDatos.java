@@ -92,13 +92,13 @@ public class CargaDatos {
                         String[] subDatos  = nextLine[0].split(";");
                         System.out.println(Elomac.Group(subDatos,'~')); 
                         subDatos[8] = new vasos().getVaso()+subDatos[2];
-                        if(new Funcionario().RegistrarFuncionario(subDatos)){
-                            DJCorreoHTML correoHTML = new DJCorreoHTML();
-                            correoHTML.mandarCorreo(subDatos[5], "Confirmacion de Cuenta SARA PRO1", subDatos[2], subDatos[8]);
-                            System.out.println("Feliz :)");
-                        }else{
-                            System.out.println("Triste :(");
-                        }
+                        //if(new Funcionario().RegistrarFuncionario(subDatos)){
+                            //DJCorreoHTML correoHTML = new DJCorreoHTML();
+                            //correoHTML.mandarCorreo(subDatos[5], "Confirmacion de Cuenta SARA PRO1", subDatos[2], subDatos[8]);
+                            //System.out.println("Feliz :)");
+                        //}else{
+                          //  System.out.println("Triste :(");
+                        //}
                     }
                     cont++;
                 }

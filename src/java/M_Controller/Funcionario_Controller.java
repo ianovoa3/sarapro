@@ -42,13 +42,13 @@ public class Funcionario_Controller extends HttpServlet {
                     String[] fun = Elomac.M_toArray(jData.getString("datos"));
                     fun[8] = new vasos().getVaso()+fun[2];
                     try {
-                        if (new Funcionario().RegistrarFuncionario(fun)) {
-                            DJCorreoHTML correoHTML = new DJCorreoHTML();
-                            correoHTML.mandarCorreo(fun[5], "Confirmacion de Cuenta SARA PRO1", fun[2], fun[8]);
-                            respuesta.println("true$$se registro correctamente");
-                        } else {
-                            respuesta.println("false$$no se registro");
-                        }
+       //                 if (new Funcionario().RegistrarFuncionario(fun)) {
+                   //         DJCorreoHTML correoHTML = new DJCorreoHTML();
+                 //           correoHTML.mandarCorreo(fun[5], "Confirmacion de Cuenta SARA PRO1", fun[2], fun[8]);
+               //             respuesta.println("true$$se registro correctamente");
+         //               } else {
+             //               respuesta.println("false$$no se registro");
+           //             }
                     } catch (Exception e) {
                         respuesta.println("[{valor:false,mensaje:'" + e.getMessage() + "'}]");
                     }

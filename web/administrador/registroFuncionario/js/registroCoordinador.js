@@ -1,6 +1,6 @@
 var selector = [], hilo = [], jso = [], data = [], datos = [], estados = "", men = "";
 var ob = new $.Luna("RegistroFuncionario", selector);
-ob.Vivo("RegistroFuncionario");
+//ob.Vivo("RegistroFuncionario");
 jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:10,tipo:2,elegir:["2","3"],delimitador:[],id:0,opSelect:4}]'];
 selector[0] = $("#centroFormacion");
 datos[0] = {nombre: "Select"};
@@ -36,7 +36,29 @@ $("#boton1").click(function () {
             boo++;
         }
     }
-});
+    if(boo==11){
+        var nombre=document.getElementById('nombre').value;
+        var apellido=document.getElementById('apellido').value;
+        var tipoUsuario=document.getElementById('tipoUsuario').value;
+        var tipoIdenti=document.getElementById('tipoIdenti').value;
+        var numeroIdentificacion=document.getElementById('numeroIdentificacion').value;
+        var email=document.getElementById('email').value;
+        var centroFormacion=document.getElementById('centroFormacion').value;
+        var reddeconocimiento=document.getElementById('reddeconocimiento').value;
+        var ipSena=document.getElementById('ipSena').value;
+        var cargo=document.getElementById('cargo').value;
+        var clave=document.getElementById('clave').value;
+        console.log("clave:"+clave)
+    $.ajax({
+        type:'POST',
+        data:{nombre:nombre,apellido:apellido,tipoUsuario:tipoUsuario,tipoIdenti:tipoIdenti,numeroIdentificacion:numeroIdentificacion,email:email,centroFormacion:centroFormacion,reddeconocimiento:reddeconocimiento,ipSena:ipSena,cargo:cargo,clave:clave},
+        url:'actor',
+            success: function (response) {
+                alert('Enviado'+response.nombre);
+            }
+        });
+        }  
+    });
 //function btn() {
   //  $("#divBtn").hide();
     //$("#AnimacionCargando").show();

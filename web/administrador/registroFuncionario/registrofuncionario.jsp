@@ -8,14 +8,14 @@
                 <div class="contenedor">
                     <div id="formulario1">
                         <section class="col col-md-6">
-                            <form action="registrofuncionario" method="POST">
+                            
                             <p><h3>Datos Personales</h3></p>
                             <label  class="col-md-12"  for="Centro">Tipo de Usuario</label>
                             <select class="form-control select" id="tipoUsuario" name="tipoUsuario">
                                 <option value="A0">Seleccionar...</option>
                             </select>
                             <label>Nombre:</label>
-                            <input type="text" class="form-control input" placeholder="Digite Nombre" id="nombre" maxlength="45">
+                            <input type="text" class="form-control input" placeholder="Digite Nombre" id="nombre" maxlength="45" name="nombre">
                             <label>Apellido:</label>
                             <input type="text" class="form-control input" placeholder=" Digite Apellido" id="apellido" maxlength="100">
                             <label>Tipo Identificación:</label>
@@ -49,6 +49,8 @@
                             <input type="text" class="form-control input" placeholder=" Digite Ip SENA" id="ipSena" maxlength="6">
                             <label  for="cargo">Cargo</label>
                             <input type="text" class="form-control input" placeholder=" Digite cargo" id="cargo" maxlength="45">
+                            <label for="">Clave</label>
+                            <input type="text" class="form-control input" placeholder=" Digite clave" id="clave" maxlength="45">
                             <center>
                                 <br/>
                                 <div id="AnimacionCargando" class="col-md-12" style="display: none;">
@@ -72,10 +74,9 @@
                                     </div>
                                 </div>
                                 <div id="divBtn">
-                                    <button type="button" id="boton1" class="btn btn-info">Registrar Funcionario</button>
+                                    <button type="action" id="boton1" class="btn btn-info">Registrar Funcionario</button>
                                 </div>
                             </center>
-                            </form>
                         </section>
                     </div>
                     </div>

@@ -8,7 +8,7 @@
                 <div class="contenedor">
                     <div id="formulario1">
                         <section class="col col-md-6">
-                            <form action="">
+                            <form action="registrofuncionario" method="POST">
                             <p><h3>Datos Personales</h3></p>
                             <label  class="col-md-12"  for="Centro">Tipo de Usuario</label>
                             <select class="form-control select" id="tipoUsuario" name="tipoUsuario">
@@ -75,7 +75,9 @@
                                     <button type="button" id="boton1" class="btn btn-info">Registrar Funcionario</button>
                                 </div>
                             </center>
+                            </form>
                         </section>
+                    </div>
                     </div>
                 </div>
             </div>

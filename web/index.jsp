@@ -12,15 +12,14 @@
                             <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
                             <link rel="stylesheet" type="text/css" href="css/examples.css" />
                             </head>
-
+                               
                             <body onload="sinVueltaAtras();">
                                 <div class="modal fade" id="myModalLogin" role="dialog">
                                     <div class="modal-dialog">
 
                                         <!-- Modal content-->
-                                        <div class="modal-content">
+<!--                                        <div class="modal-content">
                                             <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                 <h4 class="modal-title">Inicio de sesión</h4>
                                             </div>
                                             <div class="modal-body">
@@ -37,13 +36,14 @@
                                                         <button type="submit" class="btn btn-default">Ingresar</button>
                                                 </form>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
                                 <ol id="menu">
                                     <li data-menuanchor="3rdPage"><a href="#3rdPage">Equipo Desarrollador</a></li>
                                     <li data-menuanchor="secondPage"><a href="#secondPage">A cerca de SARA PRO</a></li>
                                     <li data-menuanchor="firstPage" class="active"><a href="#firstPage">Inicio</a></li>
+                                   
                                 </ol>
 
                                 <div id="fullpage">
@@ -65,7 +65,7 @@
                                         <div class="col-md-12 ">
                                             <p class="textSecundary" style="margin-top: -8%; margin-bottom:3%;"> Tu conocimiento con la comunidad SENA del país </p>
                                             <div class="col-md-12">
-                                                <button type="button" class="btn btn-success btnStyle" data-toggle="modal" data-target="#myModalLogin">Iniciar sesión</button>
+                                                <a href="login.jsp"><button type="button" class="btn btn-success btnStyle">Iniciar Sesión</button></a>
                                             </div>
                                         </div>
                                     </div>

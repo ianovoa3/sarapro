@@ -108,7 +108,7 @@ jQuery.Luna = function (Datos, selector) {
     };
  $('#reg').click(function(){
        var selectred=1;
-$.ajax({
+    $.ajax({
         type:'POST',
         data:{selectred:selectred},
         url:'principal'

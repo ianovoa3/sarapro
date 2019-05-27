@@ -77,6 +77,7 @@ public class sesion_controller extends HttpServlet {
                                 request.getRequestDispatcher("coordinador/coordinadorPrincipal.jsp").forward(request, response);
                                 break;
                             case 5:
+                               // System.out.println("no mas controlador");
                                 request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
                                 break;
                             default:

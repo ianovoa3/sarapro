@@ -36,18 +36,15 @@ $("#boton1").click(function () {
             boo++;
         }
     }
-    if (boo == 10) {
-        btn();
-    }
 });
-function btn() {
-    $("#divBtn").hide();
-    $("#AnimacionCargando").show();
-    jso[3] = ['Funcionario_Controller', "[{opcion:1,datos:['" + $("#tipoUsuario").val() + "','" + $("#tipoIdenti").val() + "','" + $("#numeroIdentificacion").val() + "','" + $("#nombre").val() + "','" + $("#apellido").val() + "','" + $("#email").val() + "','" + $("#cargo").val() + "','" + $("#ipSena").val() + "','1','" + $("#centroFormacion").val() + "','" + $("#area").val() + "']}]"];
-    men = $("#nombre").val();
-    datos[1] = {nombre: "btn"};
-    ajax(3, datos[1]);
-}
+//function btn() {
+  //  $("#divBtn").hide();
+    //$("#AnimacionCargando").show();
+    //jso[3] = ['Funcionario_Controller', "[{opcion:1,datos:['" + $("#tipoUsuario").val() + "','" + $("#tipoIdenti").val() + "','" + $("#numeroIdentificacion").val() + "','" + $("#nombre").val() + "','" + $("#apellido").val() + "','" + $("#email").val() + "','" + $("#cargo").val() + "','" + $("#ipSena").val() + "','1','" + $("#centroFormacion").val() + "','" + $("#area").val() + "']}]"];
+   // men = $("#nombre").val();
+   // datos[1] = {nombre: "btn"};
+   // ajax(3, datos[1]);
+//}
 function ajax(i, datos) {
     hilo[i] = new Worker("js/worker.js");
     hilo[i].postMessage(jso[i]);

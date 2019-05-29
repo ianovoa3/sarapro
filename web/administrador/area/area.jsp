@@ -6,33 +6,32 @@
             <div class="col-md-12">
                 <div class="contenedorFormulario col-md-10" style="margin-top: 3%;">
                     <div class="col-md-6">
-                        <label>Nombre del Área</label>
-                        <input required  placeholder="Nombre del Área"type="text" class="form-control inputs"  name="areac" id="areaC">
+                        <label>Red de Conocimiento</label>
+                        <input required  placeholder="Nombre de la Red"type="text" class="form-control inputs"  name="redc" id="areaC">
                     </div>
                     <div class="col-md-6">
-                        <label>Líder del Área</label>
-                        <input required placeholder="Lider del Área" type="text" class="form-control inputs"  name="areaL" id="areaL" >
+                        <label>Líder de la red</label>
+                        <input required placeholder="Lider de la Red" type="text" class="form-control inputs"  name="redlider" id="areaL" >
                     </div>
-
                     <div class="col-md-6">
                         <label>Programas de formacion</label>
                         <select id="SelectItem" class="itemselect" multiple="multiple">
                         </select>
                     </div>
                     <div class="col-md-7"> 
-                        <button type="button" class="btn btn-info" id="btnArea" style="margin-bottom:2%" name="button">Guardar Área</button>    
+                        <button type="button" class="btn btn-info" id="btnArea" style="margin-bottom:2%" name="button">Guardar Red</button>    
                     </div>
                     <div class="col-md-10 col-md-offset-1">
                         <table id="tablaarea" class="table table-hover">
                             <thead>
                                 <tr class="active">
                                     <td>N°</td>
-                                    <td >Nombre área</td>
-                                    <td>Lider de área</td>
-                                    <td>Modificar lider</td>
+                                    <td>Nombre área</td>
+                                    <td>Modificar Red</td>
                                 </tr>
                             </thead>
                             <tbody id="tablabody">
+                                
                             </tbody>
                         </table>                                
                     </div>

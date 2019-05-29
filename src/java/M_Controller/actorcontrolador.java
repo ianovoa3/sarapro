@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.codec.digest.DigestUtils;
 import static org.apache.commons.codec.digest.MessageDigestAlgorithms.MD5;
 
 /**
@@ -38,7 +39,7 @@ public class actorcontrolador extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String nombre=request.getParameter("nombre");
             String apellido=request.getParameter("apellido");
-            String tipoUsuario=request.getParameter("tipoUsuario");
+            int tipoUsuario=Integer.parseInt(request.getParameter("tipoUsuario"));
             String tipoIdenti=request.getParameter("tipoIdenti");
             String numeroIdentificacion=request.getParameter("numeroIdentificacion");
             String email=request.getParameter("email");
@@ -47,10 +48,10 @@ public class actorcontrolador extends HttpServlet {
             String ipSena=request.getParameter("ipSena");
             String cargo=request.getParameter("cargo");
             String clave=request.getParameter("clave");
-            System.out.println("tipodeident"+tipoIdenti);
+            System.out.println("tipodeident"+tipoUsuario);
             FuncionarioVO funcionariovo=new FuncionarioVO(nombre, apellido, tipoUsuario, tipoIdenti, numeroIdentificacion, email, centroFormacion, reddeconocimiento, ipSena, cargo,clave);
             Funcionario funcionario=new Funcionario();
-            if(funcionario.registrarUsuario(funcionariovo)){
+            if(funcionario.registrarUsuario(funcionariovo) && funcionario.registrorol(funcionariovo)){
                 request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
             }
             

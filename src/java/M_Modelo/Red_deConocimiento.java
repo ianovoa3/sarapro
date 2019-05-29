@@ -27,7 +27,7 @@ public class Red_deConocimiento extends M_Connection{
             try {
               cnn=obtenerConn();
               sentencia=cnn.createStatement();
-              rs=sentencia.executeQuery("SELECT nom_red FROM red_deconocimiento");
+              rs=sentencia.executeQuery("SELECT * FROM red_deconocimiento");
               while(rs.next()){
                   lista.add(rs.getString("nom_red"));    
               }

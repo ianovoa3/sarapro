@@ -587,7 +587,7 @@ jQuery.Luna = function (Datos, selector) {
                             jso[i].nom_lista_chequeo,
                             jso[i].des_lista_chequeo,
                             jso[i].fecha_creacion.substring(0, 11),
-                            "<button id='" + dat + "' value='" + jso[i].id_lista_chequeo + "' class='btnclickca btn btn-info'>Escojer </button>"
+                            "<button id='" + dat + "' value='" + jso[i].id_lista_chequeo + "' class='btnclickca btn btn-info'>Escoger</button>"
                         ]);
                     }
                     break;
@@ -653,16 +653,30 @@ jQuery.Luna = function (Datos, selector) {
                     $("#ccNoti").append(i);
                     break;
                 case "Area":
-                    jsArea = jQuery.parseJSON(json);
-                    for (var i = 0; i < jsArea.length; i++) {
-                        var data = (jsArea[i].id_area + "$$" + jsArea[i].nom_area + "$$" + jsArea[i].lider_area);
-                        table = selector.dataTable().fnAddData([
-                            i + 1,
-                            jsArea[i].nom_area,
-                            jsArea[i].lider_area,
-                            "<button  class='btn btn-info botonArea'value='" + data + "' >Modificar</button>"
-                        ]);
-                    }
+                var selectred=1;
+                $.ajax({
+                type:'POST',
+                data:{selectred:selectred},
+                url:'principal',
+                success: function (response) {
+                
+                }
+                });
+                
+   
+                    
+                    
+//                    console.log(json);
+//                    jsArea = jQuery.parseJSON(json);
+//                    for (var i = 0; i < jsArea.length; i++) {
+//                        var data = (jsArea[i].id_area + "$$" + jsArea[i].nom_area + "$$" + jsArea[i].lider_area);
+//                        table = selector.dataTable().fnAddData([
+//                            i + 1,
+//                            jsArea[i].nom_area,
+//                            jsArea[i].lider_area,
+//                            "<button  class='btn btn-info botonArea'value='" + data + "' >Modificar</button>"
+//                        ]);
+//                    }
                     break;
                 case "Funcionario":
                     var jsFuncionario;

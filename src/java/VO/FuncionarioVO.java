@@ -13,7 +13,7 @@ public class FuncionarioVO {
  
     String nombre;
     String apellido;
-    String tipoUsuario;
+    int tipoUsuario;
     String tipoIdenti;
     String numeroIdentificacion;
     String email;
@@ -26,7 +26,7 @@ public class FuncionarioVO {
     public FuncionarioVO() {
     }
 
-    public FuncionarioVO(String nombre, String apellido, String tipoUsuario, String tipoIdenti, String numeroIdentificacion, String email, String centroFormacion, String reddeconocimiento, String ipSena, String cargo, String clave) {
+    public FuncionarioVO(String nombre, String apellido, int tipoUsuario, String tipoIdenti, String numeroIdentificacion, String email, String centroFormacion, String reddeconocimiento, String ipSena, String cargo, String clave) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.tipoUsuario = tipoUsuario;
@@ -39,9 +39,6 @@ public class FuncionarioVO {
         this.cargo = cargo;
         this.clave = clave;
     }
-
-    
-
     public String getNombre() {
         return nombre;
     }
@@ -58,13 +55,15 @@ public class FuncionarioVO {
         this.apellido = apellido;
     }
 
-    public String getTipoUsuario() {
+    public int getTipoUsuario() {
         return tipoUsuario;
     }
 
-    public void setTipoUsuario(String tipoUsuario) {
+    public void setTipoUsuario(int tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
+
+   
 
     public String getTipoIdenti() {
         return tipoIdenti;

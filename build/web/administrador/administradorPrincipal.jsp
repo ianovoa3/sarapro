@@ -34,7 +34,7 @@
               <li class="btntt" value="0"><a id="reg"><i class="ti-marker-alt"></i><p><label style='cursor:pointer;' id="text0">Registrar Usuario</label></p></a></li>
                         <li class="btntt" value="1"><a><i class="ti-close"></i><p><label style='cursor:pointer;' id="text1">Deshabilitar Usuario</label></p></a></li>
                         <li class="btntt" value="2"><a><i class="ti-file"></i><p><label style='cursor:pointer;' id="text2">Formato</label></p></a></li>
-                        <li class="btntt" value="3"><a><i class="ti-ruler-alt-2"></i><p><label style='cursor:pointer;' id="text3">Área</label></p></a></li>
+                        <li class="btntt" value="3"><a><i class="ti-ruler-alt-2"></i><p><label style='cursor:pointer;' id="text3">Red de Conocimiento</label></p></a></li>
                         <li class="btntt" value="5"><a><i class="ti-blackboard"></i><p><label style='cursor:pointer;' id="text5">Programa</label></p></a></li>
                         <li class="btntt" value="4"><a><i class="ti-layout-width-default"></i><p><label style='cursor:pointer;' id="text4">Carga Masiva</label></p></a></li>
                         <li class="btntt" value="8"><a><i class="ti-file"></i><p><label style='cursor:pointer;' id="text8">Tipo de formato</label></p></a></li>

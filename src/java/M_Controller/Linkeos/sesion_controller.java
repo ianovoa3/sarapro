@@ -24,6 +24,8 @@ public class sesion_controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, JSONException {
         response.setContentType("text/html;charset=UTF-8");
+        Funcionario funcionario=new Funcionario();
+        int id_condicion=1;
         try {
         int selectred=Integer.parseInt(request.getParameter("selectred"));
         System.out.println("selectred"+selectred);
@@ -44,6 +46,7 @@ public class sesion_controller extends HttpServlet {
                 System.out.println(opcion);
                 System.out.println("Cerrar sesion");
             }
+            
             switch (opcion) {
                 case 1:
                     String[] loguinUser = {request.getParameter("user"),DigestUtils.md5Hex(request.getParameter("pwd"))};
@@ -59,10 +62,14 @@ public class sesion_controller extends HttpServlet {
                             sesion.setAttribute("nomUser",funJ.getJSONArray("nom_funcionario").getString(0));
                             sesion.setAttribute("idRol", rol);
                             sesion.setAttribute("idCentro", funJ.getJSONArray("id_centro").getInt(0));
+                             id_condicion=funJ.getJSONArray("id_funcionario").getInt(0);
                         }else{
                             sesion.setAttribute("idRol", rol);
                         }
+                        if(rol==5)
+                            request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
                         
+                        if(funcionario.consultaestado(id_condicion)==1){
                         switch (rol) {
                             case 1:
                                 request.getRequestDispatcher("instructor/instructorPrincipal.jsp").forward(request, response);
@@ -76,14 +83,11 @@ public class sesion_controller extends HttpServlet {
                             case 4:
                                 request.getRequestDispatcher("coordinador/coordinadorPrincipal.jsp").forward(request, response);
                                 break;
-                            case 5:
-                               // System.out.println("no mas controlador");
-                                request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
-                                break;
-                            default:
-                                request.getRequestDispatcher("index.jsp").forward(request, response);
                         }
-                    }
+                    }   
+                     else           
+                        request.getRequestDispatcher("index.jsp").forward(request, response);
+                  }
                     break;
                 case 2:
                     try {

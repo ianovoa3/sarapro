@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -57,22 +58,57 @@ public class Funcionario extends Elomac{
             Statement sentencia=null;
             boolean operacion=false;
             ResultSet rs;
-            int tipodedocumento=0;
+            String clave=DigestUtils.md5Hex(funcionariovo.getClave());
             try {
                cnn=obtenerConn();
                sentencia=cnn.createStatement();
-               System.out.println("tipo::"+funcionariovo.getTipoIdenti());
-               rs=sentencia.executeQuery("SELECT id_tipo_documento  FROM tipo_documento WHERE  nom_tipo_documento='"+funcionariovo.getTipoIdenti()+"'");
-               while(rs.next()){
-              tipodedocumento=rs.getInt("id_tipo_documento");
-               }
-               System.out.println("tipo::"+tipodedocumento);
-              sentencia.executeUpdate("INSERT INTO funcionario(id_tipo_documento,num_documento,nom_funcionario,apellidos,correo,cargo,ip_sena,contraseña,id_estado,id_area_centro) VALUES('"+tipodedocumento+"','"+funcionariovo.getNumeroIdentificacion()+"','"+funcionariovo.getNombre()+"','"+funcionariovo.getApellido()+"','"+funcionariovo.getEmail()+"','"+funcionariovo.getCargo()+"','"+funcionariovo.getIpSena()+"','"+funcionariovo.getClave()+"','"+1+"','"+1+"')");
+              sentencia.executeUpdate("INSERT INTO funcionario(id_tipo_documento,num_documento,nom_funcionario,apellidos,correo,cargo,ip_sena,contraseña,id_estado,id_area_centro) VALUES('"+funcionariovo.getTipoIdenti()+"','"+funcionariovo.getNumeroIdentificacion()+"','"+funcionariovo.getNombre()+"','"+funcionariovo.getApellido()+"','"+funcionariovo.getEmail()+"','"+funcionariovo.getCargo()+"','"+funcionariovo.getIpSena()+"','"+clave+"','"+1+"','"+1+"')");
+              registrorol(funcionariovo);
               operacion=true;
             } catch (Exception e) {
                  Logger.getLogger(Funcionario.class.getName()).log(Level.SEVERE, null, e);
             }
             return operacion;
+        }
+        public boolean registrorol(FuncionarioVO funcionariovo){
+            Connection cnn=null;
+            Statement sentencia=null;
+            boolean operacion=false;
+            ResultSet rs;
+            int id_rolfuncionario=0;
+            try {
+               cnn=obtenerConn();
+               sentencia=cnn.createStatement();
+               rs=sentencia.executeQuery("SELECT * FROM funcionario WHERE num_documento='"+Double.parseDouble(funcionariovo.getNumeroIdentificacion())+"'");
+               while(rs.next()){
+               id_rolfuncionario=rs.getInt("id_funcionario");
+               }
+                 System.out.println("letzte id:"+id_rolfuncionario);
+               sentencia.executeUpdate("INSERT INTO rol_funcionario(id_rol,id_funcionario,vigencia) VALUES ('"+funcionariovo.getTipoUsuario()+"','"+id_rolfuncionario+"','"+1+"')");
+               operacion=true;
+            } catch (Exception e) {
+               // Logger.getLogger(Funcionario.class.getName()).log(Level.SEVERE, null, e);
+               System.out.println("error:"+e.getMessage());
+            }
+            return operacion;
+        }
+        public int consultaestado(int id_condicion){
+           
+                Connection cnn=null;
+                Statement sentencia=null;
+                ResultSet rs;
+                int id_estado=0;
+                try {
+                    cnn=obtenerConn();
+                    sentencia=cnn.createStatement();
+                    rs=sentencia.executeQuery("SELECT id_estado FROM funcionario WHERE id_funcionario='"+id_condicion+"'");
+                    while(rs.next()){
+                        id_estado=rs.getInt("id_estado");
+                    }
+                } catch (Exception e) {
+                     Logger.getLogger(Funcionario.class.getName()).log(Level.SEVERE, null, e);
+                }
+                 return id_estado;
         }
        
 }

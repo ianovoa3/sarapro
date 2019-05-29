@@ -13,7 +13,12 @@ ajax(0, datos[0]);
 //    datos[4] = {nombre: "Select"};
 //    ajax(4, datos[4]);
 //});
-          
+     
+
+//$("#tipoUsuario").change(function(){
+//  console.log("tipous:"+document.getElementById('tipoUsuario').value);  
+//    
+//});  
 $("#boton1").click(function () {
     $(".remove").remove();
     var boo = 0;
@@ -54,7 +59,7 @@ $("#boton1").click(function () {
         data:{nombre:nombre,apellido:apellido,tipoUsuario:tipoUsuario,tipoIdenti:tipoIdenti,numeroIdentificacion:numeroIdentificacion,email:email,centroFormacion:centroFormacion,reddeconocimiento:reddeconocimiento,ipSena:ipSena,cargo:cargo,clave:clave},
         url:'actor',
             success: function (response) {
-                alert('Enviado'+response.nombre);
+               $('#AnimacionCargando').show();
             }
         });
         }  

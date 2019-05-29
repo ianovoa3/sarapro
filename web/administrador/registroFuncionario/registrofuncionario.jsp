@@ -7,12 +7,19 @@
             <div class="col-md-12">
                 <div class="contenedor">
                     <div id="formulario1">
+                        <div id="AnimacionCargando" class="col-md-12" style="display: none;">  
+                        <div id="caja">
+                        <span style="color: black;">
+                              Usuario satisfactoriamente registrado   
+                         </span>
+                         </div>
+                        </div>
                         <section class="col col-md-6">
                             
                             <p><h3>Datos Personales</h3></p>
                             <label  class="col-md-12"  for="Centro">Tipo de Usuario</label>
                             <select class="form-control select" id="tipoUsuario" name="tipoUsuario">
-                                <option value="A0">Seleccionar...</option>
+                                <option value="A0" selected="selected">Seleccionar...</option>
                             </select>
                             <label>Nombre:</label>
                             <input type="text" class="form-control input" placeholder="Digite Nombre" id="nombre" maxlength="45" name="nombre">
@@ -53,26 +60,6 @@
                             <input type="text" class="form-control input" placeholder=" Digite clave" id="clave" maxlength="45">
                             <center>
                                 <br/>
-                                <div id="AnimacionCargando" class="col-md-12" style="display: none;">
-                                    <p class="col-md-8" ALIGN=right>Creando usuario:</p>
-                                    <div class="windows8 col-md-4">
-                                        <div class="wBall" id="wBall_1">
-                                            <div class="wInnerBall"></div>
-                                        </div>
-                                        <div class="wBall" id="wBall_2">
-                                            <div class="wInnerBall"></div>
-                                        </div>
-                                        <div class="wBall" id="wBall_3">
-                                            <div class="wInnerBall"></div>
-                                        </div>
-                                        <div class="wBall" id="wBall_4">
-                                            <div class="wInnerBall"></div>
-                                        </div>
-                                        <div class="wBall" id="wBall_5">
-                                            <div class="wInnerBall"></div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div id="divBtn">
                                     <button type="action" id="boton1" class="btn btn-info">Registrar Funcionario</button>
                                 </div>
@@ -87,4 +74,5 @@
     <script type="text/javascript" src="js/notify.js"></script>
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
     <script type="text/javascript" src="administrador/registroFuncionario/js/registroCoordinador.js"></script>
+    
 </div>

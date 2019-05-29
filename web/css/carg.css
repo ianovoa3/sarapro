@@ -4,7 +4,17 @@
     height:18px;
     margin:auto;
 }
-
+#caja{
+    background-color: #8EF3C5;
+    width: 20%;
+    padding: 1%;
+    font-family: cursive;
+    text-align: right;
+    position: relative;
+    left: 80%;
+    text-align: center;
+    border-radius: 20px;
+}
 .windows8 .wBall {
     position: absolute;
     width: 17px;

@@ -27,9 +27,9 @@ public class Red_deConocimiento extends M_Connection{
             try {
               cnn=obtenerConn();
               sentencia=cnn.createStatement();
-              rs=sentencia.executeQuery("SELECT * FROM red_deconocimiento");
+              rs=sentencia.executeQuery("SELECT * FROM area");
               while(rs.next()){
-                  lista.add(rs.getString("nom_red"));    
+                  lista.add(rs.getString("nom_area"));    
               }
             } catch (Exception e) {
                 Logger.getLogger(Red_deConocimiento.class.getName()).log(Level.SEVERE, null, e);

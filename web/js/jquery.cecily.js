@@ -652,31 +652,17 @@ jQuery.Luna = function (Datos, selector) {
                     }
                     $("#ccNoti").append(i);
                     break;
-                case "Area":
-                var selectred=1;
-                $.ajax({
-                type:'POST',
-                data:{selectred:selectred},
-                url:'principal',
-                success: function (response) {
-                
-                }
-                });
-                
-   
-                    
-                    
-//                    console.log(json);
-//                    jsArea = jQuery.parseJSON(json);
-//                    for (var i = 0; i < jsArea.length; i++) {
-//                        var data = (jsArea[i].id_area + "$$" + jsArea[i].nom_area + "$$" + jsArea[i].lider_area);
-//                        table = selector.dataTable().fnAddData([
-//                            i + 1,
-//                            jsArea[i].nom_area,
-//                            jsArea[i].lider_area,
-//                            "<button  class='btn btn-info botonArea'value='" + data + "' >Modificar</button>"
-//                        ]);
-//                    }
+                case "Area":                
+                    console.log(json);
+                    jsArea = jQuery.parseJSON(json);
+                    for (var i = 0; i < jsArea.length; i++) {
+                        var data = (jsArea[i].id_area + "$$" + jsArea[i].nom_area + "$$" + jsArea[i].lider_area);
+                        table = selector.dataTable().fnAddData([
+                            i + 1,
+                            jsArea[i].nom_area,
+                            "<button  class='btn btn-info botonArea'value='" + data + "' >Modificar</button>"
+                        ]);
+                    }
                     break;
                 case "Funcionario":
                     var jsFuncionario;

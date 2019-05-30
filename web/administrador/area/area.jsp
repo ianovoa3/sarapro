@@ -9,10 +9,10 @@
                         <label>Red de Conocimiento</label>
                         <input required  placeholder="Nombre de la Red"type="text" class="form-control inputs"  name="redc" id="areaC">
                     </div>
-                    <div class="col-md-6">
+<!--                    <div class="col-md-6">
                         <label>Líder de la red</label>
                         <input required placeholder="Lider de la Red" type="text" class="form-control inputs"  name="redlider" id="areaL" >
-                    </div>
+                    </div>-->
                     <div class="col-md-6">
                         <label>Programas de formacion</label>
                         <select id="SelectItem" class="itemselect" multiple="multiple">

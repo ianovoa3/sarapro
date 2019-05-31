@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="M_Modelo.Red_deConocimiento"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -110,14 +112,19 @@
                                         </div>
 
                                         <div class="col-md-12">
-                                            <label class="col-md-12" for="SelectArea">Buscar por area de formación</label>
+                                            <label class="col-md-12" for="SelectArea">Buscar por Red de Conocimiento</label>
                                             <select id="SelectArea" class="form-control">
-                                                <option value="A0">Seleccionar...</option>
+                                                <option value="AO">Seleccione...</option>
+                                                <%  Red_deConocimiento rc =new Red_deConocimiento();
+                                                    ArrayList lista=rc.selectred();
+                                                    for(int i=0;i<lista.size();i++){
+                                                %>
+                                                <option value="A0"><%=lista.get(i)%></option>
+                                                <%}%>    
                                             </select>
-
                                             <label class="col-md-12" for="selectProgramaF">Buscar programa de formación</label>
                                             <select id="selectProgramaF" class="form-control">
-                                                <option value="A0">Seleccionar...</option>
+                                                <option>Seleccione..</option>
                                             </select>
                                         </div>
                                         <br>

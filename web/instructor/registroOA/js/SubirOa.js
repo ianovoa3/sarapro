@@ -144,13 +144,8 @@ $(document).ready(function () {
     ///Peticiones del programa de formacion
     $("#SelectArea").change(function () {
         var option = $("#SelectArea").val();
-        ob.limpiarSelector($("#selectProgramaF"));
-        if (option != "A0") {
-            jso[7] = ['Crud_Controller', '[{opcion:3,tabla2:2,tipo:2,elegir:[4,5],delimitador:"[{colum:1,operador:0,valor1:' + option + '}]",id:0,opSelect:6}]'];
-            selector[7] = $("#selectProgramaF");
-            datos[7] = {nombre: "Select"};
-            ajax(7, datos[7]);
-        }
+        $("#selectProgramaF").add(<option>Programas</option>);
+       // ob.limpiarSelector($("#selectProgramaF"));
         $("#SelectEstruturaDiv").hide();
     });
     $("#selectProgramaF").change(function () {

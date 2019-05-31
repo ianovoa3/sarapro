@@ -36,5 +36,22 @@ public class Red_deConocimiento extends M_Connection{
             }
             return lista;
         }
+      public ArrayList selectprograma(){
+                Connection cnn=null;
+                ResultSet rs;
+                Statement sentencia;
+                ArrayList lista=new ArrayList();
+            try {
+              cnn=obtenerConn();
+              sentencia=cnn.createStatement();
+              rs=sentencia.executeQuery("SELECT * FROM programa");
+              while(rs.next()){
+                  lista.add(rs.getString("nom_programa"));    
+              }
+            } catch (Exception e) {
+                Logger.getLogger(Red_deConocimiento.class.getName()).log(Level.SEVERE, null, e);
+            }
+            return lista;
+        }
     
 }

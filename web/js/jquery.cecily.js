@@ -383,11 +383,12 @@ jQuery.Luna = function (Datos, selector) {
                     break;
 
                 case "Select":
+                    console.log("datos.tipo"+datos.tipo);
                     if (datos.tipo == true) {
                         var jso = json;
                     } else {
                         var jso = jQuery.parseJSON(json);
-
+                        
                     }
                     var j = Object.keys(jso[0]);
                     for (var i = 0; i < jso.length; i++) {
@@ -653,16 +654,17 @@ jQuery.Luna = function (Datos, selector) {
                     $("#ccNoti").append(i);
                     break;
                 case "Area":                
-                    console.log(json);
                     jsArea = jQuery.parseJSON(json);
                     for (var i = 0; i < jsArea.length; i++) {
                         var data = (jsArea[i].id_area + "$$" + jsArea[i].nom_area + "$$" + jsArea[i].lider_area);
                         table = selector.dataTable().fnAddData([
                             i + 1,
                             jsArea[i].nom_area,
+                            jsArea[i].lider_area,
                             "<button  class='btn btn-info botonArea'value='" + data + "' >Modificar</button>"
                         ]);
                     }
+                    
                     break;
                 case "Funcionario":
                     var jsFuncionario;

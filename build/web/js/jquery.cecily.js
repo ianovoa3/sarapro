@@ -106,7 +106,7 @@ jQuery.Luna = function (Datos, selector) {
     this.cargarTabla = function (json, selector, datos) {
         cargarTabla(json, selector, datos);
     };
- $('#reg').click(function(){
+    $('#reg').click(function(){
        var selectred=1;
     $.ajax({
         type:'POST',

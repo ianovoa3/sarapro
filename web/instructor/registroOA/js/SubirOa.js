@@ -141,12 +141,25 @@ $(document).ready(function () {
             arraySelecionCate.splice(busqueda, 1);
         }
     });
+    $('#programasdeformacion').hide();
     ///Peticiones del programa de formacion
     $("#SelectArea").change(function () {
         var option = $("#SelectArea").val();
-        $("#selectProgramaF").add(<option>Programas</option>);
-       // ob.limpiarSelector($("#selectProgramaF"));
-        $("#SelectEstruturaDiv").hide();
+        $.ajax({
+        type:'POST',
+        data:{option:option,opcion:1},
+        url:'actor',
+        success: function(data,status,xhr,response) {
+            var text=xhr.responseText;
+            console.log("text"+text);
+        $('#programasdeformacion').show();
+    }
+   });
+        
+       // $("#SelectEstruturaDiv").hide();
+        //ENTRADA
+        //var prored=JSON.parse("selectprogramared");
+        //console.log("selectprog:"+prored);
     });
     $("#selectProgramaF").change(function () {
         var optionP = $("#selectProgramaF").val();

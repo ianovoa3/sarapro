@@ -1,5 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="M_Modelo.Red_deConocimiento"%>
+<%int j=0;%>
 <div class="content" style="margin-left: 10%;">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="css/multi-select.css">
@@ -36,13 +37,13 @@
                                 <%
                                 Red_deConocimiento reddeconocimiento=new Red_deConocimiento();
                                 ArrayList lista=reddeconocimiento.selectred();
-                                for(int i=1;i<=lista.size();i++){
+                                for(int i=0;i<lista.size();i++){
                                    
                                 %>
                             <tr class="active">
-                            <td><%=i%></td>
+                            <td><%=j=j+1%></td>
                             <td><%=lista.get(i)%></td>
-                            <td><button  class='btn btn-info botonArea'>Modificar</button></td>
+                            <td><button  class='btn btn-info botonArea' id="modificar">Modificar</button></td>
                             </tr>
                              <%}%>
                             </tbody>

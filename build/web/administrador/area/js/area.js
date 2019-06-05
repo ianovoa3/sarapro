@@ -104,7 +104,7 @@ $(document).on('ready', function () {
         $("#SelectItem").html("");
         peticionCompleta(0);
     }
-
+   
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");
         hilo[i].postMessage(jso[i]);

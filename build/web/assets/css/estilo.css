@@ -179,9 +179,9 @@ form  {
   font-size:30px;
 }
 
-input[type="radio"] {
+/*input[type="radio"] {
   display: none;
-}
+}*/
 
 .labelEstrella {
   color: grey;

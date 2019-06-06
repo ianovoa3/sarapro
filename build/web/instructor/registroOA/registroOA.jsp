@@ -80,22 +80,6 @@
                                             <button id="btnACategoria" class="btn btn-info" >Agregar temas</button>
                                         </div>
                                         <div id="ECategoriaSelect" style="width: 100%; height: 100px; overflow-y: scroll;"></div>
-
-                                        <div class="col-md-12">
-                                            <label for="Documento" class="col-md-12">Ádjuntar P.V</label>
-                                            <form id="UploadForm" action="archivos" method="post" enctype="multipart/form-data">
-                                                <div id="extPermitidas"></div>
-                                                <input type="file" size="26120" id="myfile" class="inputs input-file" name="myfile"> 
-                                                <div class="inputNotifi"></div>   
-                                                <input type="submit" class=" btn btn-info  col-md-8"  value="Subir Producto Virtual" id="subir_oa">
-                                                <div id="progressbox">
-                                                    <div id="progressbar"></div>
-                                                    <div id="percent">0%</div>
-                                                </div>
-                                                <br />
-                                                <div id="message"></div>
-                                            </form>
-                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="espacio">Busqueda de temas por programa de formación</label>
@@ -141,10 +125,56 @@
                                         </div>
                                         <div id="EProgramaFSelect" style="width: 100%; height: 100px; overflow-y: scroll;"></div>
                                         <div id="autorderechos">
-                                            <label class="col-md-12">Derechos de Autor</label>
-                                            <select required id="derechosautor"  title="Busca un derecho de autor.."></select>
-                                            <option>derechos de Autor</option>
-                                        </div>
+                                            <label  class="col-md-12">Derechos de Autor</label>
+                                            <div><label>Escoga el derecho otorgado para su proyecto y</label></div>
+                                            <div id="divr">
+                                            <input type="radio" name="r" value="r" id="r">
+                                            <img src="http://creativecommons.org/images/icons/attrib.gif">
+                                            <p>Reconocimiento: El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos.</p>
+                                            </div>
+                                            <div id="divrs">
+                                            <input type="radio" name="rs" value="rs" id="rs">
+                                            <img src="http://creativecommons.org/images/icons/attrib.gif">
+                                            <img src="http://creativecommons.org/images/icons/nomod.gif">
+                                            <p>Reconocimiento - Sin obra derivada: El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se pueden realizar obras derivadas.</p>
+                                            </div>
+                                            <div id="divrcs">
+                                            <input type="radio" name="rcs" value="rcs" id="rcs">
+                                            <img src="http://creativecommons.org/images/icons/attrib.gif">
+                                            <img src="http://creativecommons.org/images/icons/nomod.gif">
+                                            <img src="http://creativecommons.org/images/icons/noncomm.gif">
+                                            <p>Reconocimiento - Sin obra derivada - No comercial : El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial. No se pueden realizar obras derivadas.</p>
+                                            </div>
+                                            <div id="divrc">
+                                            <input type="radio" name="rc" value="rc" id="rc">
+                                            <img src="http://creativecommons.org/images/icons/attrib.gif">
+                                            <img src="http://creativecommons.org/images/icons/noncomm.gif">
+                                            <p>Reconocimiento - No comercial: El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial.</p>
+                                            </div>
+                                            <div id="divrnc">
+                                               <input type="radio" name="rnc" value="rnc" id="rnc"> 
+                                                <img src="http://creativecommons.org/images/icons/attrib.gif">
+                                                <img src="http://creativecommons.org/icon/sa/standard.gif">
+                                                <img src="http://creativecommons.org/images/icons/noncomm.gif">
+                                                <p>Reconocimiento - No comercial - Compartir igual : El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial y las obras derivadas tienen que estar bajo los mismos términos de licencia que el trabajo original.</p>
+                                            </div>
+                                            <input type="submit" class=" btn btn-info  col-md-4" value="Añadir" id="botonderechos">
+                                            </div>
+                                    </div>
+                                         <div class="col-md-12">
+                                        <label for="Documento" class="col-md-12">Ádjuntar P.V</label>
+                                        <form id="UploadForm" action="archiv6os" method="post" enctype="multipart/form-data">
+                                            <div id="extPermitidas"></div>
+                                            <input type="file" size="26120" id="myfile" class="inputs input-file" name="myfile"> 
+                                            <div class="inputNotifi"></div>   
+                                            <input type="submit" class=" btn btn-info  col-md-8"  value="Subir Producto Virtual" id="subir_oa">
+                                            <div id="progressbox">
+                                                <div id="progressbar"></div>
+                                                <div id="percent">0%</div>
+                                            </div>
+                                            <br />
+                                            <div id="message"></div>
+                                        </form>
                                     </div>
                                 </article>
                             </section>

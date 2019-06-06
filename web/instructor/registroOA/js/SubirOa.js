@@ -14,6 +14,37 @@ $(document).ready(function () {
 
     //EXTENCION DE ACUERDO AL IDFORMATO SELECCIONADO (JPJ ETC)
     ///jso[0] = ['SubirPv_Controller','[{opcion:1,tipoFormato:[2,'+idTipoFormato+']}]'];
+    $("#botonderechos").click(function(){
+        if(document.getElementById('r').checked){
+            $("#divrs").hide();
+            $("#divrcs").hide();
+            $("#divrc").hide();
+            $("#divrnc").hide();
+        }
+        if(document.getElementById('rs').checked){
+            $("#divr").hide();
+            $("#divrcs").hide();
+            $("#divrc").hide();
+            $("#divrnc").hide();
+        }
+        if(document.getElementById('rcs').checked){
+            $("#divr").hide();
+            $("#divrs").hide();
+            $("#divrc").hide();
+            $("#divrnc").hide();
+        }
+        if(document.getElementById('rc').checked){
+            $("#divr").hide();
+            $("#divrs").hide();
+            $("#divrcs").hide();
+            $("#divrnc").hide();
+        }else if(document.getElementById('rnc').checked){
+            $("#divr").hide();
+            $("#divrs").hide();
+            $("#divrcs").hide();
+            $("#divrc").hide();  
+        }
+    });
     $("#formato").change(function () {
         $("#myfile").val("");
         $("#extPermitidas").html("");

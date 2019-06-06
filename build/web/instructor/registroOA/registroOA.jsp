@@ -119,7 +119,7 @@
                                                     ArrayList lista=rc.selectred();
                                                     for(int i=0;i<lista.size();i++){
                                                 %>
-                                                <option value="A0"><%=lista.get(i)%></option>
+                                                <option><%=lista.get(i)%></option>
                                                 <%}%>    
                                             </select>
                                             <div id="programasdeformacion">
@@ -142,7 +142,8 @@
                                         <div id="EProgramaFSelect" style="width: 100%; height: 100px; overflow-y: scroll;"></div>
                                         <div id="autorderechos">
                                             <label class="col-md-12">Derechos de Autor</label>
-                                            <select required></select>
+                                            <select required id="derechosautor"  title="Busca un derecho de autor.."></select>
+                                            <option>derechos de Autor</option>
                                         </div>
                                     </div>
                                 </article>

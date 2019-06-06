@@ -149,17 +149,15 @@ $(document).ready(function () {
         type:'POST',
         data:{option:option,opcion:1},
         url:'actor',
-        success: function(data,status,xhr,response) {
-            var text=xhr.responseText;
-            console.log("text"+text);
+        success: function(data) {
         $('#programasdeformacion').show();
-    }
+        var lista=jQuery.parseJSON(data);
+            $('#selectProgramaF').append($('<option>', {
+                text: lista  
+        }));
+      }
    });
-        
-       // $("#SelectEstruturaDiv").hide();
-        //ENTRADA
-        //var prored=JSON.parse("selectprogramared");
-        //console.log("selectprog:"+prored);
+    
     });
     $("#selectProgramaF").change(function () {
         var optionP = $("#selectProgramaF").val();

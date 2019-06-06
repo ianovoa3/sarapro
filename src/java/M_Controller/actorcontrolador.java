@@ -8,6 +8,7 @@ package M_Controller;
 import M_Modelo.Funcionario;
 import M_Modelo.Programa;
 import VO.FuncionarioVO;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -46,26 +47,29 @@ public class actorcontrolador extends HttpServlet {
                     String option=request.getParameter("option");
                     Programa programa=new Programa();
                     ArrayList lista=new ArrayList();
-                 lista=programa.consultaprogramared(programa.selectprogramared(option));
-                // response.
-            default:
-            String nombre=request.getParameter("nombre");
-            String apellido=request.getParameter("apellido");
-            int tipoUsuario=Integer.parseInt(request.getParameter("tipoUsuario"));
-            String tipoIdenti=request.getParameter("tipoIdenti");
-            String numeroIdentificacion=request.getParameter("numeroIdentificacion");
-            String email=request.getParameter("email");
-            String centroFormacion=request.getParameter("centroFormacion");
-            String reddeconocimiento=request.getParameter("centroFormacion");
-            String ipSena=request.getParameter("ipSena");
-            String cargo=request.getParameter("cargo");
-            String clave=request.getParameter("clave");
-            FuncionarioVO funcionariovo=new FuncionarioVO(nombre, apellido, tipoUsuario, tipoIdenti, numeroIdentificacion, email, centroFormacion, reddeconocimiento, ipSena, cargo,clave);
-            Funcionario funcionario=new Funcionario();
-            if(funcionario.registrarUsuario(funcionariovo) && funcionario.registrorol(funcionariovo)){
-                request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
-            }    
-            break;
+                    int area_id=programa.selectprogramared(option);
+                 lista=programa.consultaprogramared(area_id);
+                 String json=new Gson().toJson(lista);
+                 out.print(json);
+                
+//            default:
+//            String nombre=request.getParameter("nombre");
+//            String apellido=request.getParameter("apellido");
+//            int tipoUsuario=Integer.parseInt(request.getParameter("tipoUsuario"));
+//            String tipoIdenti=request.getParameter("tipoIdenti");
+//            String numeroIdentificacion=request.getParameter("numeroIdentificacion");
+//            String email=request.getParameter("email");
+//            String centroFormacion=request.getParameter("centroFormacion");
+//            String reddeconocimiento=request.getParameter("centroFormacion");
+//            String ipSena=request.getParameter("ipSena");
+//            String cargo=request.getParameter("cargo");
+//            String clave=request.getParameter("clave");
+//            FuncionarioVO funcionariovo=new FuncionarioVO(nombre, apellido, tipoUsuario, tipoIdenti, numeroIdentificacion, email, centroFormacion, reddeconocimiento, ipSena, cargo,clave);
+//            Funcionario funcionario=new Funcionario();
+//            if(funcionario.registrarUsuario(funcionariovo) && funcionario.registrorol(funcionariovo)){
+//                request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
+//            }    
+            //break;
             }
             
             

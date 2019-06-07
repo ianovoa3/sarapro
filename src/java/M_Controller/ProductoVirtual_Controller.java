@@ -6,6 +6,7 @@ import M_Modelo.Producto_Virtual;
 import M_Modelo.Version;
 import M_Util.Elomac;
 import M_Util.M_Procedure;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -59,14 +60,22 @@ public class ProductoVirtual_Controller extends HttpServlet {
             ArchivosController arch = new ArchivosController();
             respuesta = response.getWriter();
             Version ver = new Version();
+            Producto_Virtual producto=new Producto_Virtual();
             String path = request.getRealPath("");
+            Gson gson=new Gson();
+            //System.out.println(opcion);
             switch (opcion) {
                 case 1:
+                     String derechosdeautor=jData.getString("derechosdeautor");
+                      producto.derechosdeautor(derechosdeautor);
+                      System.out.println("boolean:"+producto.derechosdeautor(derechosdeautor));
                     infoVersion = Elomac.M_toArray(jData.getString("info"));
                     arrayFun = M_Procedure.Group(Elomac.M_toArray(jData.getString("arrayFun")), ',');
                     String[] arrayTemas = Elomac.M_toArray(jData.getString("arrayTemas"));
                     String archivoNom = jData.getString("archivoNom");
                     infoVersion[4] = archivoNom;
+                   
+                    //System.out.println("derechos"+derechosdeautor);
                     nomUrl = ver.RegistrarPV(infoVersion, arrayFun, arrayTemas);//16/04/2017
                     if (nomUrl != "null") {
                         arch.CambiarNombre(path,archivoNom, nomUrl, 0, 1);

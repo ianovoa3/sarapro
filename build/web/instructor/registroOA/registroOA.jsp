@@ -163,7 +163,7 @@
                                     </div>
                                          <div class="col-md-12">
                                         <label for="Documento" class="col-md-12">Ádjuntar P.V</label>
-                                        <form id="UploadForm" action="archiv6os" method="post" enctype="multipart/form-data">
+                                        <form id="UploadForm" action="archivos" method="post" enctype="multipart/form-data">
                                             <div id="extPermitidas"></div>
                                             <input type="file" size="26120" id="myfile" class="inputs input-file" name="myfile"> 
                                             <div class="inputNotifi"></div>   

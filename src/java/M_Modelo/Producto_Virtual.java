@@ -2,8 +2,13 @@ package M_Modelo;
 
 import M_Util.Elomac;
 import static M_Util.M_Crud.M_Format;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -12,7 +17,33 @@ public class Producto_Virtual extends Elomac {
     public Producto_Virtual() {
         super("producto_virtual", 1);
     }
-
+    public boolean derechosdeautor(String derechosdeautor){
+        Connection cnn=null;
+        Statement sentencia=null;
+        ResultSet resultset;
+        boolean opcion=false;
+        int numero=0;
+        String nuevoderecho="";
+        try {
+            for(int i=0;i<derechosdeautor.length();i++){
+            if(derechosdeautor.charAt(i)!='[' && derechosdeautor.charAt(i)!=']')
+                nuevoderecho=Character.toString(derechosdeautor.charAt(i));
+            }
+            System.out.println("nuevoderecho"+nuevoderecho);
+            cnn=obtenerConn();
+            sentencia=cnn.createStatement();
+            resultset=sentencia.executeQuery("SELECT MAX(id_p_virtual) FROM producto_virtual");
+            while(resultset.next()){
+            numero=resultset.getInt("id_p_virtual");
+            }
+            System.out.println("numero"+numero);
+            sentencia.executeUpdate("INSERT INTO producto_virtual(derechosdeautor) VALUES('"+nuevoderecho+"') WHERE id_p_virtual='"+numero+"'");
+            opcion=true;
+        } catch (Exception e) {
+            Logger.getLogger(Red_deConocimiento.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return opcion;
+    }
     private String Autores(String consulta) {
 
         try {

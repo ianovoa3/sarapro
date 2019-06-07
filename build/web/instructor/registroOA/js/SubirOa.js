@@ -14,35 +14,44 @@ $(document).ready(function () {
 
     //EXTENCION DE ACUERDO AL IDFORMATO SELECCIONADO (JPJ ETC)
     ///jso[0] = ['SubirPv_Controller','[{opcion:1,tipoFormato:[2,'+idTipoFormato+']}]'];
+    var valorchecked;
     $("#botonderechos").click(function(){
         if(document.getElementById('r').checked){
             $("#divrs").hide();
             $("#divrcs").hide();
             $("#divrc").hide();
             $("#divrnc").hide();
+            valorchecked=document.getElementById('r').value;
         }
         if(document.getElementById('rs').checked){
             $("#divr").hide();
             $("#divrcs").hide();
             $("#divrc").hide();
             $("#divrnc").hide();
+            valorchecked=document.getElementById('rs').value;
         }
         if(document.getElementById('rcs').checked){
             $("#divr").hide();
             $("#divrs").hide();
             $("#divrc").hide();
             $("#divrnc").hide();
+            valorchecked=document.getElementById('rcs').value;
         }
         if(document.getElementById('rc').checked){
             $("#divr").hide();
             $("#divrs").hide();
             $("#divrcs").hide();
             $("#divrnc").hide();
+            valorchecked=document.getElementById('rc').value;
         }else if(document.getElementById('rnc').checked){
             $("#divr").hide();
             $("#divrs").hide();
             $("#divrcs").hide();
-            $("#divrc").hide();  
+            $("#divrc").hide(); 
+            valorchecked=document.getElementById('rnc').value;
+        }
+        else{
+            alert('seleccione un derecho de autor');
         }
     });
     $("#formato").change(function () {
@@ -387,6 +396,7 @@ $(document).ready(function () {
             datos[4] = {nombre: "Select"};
             ajax(4, datos[4]);
         } else if (i == 5) {
+            console.log('dentro de 5 function');
             $("#message").html("");
             var arrayAutor = idUser;
             var arrayTemas = [];
@@ -402,7 +412,8 @@ $(document).ready(function () {
             men = $("#Titulo_Publicacion").val();
             var path = $("#myfile").val();
             var nomArchivo = path.replace(/C:\\fakepath\\/, '');
-            jso[11] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + extFrom + ',0,0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],archivoNom:' + nomArchivo + '}]'];
+            console.log("valorchecked"+valorchecked);
+            jso[11] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + extFrom + ',0,0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],derechosdeautor:[' + valorchecked + '],archivoNom:' + nomArchivo + '}]'];
             selector[11] = null;
             datos[11] = {nombre: "btn"};
             ajax(11, datos[11]);

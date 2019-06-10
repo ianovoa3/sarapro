@@ -26,23 +26,62 @@ public class Producto_Virtual extends Elomac {
         String nuevoderecho="";
         try {
             for(int i=0;i<derechosdeautor.length();i++){
-            if(derechosdeautor.charAt(i)!='[' && derechosdeautor.charAt(i)!=']')
-                nuevoderecho=Character.toString(derechosdeautor.charAt(i));
-            }
             System.out.println("nuevoderecho"+nuevoderecho);
+                if(derechosdeautor.charAt(i)!='[' && derechosdeautor.charAt(i)!=']' && derechosdeautor.charAt(i)!='"')
+                nuevoderecho=nuevoderecho+Character.toString(derechosdeautor.charAt(i));
+            }
+            //System.out.println("nuevoderechofinal:"+nuevoderecho);
             cnn=obtenerConn();
             sentencia=cnn.createStatement();
             resultset=sentencia.executeQuery("SELECT MAX(id_p_virtual) FROM producto_virtual");
             while(resultset.next()){
-            numero=resultset.getInt("id_p_virtual");
+            numero=resultset.getInt(1);
             }
             System.out.println("numero"+numero);
-            sentencia.executeUpdate("INSERT INTO producto_virtual(derechosdeautor) VALUES('"+nuevoderecho+"') WHERE id_p_virtual='"+numero+"'");
+            resultset.close();
+            sentencia.executeUpdate("UPDATE producto_virtual SET derechosdeautor='"+nuevoderecho+"' WHERE id_p_virtual='"+numero+"'");
             opcion=true;
         } catch (Exception e) {
-            Logger.getLogger(Red_deConocimiento.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(Producto_Virtual.class.getName()).log(Level.SEVERE, null, e);
         }
         return opcion;
+    }
+    public ArrayList consultahabilitados(){
+            Connection cnn=null;
+            Statement sentencia;
+            ResultSet rs;
+            boolean opcion;
+            ArrayList infoa=new ArrayList();
+            String derechos="";
+            String formato="";
+        try {
+          cnn=obtenerConn();
+          sentencia=cnn.createStatement();
+          rs=sentencia.executeQuery("Select * from version v inner join producto_virtual p on v.id_p_virtual=p.id_p_virtual  inner join autor a on a.id_version=v.id_version inner join funcionario f on f.id_funcionario=a.id_funcionario inner join formato fo on fo.id_formato=p.id_formato inner join tipo_formato t on t.id_tipo_formato=fo.id_tipo_formato WHERE v.id_estado=6;");
+          while(rs.next()){
+          infoa.add(rs.getString("p.nom_p_virtual"));
+          infoa.add(rs.getString("f.nom_funcionario"));
+          infoa.add(rs.getDate("v.fecha_publicacion"));
+          infoa.add(rs.getString("p.des_p_virtual"));
+          derechos=rs.getString("p.derechosdeautor");
+          formato=rs.getString("t.nom_tipo_formato");
+          }
+          if(derechos.equals("r"))
+          derechos="Reconocimiento: El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos";
+          if(derechos.equals("rs"))
+          derechos="Reconocimiento - Sin obra derivada: El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se pueden realizar obras derivadas.";
+          if(derechos.equals("rcs"))
+          derechos="Reconocimiento - Sin obra derivada - No comercial : El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial. No se pueden realizar obras derivadas.";
+          if(derechos.equals("rc"))
+          derechos="Reconocimiento - No comercial: El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial";
+          if(derechos.equals("rnc"))
+          derechos="Reconocimiento - No comercial - Compartir igual : El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial y las obras derivadas tienen que estar bajo los mismos términos de licencia que el trabajo original.";
+          infoa.add(derechos);
+          
+        } catch (Exception e) {
+            Logger.getLogger(Producto_Virtual.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return infoa;
     }
     private String Autores(String consulta) {
 

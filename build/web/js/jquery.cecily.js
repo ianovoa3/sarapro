@@ -430,6 +430,7 @@ jQuery.Luna = function (Datos, selector) {
                     var pag = 1;
                     var q = 2;
                     var jso = jQuery.parseJSON(json);
+                    console.log("el jso"+jso);
                     if (jso != null) {
                         var oAItem;
                         for (var i = 0; i < jso.length; i++) {

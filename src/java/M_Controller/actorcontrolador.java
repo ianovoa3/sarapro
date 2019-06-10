@@ -6,6 +6,7 @@
 package M_Controller;
 
 import M_Modelo.Funcionario;
+import M_Modelo.Producto_Virtual;
 import M_Modelo.Programa;
 import VO.FuncionarioVO;
 import com.google.gson.Gson;
@@ -42,6 +43,7 @@ public class actorcontrolador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             int opcion=Integer.parseInt(request.getParameter("opcion"));
+              System.out.println("la opcion"+opcion);
             switch(opcion){
                 case 1:
                     String option=request.getParameter("option");
@@ -51,25 +53,31 @@ public class actorcontrolador extends HttpServlet {
                  lista=programa.consultaprogramared(area_id);
                  String json=new Gson().toJson(lista);
                  out.print(json);
-                
-//            default:
-//            String nombre=request.getParameter("nombre");
-//            String apellido=request.getParameter("apellido");
-//            int tipoUsuario=Integer.parseInt(request.getParameter("tipoUsuario"));
-//            String tipoIdenti=request.getParameter("tipoIdenti");
-//            String numeroIdentificacion=request.getParameter("numeroIdentificacion");
-//            String email=request.getParameter("email");
-//            String centroFormacion=request.getParameter("centroFormacion");
-//            String reddeconocimiento=request.getParameter("centroFormacion");
-//            String ipSena=request.getParameter("ipSena");
-//            String cargo=request.getParameter("cargo");
-//            String clave=request.getParameter("clave");
-//            FuncionarioVO funcionariovo=new FuncionarioVO(nombre, apellido, tipoUsuario, tipoIdenti, numeroIdentificacion, email, centroFormacion, reddeconocimiento, ipSena, cargo,clave);
-//            Funcionario funcionario=new Funcionario();
-//            if(funcionario.registrarUsuario(funcionariovo) && funcionario.registrorol(funcionariovo)){
-//                request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
-//            }    
-            //break;
+                case 2:
+                    Producto_Virtual pv=new Producto_Virtual();
+                    ArrayList infoa=new ArrayList();
+                    infoa=pv.consultahabilitados();
+                    String infopv=new Gson().toJson(infoa);
+                    out.print(infopv);
+                    break;
+            default:
+            String nombre=request.getParameter("nombre");
+            String apellido=request.getParameter("apellido");
+            int tipoUsuario=Integer.parseInt(request.getParameter("tipoUsuario"));
+            String tipoIdenti=request.getParameter("tipoIdenti");
+            String numeroIdentificacion=request.getParameter("numeroIdentificacion");
+            String email=request.getParameter("email");
+            String centroFormacion=request.getParameter("centroFormacion");
+            String reddeconocimiento=request.getParameter("centroFormacion");
+            String ipSena=request.getParameter("ipSena");
+            String cargo=request.getParameter("cargo");
+            String clave=request.getParameter("clave");
+            FuncionarioVO funcionariovo=new FuncionarioVO(nombre, apellido, tipoUsuario, tipoIdenti, numeroIdentificacion, email, centroFormacion, reddeconocimiento, ipSena, cargo,clave);
+            Funcionario funcionario=new Funcionario();
+            if(funcionario.registrarUsuario(funcionariovo) && funcionario.registrorol(funcionariovo)){
+                request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
+            }    
+            break;
             }
             
             

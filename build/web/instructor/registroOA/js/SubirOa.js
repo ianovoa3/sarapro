@@ -50,9 +50,6 @@ $(document).ready(function () {
             $("#divrc").hide(); 
             valorchecked=document.getElementById('rnc').value;
         }
-        else{
-            alert('seleccione un derecho de autor');
-        }
     });
     $("#formato").change(function () {
         $("#myfile").val("");

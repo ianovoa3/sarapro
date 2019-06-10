@@ -1,6 +1,15 @@
 $(document).on('ready', function () {
+   var numero=1;
+    $.ajax({
+        type:'POST',
+        data:{opcion:2},
+        url:'actor',
+        success: function (data) {
+               console.log("la data:"+data);
+            }    
+    });
     var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, arraySelecionPrograma = [], arraySelectCategoria = [];
-      var pagina = "<li id='pag1' class='pagination'><a><lavel>1</label></a></li>";
+    var pagina = "<li id='pag1' class='pagination'><a><lavel>1</label></a></li>";
     $("#dataInicialA").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2});
     $("#dataFinalA").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2});
     $("#dataInicialA").datepicker("option", "maxDate", new Date());

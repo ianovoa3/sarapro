@@ -46,6 +46,7 @@ public class DescargaArchivo extends HttpServlet {
             String archivo = archivos1 + request.getParameter("archivo");
             String[] parts = archivo.split("\\.");
             nombre = request.getParameter("archivo");
+            System.out.println("el pathico:"+archivo1.getBase());
             int i = parts.length - 1;
             tipo = parts[i];
             File f = new File(archivo);

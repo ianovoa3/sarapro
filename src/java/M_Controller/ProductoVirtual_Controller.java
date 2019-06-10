@@ -67,16 +67,13 @@ public class ProductoVirtual_Controller extends HttpServlet {
             switch (opcion) {
                 case 1:
                      String derechosdeautor=jData.getString("derechosdeautor");
-                      producto.derechosdeautor(derechosdeautor);
-                      System.out.println("boolean:"+producto.derechosdeautor(derechosdeautor));
                     infoVersion = Elomac.M_toArray(jData.getString("info"));
                     arrayFun = M_Procedure.Group(Elomac.M_toArray(jData.getString("arrayFun")), ',');
                     String[] arrayTemas = Elomac.M_toArray(jData.getString("arrayTemas"));
                     String archivoNom = jData.getString("archivoNom");
                     infoVersion[4] = archivoNom;
-                   
-                    //System.out.println("derechos"+derechosdeautor);
                     nomUrl = ver.RegistrarPV(infoVersion, arrayFun, arrayTemas);//16/04/2017
+                    producto.derechosdeautor(derechosdeautor);
                     if (nomUrl != "null") {
                         arch.CambiarNombre(path,archivoNom, nomUrl, 0, 1);
                         respuesta.println("true$$ fue registrado");
@@ -146,6 +143,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     }
                     break;
                 case 5:
+                    System.out.println();
                     String[] filtrar = Elomac.M_toArray(jData.getString("filtrar"));
                     int caso = jData.getInt("caso");
                     String consulta = new Producto_Virtual().ConsultarProducto(filtrar, caso);

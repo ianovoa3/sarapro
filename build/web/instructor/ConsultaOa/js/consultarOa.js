@@ -1,11 +1,17 @@
 $(document).on('ready', function () {
-   var numero=1;
+    var after="";
+   // $("#formulario1").hide();
     $.ajax({
         type:'POST',
         data:{opcion:2},
         url:'actor',
         success: function (data) {
-               console.log("la data:"+data);
+           var jsoninfo=JSON.parse(data);
+           console.log("jsoninfo:"+jsoninfo[jsoninfo.length-1]);
+           for(var i=0;i<jsoninfo[jsoninfo.length-1];i++){
+            var formulario1=$("#formulario1").clone();
+            formulario1.insertAfter($("#formulario1"));
+        }
             }    
     });
     var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, arraySelecionPrograma = [], arraySelectCategoria = [];

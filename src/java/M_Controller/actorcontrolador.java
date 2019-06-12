@@ -10,6 +10,7 @@ import M_Modelo.Producto_Virtual;
 import M_Modelo.Programa;
 import VO.FuncionarioVO;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.digest.DigestUtils;
 import static org.apache.commons.codec.digest.MessageDigestAlgorithms.MD5;
+import org.json.JSONArray;
 
 /**
  *

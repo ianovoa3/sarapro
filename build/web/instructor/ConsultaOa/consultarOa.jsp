@@ -104,17 +104,19 @@
         <button id="btnActu" type="button" class="btn btn-block">Actualizar Lista</button>        
     </div>
 </div>
-
-<div id="formulario1" style="display: none;">
+<div id="formulario1">
     <section class="col col-md-10" id="Contenedora">
         <article class="col-md-3">
-            <figure><img src="imagenes/imagenoa.png" width="160"  height="180" id="ImagenOA"></figure>
+            <figure id="figure"></figure>
         </article>
         <article class="col-md-9">
             <div class="col-md-6">
+                <div class="row">
+                <div id="titulop">
                 <label>Titulo de la publicación</label>
                 <p id="TituloOa"></p>
-
+                </div>
+                </div>
                 <label>Autor(es)</label>
                 <p id="AutoresOa"></p>
                 <label>Fecha de publicación</label>
@@ -128,6 +130,7 @@
                 </div>
             </div>
         </article>
+        
     </section>
 </div>
 </div>

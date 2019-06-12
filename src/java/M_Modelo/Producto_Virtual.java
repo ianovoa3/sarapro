@@ -2,6 +2,7 @@ package M_Modelo;
 
 import M_Util.Elomac;
 import static M_Util.M_Crud.M_Format;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -50,34 +51,46 @@ public class Producto_Virtual extends Elomac {
             Connection cnn=null;
             Statement sentencia;
             ResultSet rs;
-            boolean opcion;
+            int opcion=0;
             ArrayList infoa=new ArrayList();
-            String derechos="";
-            String formato="";
+            ArrayList arrayderechos=new ArrayList();
         try {
           cnn=obtenerConn();
           sentencia=cnn.createStatement();
           rs=sentencia.executeQuery("Select * from version v inner join producto_virtual p on v.id_p_virtual=p.id_p_virtual  inner join autor a on a.id_version=v.id_version inner join funcionario f on f.id_funcionario=a.id_funcionario inner join formato fo on fo.id_formato=p.id_formato inner join tipo_formato t on t.id_tipo_formato=fo.id_tipo_formato WHERE v.id_estado=6;");
           while(rs.next()){
+          arrayderechos.add(rs.getString("derechosdeautor"));   
+           for(int i=0;i<arrayderechos.size();i++){
+           if(arrayderechos.get(i).equals("r")){
+          arrayderechos.remove(arrayderechos.get(i));
+          arrayderechos.add("Reconocimiento: El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos");
+          }
+          if(arrayderechos.get(i).equals("rs")){
+          arrayderechos.remove(arrayderechos.get(i));
+          arrayderechos.add("Reconocimiento - Sin obra derivada: El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se pueden realizar obras derivadas.");
+          }
+          if(arrayderechos.get(i).equals("rcs")){
+          arrayderechos.remove(arrayderechos.get(i));
+          arrayderechos.add("Reconocimiento - Sin obra derivada - No comercial : El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial. No se pueden realizar obras derivadas.");
+          }
+          if(arrayderechos.get(i).equals("rc")){
+          arrayderechos.remove(arrayderechos.get(i));
+          arrayderechos.add("Reconocimiento - No comercial: El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial");
+          }
+          if(arrayderechos.get(i).equals("rnc")){
+          arrayderechos.remove(arrayderechos.get(i));
+          arrayderechos.add("Reconocimiento - No comercial - Compartir igual : El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial y las obras derivadas tienen que estar bajo los mismos términos de licencia que el trabajo original.");
+            }
+          }
+           opcion=opcion+1;
           infoa.add(rs.getString("p.nom_p_virtual"));
           infoa.add(rs.getString("f.nom_funcionario"));
           infoa.add(rs.getDate("v.fecha_publicacion"));
           infoa.add(rs.getString("p.des_p_virtual"));
-          derechos=rs.getString("p.derechosdeautor");
-          formato=rs.getString("t.nom_tipo_formato");
+          infoa.add(rs.getString("t.nom_tipo_formato"));
+          infoa.add(arrayderechos.toString());
           }
-          if(derechos.equals("r"))
-          derechos="Reconocimiento: El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos";
-          if(derechos.equals("rs"))
-          derechos="Reconocimiento - Sin obra derivada: El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se pueden realizar obras derivadas.";
-          if(derechos.equals("rcs"))
-          derechos="Reconocimiento - Sin obra derivada - No comercial : El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial. No se pueden realizar obras derivadas.";
-          if(derechos.equals("rc"))
-          derechos="Reconocimiento - No comercial: El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial";
-          if(derechos.equals("rnc"))
-          derechos="Reconocimiento - No comercial - Compartir igual : El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial y las obras derivadas tienen que estar bajo los mismos términos de licencia que el trabajo original.";
-          infoa.add(derechos);
-          
+          infoa.add(opcion-1);
         } catch (Exception e) {
             Logger.getLogger(Producto_Virtual.class.getName()).log(Level.SEVERE, null, e);
         }

@@ -107,14 +107,16 @@
 <div id="formulario1">
     <section class="col col-md-10" id="Contenedora">
         <article class="col-md-3">
-            <figure id="figure"></figure>
+            <figure id="figure">
+                <img src="" id="imagenproducto">
+            </figure>
         </article>
         <article class="col-md-9">
             <div class="col-md-6">
                 <div class="row">
                 <div id="titulop">
                 <label>Titulo de la publicación</label>
-                <p id="TituloOa"></p>
+                <p id="TituloOa" name="titulooa"></p>
                 </div>
                 </div>
                 <label>Autor(es)</label>
@@ -126,7 +128,9 @@
                 <label>Descripción</label>
                 <p id="DescripcionOa"></p>
                 <div class="col-md-8">
-                    <button type="button" class="btn btn-block" id="BtnDescargar">Detalles P.V</button>
+                    <!--<button type="button" class="btn btn-block" id="BtnDescargar">Detalles P.V</button>-->
+                   
+                        <button type="button" class="btn btn-block"><a href="descargar?opcion=1" download>Descargar</a></button>
                 </div>
             </div>
         </article>

@@ -7,11 +7,38 @@ $(document).on('ready', function () {
         url:'actor',
         success: function (data) {
            var jsoninfo=JSON.parse(data);
-           console.log("jsoninfo:"+jsoninfo[jsoninfo.length-1]);
+           var formulario1=$("#formulario1").clone();
+           var id=document.getElementById("TituloOa");
+           $("#TituloOa").append(jsoninfo[0]);
+           $("#AutoresOa").append(jsoninfo[1]);
+           $("#FechaPublicacionOa").append(jsoninfo[2]);
+           $("#DescripcionOa").append(jsoninfo[3]);
+           if(jsoninfo[4]==("imagen"))
+           $("#imagenproducto").attr("src","Archivos/Formatos/documento.png"); 
+           if(jsoninfo[4]==("documento"))
+           $("#imagenproducto").attr("src","Archivos/Formatos/documento.png");
+           if(jsoninfo[4]==("video"))
+           $("#imagenproducto").attr("src","Archivos/Formatos/video.png");
+           console.log("jsoninfo:"+jsoninfo);
+          // console.log("formulario1"+formulario1.getOwnPropertyNames());
+           var titulo=6;
+           var autor=7;
+           var fecha=8;
+           var descripcion=9;
            for(var i=0;i<jsoninfo[jsoninfo.length-1];i++){
-            var formulario1=$("#formulario1").clone();
-            formulario1.insertAfter($("#formulario1"));
-        }
+            var nuevotitulo=document.getElementById("TituloOa");
+            id.id=nuevotitulo+titulo;
+           formulario1.insertAfter($("#formulario1"));
+            //formulario1.attr("TituloOa","titulo");
+//           $("#TituloOa").append(jsoninfo[titulo]);
+//           $("#AutoresOa").append(jsoninfo[autor]);
+//           $("#FechaPublicacionOa").append(jsoninfo[fecha]);
+//           $("#DescripcionOa").append(jsoninfo[descripcion]);
+//           titulo=titulo+6;
+//           autor=autor+7;
+//           fecha=fecha+8;
+//           descripcion=descripcion+9;
+                }
             }    
     });
     var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, arraySelecionPrograma = [], arraySelectCategoria = [];

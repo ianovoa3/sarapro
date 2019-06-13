@@ -25,6 +25,7 @@ public class DescargaArchivo extends HttpServlet {
             throws ServletException, IOException, JSONException {
         response.setContentType("text/html;charset=UTF-8");
         //PrintWriter out = response.getWriter();
+        
         try {
             String nombre = "archivo";
             String tipo = "pdf";

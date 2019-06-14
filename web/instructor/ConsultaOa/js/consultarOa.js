@@ -1,45 +1,29 @@
 $(document).on('ready', function () {
-    var after="";
-   // $("#formulario1").hide();
     $.ajax({
         type:'POST',
         data:{opcion:2},
         url:'actor',
         success: function (data) {
-           var jsoninfo=JSON.parse(data);
-           var formulario1=$("#formulario1").clone();
-           var id=document.getElementById("TituloOa");
-           $("#TituloOa").append(jsoninfo[0]);
-           $("#AutoresOa").append(jsoninfo[1]);
-           $("#FechaPublicacionOa").append(jsoninfo[2]);
-           $("#DescripcionOa").append(jsoninfo[3]);
-           if(jsoninfo[4]==("imagen"))
-           $("#imagenproducto").attr("src","Archivos/Formatos/documento.png"); 
-           if(jsoninfo[4]==("documento"))
-           $("#imagenproducto").attr("src","Archivos/Formatos/documento.png");
-           if(jsoninfo[4]==("video"))
-           $("#imagenproducto").attr("src","Archivos/Formatos/video.png");
-           console.log("jsoninfo:"+jsoninfo);
-          // console.log("formulario1"+formulario1.getOwnPropertyNames());
-           var titulo=6;
-           var autor=7;
-           var fecha=8;
-           var descripcion=9;
-           for(var i=0;i<jsoninfo[jsoninfo.length-1];i++){
-            var nuevotitulo=document.getElementById("TituloOa");
-            id.id=nuevotitulo+titulo;
-           formulario1.insertAfter($("#formulario1"));
-            //formulario1.attr("TituloOa","titulo");
-//           $("#TituloOa").append(jsoninfo[titulo]);
-//           $("#AutoresOa").append(jsoninfo[autor]);
-//           $("#FechaPublicacionOa").append(jsoninfo[fecha]);
-//           $("#DescripcionOa").append(jsoninfo[descripcion]);
-//           titulo=titulo+6;
-//           autor=autor+7;
-//           fecha=fecha+8;
-//           descripcion=descripcion+9;
-                }
-            }    
+            var jsondata=JSON.parse(data);
+           console.log(jsondata);
+           var formato=4;
+           var posicion=30;
+           for(var i=0;i<jsondata[jsondata.length-1];i++){
+           if(jsondata[formato]==("imagen"))
+           $("#formulario1").append("<img src='Archivos/Formatos/imagen.png' id='formato'></img>");    
+           if(jsondata[formato]==("documento"))
+           $("#formulario1").append("<img src='Archivos/Formatos/documento.png' id='formato'></img>");
+           if(jsondata[formato]==("video"))
+           $("#formulario1").append("<img src='Archivos/Formatos/video.png'id='formato'></img>");       
+           formato=formato+6;
+            $("#formulario1").append("<div id='titulop'><label>Titulo de la publicación</label></div>");
+            $("#formulario1").append("<div id='autorp'><label>Autor(es)</label></div>");
+            $("#formulario1").append("<div id='fechap'><label>Fecha de Publicación</label></div>");
+            $("#formulario1").append("<div id='descripcionp'><label>Descripcion</label></div>");
+            
+            
+           }
+          }    
     });
     var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, arraySelecionPrograma = [], arraySelectCategoria = [];
     var pagina = "<li id='pag1' class='pagination'><a><lavel>1</label></a></li>";

@@ -90,7 +90,7 @@ public class Producto_Virtual extends Elomac {
           infoa.add(rs.getString("t.nom_tipo_formato"));
           infoa.add(arrayderechos.toString());
           }
-          infoa.add(opcion-1);
+          infoa.add(opcion);
         } catch (Exception e) {
             Logger.getLogger(Producto_Virtual.class.getName()).log(Level.SEVERE, null, e);
         }

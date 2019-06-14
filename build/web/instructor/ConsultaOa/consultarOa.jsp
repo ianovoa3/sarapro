@@ -5,7 +5,9 @@
     <link rel="stylesheet" type="text/css" href="css/multi-select.css"> 
     <link rel="stylesheet" href="assets/css/estilo_1.css"/>
     <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
+    <link href="assets/css/consultarOa.css" rel="stylesheet" type="text/css"/>
 </head>
+
 <body>
     <article class="col-md-12">
         <div id="Tituloss">
@@ -91,10 +93,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </article>
-</p>
-<div class="col-md-offset-1 col-md-6">
+            <div class="col-md-offset-1 col-md-6">
     <div class="col-md-6">
         <br>    
         <button id="btnBuscar" type="button" class="btn btn-block">Buscar Productos Virtuales</button>        
@@ -104,8 +103,9 @@
         <button id="btnActu" type="button" class="btn btn-block">Actualizar Lista</button>        
     </div>
 </div>
-<div id="formulario1">
-    <section class="col col-md-10" id="Contenedora">
+        </div>
+                    <div id="formulario1">
+<!--    <section class="col col-md-10" id="Contenedora">
         <article class="col-md-3">
             <figure id="figure">
                 <img src="" id="imagenproducto">
@@ -128,22 +128,22 @@
                 <label>Descripción</label>
                 <p id="DescripcionOa"></p>
                 <div class="col-md-8">
-                    <!--<button type="button" class="btn btn-block" id="BtnDescargar">Detalles P.V</button>-->
+                    <button type="button" class="btn btn-block" id="BtnDescargar">Detalles P.V</button>
                    
                         <button type="button" class="btn btn-block"><a href="descargar?opcion=1" download>Descargar</a></button>
                 </div>
             </div>
         </article>
         
-    </section>
+    </section>-->
 </div>
-</div>
+    </article>
 <div id="resultadosProductos" class="col-md-10 col-md-offset-1 "></div>
 <div class="col-md-12 col-md-offset-1">
     <ul class="pagination col-md-8 col-md-offset-2" id="paginador">
         <li id="pag1" class='pagination'><a><lavel>1</label></a></li>
     </ul>
-</div>  
+</div>
 <input value="pag0" id="pagActual" style="display: none;">
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jqueryUi.js"></script>    

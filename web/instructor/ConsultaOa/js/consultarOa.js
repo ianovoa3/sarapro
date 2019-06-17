@@ -6,25 +6,58 @@ $(document).on('ready', function () {
         success: function (data) {
             var jsondata=JSON.parse(data);
            console.log(jsondata);
-           var formato=4;
-           var posicion=30;
+           var id=0;
+           var formato=5;
+           var titulo=1;
+           var autor=2;
+           var fecha=3;
+           var descripcion=4;
+           var boton=1;
            for(var i=0;i<jsondata[jsondata.length-1];i++){
            if(jsondata[formato]==("imagen"))
            $("#formulario1").append("<img src='Archivos/Formatos/imagen.png' id='formato'></img>");    
            if(jsondata[formato]==("documento"))
            $("#formulario1").append("<img src='Archivos/Formatos/documento.png' id='formato'></img>");
            if(jsondata[formato]==("video"))
-           $("#formulario1").append("<img src='Archivos/Formatos/video.png'id='formato'></img>");       
-           formato=formato+6;
+           $("#formulario1").append("<img src='Archivos/Formatos/video.png'id='formato'></img>");
+       
             $("#formulario1").append("<div id='titulop'><label>Titulo de la publicación</label></div>");
+            $("#formulario1").append("<div id='eltitulo'><label>"+jsondata[titulo]+"</label></div>");
             $("#formulario1").append("<div id='autorp'><label>Autor(es)</label></div>");
+            $("#formulario1").append("<div id='elautor'><label>"+jsondata[autor]+"</label></div>");
             $("#formulario1").append("<div id='fechap'><label>Fecha de Publicación</label></div>");
+            $("#formulario1").append("<div id='lafecha'><label>"+jsondata[fecha]+"</label></div>");
             $("#formulario1").append("<div id='descripcionp'><label>Descripcion</label></div>");
-            
-            
+            $("#formulario1").append("<div id='ladescripcion'><label>"+jsondata[descripcion]+"</label></div>");
+            $("#formulario1").append("<div><input type='submit' onclick='descargar("+jsondata[id]+")' id='descargar' class='btn btn-info'  value='descargar' /></div>");
+            id=id+7;
+            formato=formato+7;
+            titulo=titulo+7;
+            autor=autor+7;
+            fecha=fecha+7;
+            descripcion=descripcion+7;
            }
-          }    
+//     $("#boton").click(function(){
+//    var valorid=document.getElementById("descargar").value;
+//    console.log("val"+valorid);
+//});   
+
+          }
+          
     });
+});
+function descargar(id){
+  $.ajax({
+      type:'POST',
+      data:{id:id,opcion:2},
+      url:'DescargaArchivo',
+      sucess: function(){
+            alert('alerta atencion increible insolito');
+      }
+  });
+  
+}
+   
     var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, arraySelecionPrograma = [], arraySelectCategoria = [];
     var pagina = "<li id='pag1' class='pagination'><a><lavel>1</label></a></li>";
     $("#dataInicialA").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2});
@@ -341,4 +374,3 @@ $(document).on('ready', function () {
             ajax(12, datos[12]);
         }
     }
-});

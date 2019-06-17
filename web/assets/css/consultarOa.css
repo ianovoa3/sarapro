@@ -1,20 +1,37 @@
 #formato{
-   background-color: blue;
     margin-top: 6%;
     margin-right: 30%;
 }
 #titulop{
-    margin-left: 20%;
-    margin-top: -5%;
+   margin-left: 20%;
+   margin-top: -15%;
 }
 #autorp{
     margin-left:20%;
-    margin-top:-5%;
 }
 #fechap{
     margin-left:20%;
 }
 #descripcionp{
     margin-left:20%;
-     margin-top:-5%;
+}
+#eltitulo{
+    margin-left:20%;
+    color:#00bfa5;
+}
+#elautor{
+    margin-left:20%;
+    color:#00bfa5;
+}
+#lafecha{
+    margin-left:20%;
+    color:#00bfa5;
+}
+#ladescripcion{
+    margin-left:20%;
+    color:#00bfa5;
+}
+#descargar{
+    margin-left:20%;
+    
 }

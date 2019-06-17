@@ -83,6 +83,7 @@ public class Producto_Virtual extends Elomac {
             }
           }
            opcion=opcion+1;
+          infoa.add(rs.getString("p.id_p_virtual"));
           infoa.add(rs.getString("p.nom_p_virtual"));
           infoa.add(rs.getString("f.nom_funcionario"));
           infoa.add(rs.getDate("v.fecha_publicacion"));

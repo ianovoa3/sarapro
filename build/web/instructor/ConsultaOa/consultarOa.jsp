@@ -7,7 +7,6 @@
     <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
     <link href="assets/css/consultarOa.css" rel="stylesheet" type="text/css"/>
 </head>
-
 <body>
     <article class="col-md-12">
         <div id="Tituloss">

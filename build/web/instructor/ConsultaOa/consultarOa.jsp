@@ -8,6 +8,10 @@
     <link href="assets/css/consultarOa.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+<div class="alert alert-warning alert-dismissable" id="alerta">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>¡Cuidado!</strong><p id="mensaje"></p>
+</div>
     <article class="col-md-12">
         <div id="Tituloss">
             <div class="col-md-6">

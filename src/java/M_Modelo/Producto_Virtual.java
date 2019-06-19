@@ -47,41 +47,46 @@ public class Producto_Virtual extends Elomac {
         }
         return opcion;
     }
+    public String searchpv(int idpv){
+            Connection cnn=null;
+            Statement sentencia;
+            ResultSet rs;
+            String derechosdeautor="";
+        try {
+            cnn=obtenerConn();
+            sentencia=cnn.createStatement();
+            rs=sentencia.executeQuery("SELECT pv.derechosdeautor,v.url_version FROM producto_virtual pv inner join version v on pv.id_p_virtual=v.id_p_virtual WHERE pv.id_p_virtual='"+idpv+"'");
+            while(rs.next()){
+                derechosdeautor=rs.getString("pv.derechosdeautor");
+            }
+            
+          if(derechosdeautor.equals("r"))
+          derechosdeautor="Reconocimiento: El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos";
+          if(derechosdeautor.equals("rs"))
+          derechosdeautor="Reconocimiento - Sin obra derivada: El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se pueden realizar obras derivadas.";
+          if(derechosdeautor.equals("rcs"))
+          derechosdeautor="Reconocimiento - Sin obra derivada - No comercial : El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial. No se pueden realizar obras derivadas.";
+          if(derechosdeautor.equals("rc"))
+          derechosdeautor="Reconocimiento - No comercial: El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial";
+          if(derechosdeautor.equals("rnc")){
+          derechosdeautor="Reconocimiento - No comercial - Compartir igual : El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial y las obras derivadas tienen que estar bajo los mismos términos de licencia que el trabajo original.";
+            }
+        } catch (Exception e) {
+           Logger.getLogger(Producto_Virtual.class.getName()).log(Level.SEVERE, null, e);  
+        }
+        return derechosdeautor;
+    }
     public ArrayList consultahabilitados(){
             Connection cnn=null;
             Statement sentencia;
             ResultSet rs;
             int opcion=0;
             ArrayList infoa=new ArrayList();
-            ArrayList arrayderechos=new ArrayList();
         try {
           cnn=obtenerConn();
           sentencia=cnn.createStatement();
           rs=sentencia.executeQuery("Select * from version v inner join producto_virtual p on v.id_p_virtual=p.id_p_virtual  inner join autor a on a.id_version=v.id_version inner join funcionario f on f.id_funcionario=a.id_funcionario inner join formato fo on fo.id_formato=p.id_formato inner join tipo_formato t on t.id_tipo_formato=fo.id_tipo_formato WHERE v.id_estado=6;");
-          while(rs.next()){
-          arrayderechos.add(rs.getString("derechosdeautor"));   
-           for(int i=0;i<arrayderechos.size();i++){
-           if(arrayderechos.get(i).equals("r")){
-          arrayderechos.remove(arrayderechos.get(i));
-          arrayderechos.add("Reconocimiento: El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos");
-          }
-          if(arrayderechos.get(i).equals("rs")){
-          arrayderechos.remove(arrayderechos.get(i));
-          arrayderechos.add("Reconocimiento - Sin obra derivada: El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se pueden realizar obras derivadas.");
-          }
-          if(arrayderechos.get(i).equals("rcs")){
-          arrayderechos.remove(arrayderechos.get(i));
-          arrayderechos.add("Reconocimiento - Sin obra derivada - No comercial : El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial. No se pueden realizar obras derivadas.");
-          }
-          if(arrayderechos.get(i).equals("rc")){
-          arrayderechos.remove(arrayderechos.get(i));
-          arrayderechos.add("Reconocimiento - No comercial: El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial");
-          }
-          if(arrayderechos.get(i).equals("rnc")){
-          arrayderechos.remove(arrayderechos.get(i));
-          arrayderechos.add("Reconocimiento - No comercial - Compartir igual : El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial y las obras derivadas tienen que estar bajo los mismos términos de licencia que el trabajo original.");
-            }
-          }
+          while(rs.next()){   
            opcion=opcion+1;
           infoa.add(rs.getString("p.id_p_virtual"));
           infoa.add(rs.getString("p.nom_p_virtual"));
@@ -89,7 +94,6 @@ public class Producto_Virtual extends Elomac {
           infoa.add(rs.getDate("v.fecha_publicacion"));
           infoa.add(rs.getString("p.des_p_virtual"));
           infoa.add(rs.getString("t.nom_tipo_formato"));
-          infoa.add(arrayderechos.toString());
           }
           infoa.add(opcion);
         } catch (Exception e) {

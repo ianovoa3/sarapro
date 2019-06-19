@@ -1,4 +1,5 @@
 $(document).on('ready', function () {
+     $("#alerta").hide();
     $.ajax({
         type:'POST',
         data:{opcion:2},
@@ -30,32 +31,32 @@ $(document).on('ready', function () {
             $("#formulario1").append("<div id='descripcionp'><label>Descripcion</label></div>");
             $("#formulario1").append("<div id='ladescripcion'><label>"+jsondata[descripcion]+"</label></div>");
             $("#formulario1").append("<div><input type='submit' onclick='descargar("+jsondata[id]+")' id='descargar' class='btn btn-info'  value='descargar' /></div>");
-            id=id+7;
-            formato=formato+7;
-            titulo=titulo+7;
-            autor=autor+7;
-            fecha=fecha+7;
-            descripcion=descripcion+7;
-           }
-//     $("#boton").click(function(){
-//    var valorid=document.getElementById("descargar").value;
-//    console.log("val"+valorid);
-//});   
+            id=id+6;
+            formato=formato+6;
+            titulo=titulo+6;
+            autor=autor+6;
+            fecha=fecha+6;
+            descripcion=descripcion+6;
+           } 
 
           }
           
     });
 });
+    
 function descargar(id){
-  $.ajax({
+    var contador=0;
+    $.ajax({
       type:'POST',
-      data:{id:id,opcion:2},
-      url:'DescargaArchivo',
-      sucess: function(){
-            alert('alerta atencion increible insolito');
-      }
+      data:{id:id,opcion:1},
+      url:'archivo',
+        success: function (data, textStatus, jqXHR) {
+        $("#alerta").show();
+        $("#mensaje").after(data);
+        contador=contador+1;
+        //if(contador==1)
+        }
   });
-  
 }
    
     var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, arraySelecionPrograma = [], arraySelectCategoria = [];

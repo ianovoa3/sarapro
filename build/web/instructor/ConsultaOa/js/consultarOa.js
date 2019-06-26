@@ -43,24 +43,20 @@ $(document).on('ready', function () {
           
     });
 });
-$("#btnBuscar").click(function(){
-    var titulo=$("#txtBuscarTitle").val();
-    var autor=$("#Autores").val();
-    var programas=$("#Programas").val();
-    var categoria=$("#Categoria").val();
-//    $.ajax({
-//      type:'POST',
-//      data:{},
-//      url:'archivo',
-//success: function (data, textStatus, jqXHR) {   
-// $(".modal").show();
-// $(".modal-body").append("<p id='mensaje'>'"+data+"'</p>");
-// //console.log("DATA"+data);
-//  }
- // });
+$("#BusquedaAvanzada").click(function (){
+    $.ajax({
+     type:'POST',
+     data:{opcion:1},
+      url:'consulta',
+success: function (data, textStatus, jqXHR) {   
+console.log("da"+data);
+for(var i=0;i<data.length;i++){
+$("#CiudadFormacion").append('<option>"'+i,data[i]+'"</option>');
+    }
+  }
+ });
 });
 function descargar(id){
-    var info;
     $.ajax({
       type:'POST',
       data:{id:id,opcion:1},
@@ -130,15 +126,15 @@ success: function (data, textStatus, jqXHR) {
             $("#Programas").prop('checked');
 
         }
-        if ($("#Programas").prop('checked')) {
-            ob.limpiarSelector($("#CentroF"));
-            ob.limpiarSelector($("#Area"));
-            jso[4] = ['Crud_Controller', '[{opcion:3,tabla2:6,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
-            selector[4] = $("#CiudadFormacion");
-            datos[4] = {nombre: "Select"};
-            ob.limpiarSelector(selector[4]);
-            ajax(4, datos[4]);
-        }
+//        if ($("#Programas").prop('checked')) {
+//            ob.limpiarSelector($("#CentroF"));
+//            ob.limpiarSelector($("#Area"));
+//            jso[4] = ['Crud_Controller', '[{opcion:3,tabla2:6,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
+//            selector[4] = $("#CiudadFormacion");
+//            datos[4] = {nombre: "Select"};
+//            ob.limpiarSelector(selector[4]);
+//            ajax(4, datos[4]);
+//        }
     });
 
     $("#Categoria").change(function () {

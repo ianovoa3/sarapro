@@ -53,10 +53,10 @@ $("#boton1").click(function () {
         var ipSena=document.getElementById('ipSena').value;
         var cargo=document.getElementById('cargo').value;
         var clave=document.getElementById('clave').value;
-        console.log("clave:"+clave)
+        console.log("clave:"+clave);
     $.ajax({
         type:'POST',
-        data:{nombre:nombre,apellido:apellido,tipoUsuario:tipoUsuario,tipoIdenti:tipoIdenti,numeroIdentificacion:numeroIdentificacion,email:email,centroFormacion:centroFormacion,reddeconocimiento:reddeconocimiento,ipSena:ipSena,cargo:cargo,clave:clave},
+        data:{nombre:nombre,apellido:apellido,tipoUsuario:tipoUsuario,tipoIdenti:tipoIdenti,numeroIdentificacion:numeroIdentificacion,email:email,centroFormacion:centroFormacion,reddeconocimiento:reddeconocimiento,ipSena:ipSena,cargo:cargo,clave:clave,opcion:3},
         url:'actor',
             success: function (response) {
                $('#AnimacionCargando').show();

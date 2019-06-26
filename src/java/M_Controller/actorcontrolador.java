@@ -63,7 +63,7 @@ public class actorcontrolador extends HttpServlet {
                     String infopv=new Gson().toJson(infoa);
                     out.print(infopv);
                     break;
-            default:
+                case 3:
             String nombre=request.getParameter("nombre");
             String apellido=request.getParameter("apellido");
             int tipoUsuario=Integer.parseInt(request.getParameter("tipoUsuario"));

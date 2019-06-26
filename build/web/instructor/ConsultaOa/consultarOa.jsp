@@ -35,7 +35,7 @@
                             <div class="col-md-6">
                                 <label for="CiudadFormacion" class="col-md-12">Cíudad</label>
                                 <select id="CiudadFormacion" class="form-control">
-                                    <option value="A0">Seleccionar...</option>
+                                    <option>Seleccionar...</option>
                                 </select>
                             </div>
                             <div class="col-md-6">

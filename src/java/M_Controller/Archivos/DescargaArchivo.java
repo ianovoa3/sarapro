@@ -25,53 +25,53 @@ public class DescargaArchivo extends HttpServlet {
             throws ServletException, IOException, JSONException {
         response.setContentType("text/html;charset=UTF-8");
         //PrintWriter out = response.getWriter();
-        int id=Integer.parseInt(request.getParameter("id"));
-        int opcion=Integer.parseInt(request.getParameter("opcion"));
-        
-        try {
-            String nombre = "archivo";
-            String tipo = "pdf";
-            if (request.getParameter("version") != null) {
-                String[] paramRankin;
-                //jso[0] = ['Rankin_Controller','[{opcion:2,paramRankin:[0,'+idVersion+',0,0]}]';
-                String arr = "[0," + request.getParameter("version") + ",0,0]";
-                paramRankin = Elomac.M_toArray(arr);
-                paramRankin[0] = "2";
-                if (new Rankin().RegistrarRankin(paramRankin)) {
-                    System.out.println("Exito");
-                } else {
-                    System.out.println("Fallo");
-                }
-            }
-            String path = request.getRealPath("");
-            Archivos archivo1 = new Archivos();
-            String archivos1 = path+archivo1.getBase();
-            String archivo = archivos1 + request.getParameter("archivo");
-            String[] parts = archivo.split("\\.");
-            nombre = request.getParameter("archivo");
-            System.out.println("el pathico:"+archivo1.getBase());
-            int i = parts.length - 1;
-            tipo = parts[i];
-            File f = new File(archivo);
-            response.setContentType("application/" + tipo + "");
-            response.setHeader("Content-Disposition", "attachment; filename= " + nombre + "  ");
-            InputStream in = new FileInputStream(f);
-            ServletOutputStream outs = response.getOutputStream();
-            int bit = 256;
-            try {
-                while ((bit) >= 0) {
-                    bit = in.read();
-                    outs.write(bit);
-                }
-            } catch (IOException ioe) {
-                ioe.printStackTrace(System.out);
-            }
-            outs.flush();
-            outs.close();
-            in.close();
-        } finally {
-            //out.close();
-        }
+//        int id=Integer.parseInt(request.getParameter("id"));
+//        int opcion=Integer.parseInt(request.getParameter("opcion"));
+//        
+//        try {
+//            String nombre = "archivo";
+//            String tipo = "pdf";
+//            if (request.getParameter("version") != null) {
+//                String[] paramRankin;
+//                //jso[0] = ['Rankin_Controller','[{opcion:2,paramRankin:[0,'+idVersion+',0,0]}]';
+//                String arr = "[0," + request.getParameter("version") + ",0,0]";
+//                paramRankin = Elomac.M_toArray(arr);
+//                paramRankin[0] = "2";
+//                if (new Rankin().RegistrarRankin(paramRankin)) {
+//                    System.out.println("Exito");
+//                } else {
+//                    System.out.println("Fallo");
+//                }
+//            }
+//            String path = request.getRealPath("");
+//            Archivos archivo1 = new Archivos();
+//            String archivos1 = path+archivo1.getBase();
+//            String archivo = archivos1 + request.getParameter("archivo");
+//            String[] parts = archivo.split("\\.");
+//            nombre = request.getParameter("archivo");
+//            System.out.println("archivo"+archivo);
+//            int i = parts.length - 1;
+//            tipo = parts[i];
+//            File f = new File(archivo);
+//            response.setContentType("application/" + tipo + "");
+//            response.setHeader("Content-Disposition", "attachment; filename= " + nombre + "  ");
+//            InputStream in = new FileInputStream(f);
+//            ServletOutputStream outs = response.getOutputStream();
+//            int bit = 256;
+//            try {
+//                while ((bit) >= 0) {
+//                    bit = in.read();
+//                    outs.write(bit);
+//                }
+//            } catch (IOException ioe) {
+//                ioe.printStackTrace(System.out);
+//            }
+//            outs.flush();
+//            outs.close();
+//            in.close();
+//        } finally {
+//            //out.close();
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

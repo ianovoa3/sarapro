@@ -28,7 +28,7 @@ public class Archivos{
     
     
     public String getBase() {
-     return "\\Archivos\\ArchivosA\\";
+     return "\\Archivos\\";
      //return "/Archivos/ArchivosA/";
     }
 

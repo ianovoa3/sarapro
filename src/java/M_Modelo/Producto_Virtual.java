@@ -61,7 +61,6 @@ public class Producto_Virtual extends Elomac {
             Statement sentencia;
             ResultSet rs;
             String derechosdeautor="";
-            Blob url=null;
             String urlnombre="";
         try {
             cnn=obtenerConn();
@@ -69,7 +68,6 @@ public class Producto_Virtual extends Elomac {
             rs=sentencia.executeQuery("SELECT pv.derechosdeautor,v.url_version FROM producto_virtual pv inner join version v on pv.id_p_virtual=v.id_p_virtual WHERE pv.id_p_virtual='"+idpv+"'");
             while(rs.next()){
                 derechosdeautor=rs.getString("pv.derechosdeautor");
-                url=rs.getBlob("v.url_version");
                 urlnombre=rs.getString("v.url_version");
             }           
           if(derechosdeautor.equals("r"))
@@ -83,31 +81,15 @@ public class Producto_Virtual extends Elomac {
           if(derechosdeautor.equals("rnc")){
           derechosdeautor="Reconocimiento - No comercial - Compartir igual : El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial y las obras derivadas tienen que estar bajo los mismos términos de licencia que el trabajo original.";
             }
-          descargarpv(url,urlnombre);
+          descargarpv(urlnombre);
         } catch (Exception e) {
            Logger.getLogger(Producto_Virtual.class.getName()).log(Level.SEVERE, null, e);  
         }
         return derechosdeautor;
     }
-    public void descargarpv(Blob url,String urlnombre) throws SQLException{
-        try {
-            InputStream is=url.getBinaryStream();
-            File file=new File(urlnombre);
-            BufferedInputStream bfini=new BufferedInputStream(is);
-            BufferedOutputStream out=new BufferedOutputStream(new FileOutputStream(file));
-            byte[] bytes=new byte[8096];
-            int len=0;
-            while((len=bfini.read(bytes))>0){
-            out.write(bytes,0,len);
-            }
-            out.flush();
-            out.close();
-            bfini.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }catch(IOException e){
-            e.printStackTrace();
-        }
+    public void descargarpv(String nombrearchivo){
+        System.out.println(nombrearchivo);
+
     }
     public ArrayList consultahabilitados(){
             Connection cnn=null;

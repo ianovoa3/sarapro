@@ -55,6 +55,7 @@ public class actorcontrolador extends HttpServlet {
                  lista=programa.consultaprogramared(area_id);
                  String json=new Gson().toJson(lista);
                  out.print(json);
+                 break;
                 case 2:
                     Producto_Virtual pv=new Producto_Virtual();
                     ArrayList infoa=new ArrayList();

@@ -189,9 +189,10 @@ $(document).ready(function () {
         success: function(data) {
         $('#programasdeformacion').show();
         var lista=jQuery.parseJSON(data);
-            $('#selectProgramaF').append($('<option>', {
-                text: lista  
-        }));
+        console.log("lista"+lista);
+        for(var i=0;i<lista.length;i++){
+            $('#selectProgramaF').append($('<option>'+lista[i]+'</option>'));
+        }
       }
    });
     

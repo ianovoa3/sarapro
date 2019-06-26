@@ -427,40 +427,40 @@ jQuery.Luna = function (Datos, selector) {
                     }
                     break;
                 case "ConsOaP":
-                    var pag = 1;
-                    var q = 2;
-                    var jso = jQuery.parseJSON(json);
-                    console.log("el jso"+jso);
-                    if (jso != null) {
-                        var oAItem;
-                        for (var i = 0; i < jso.length; i++) {
-                            if (q == i) {
-                                pag++;
-                                s = "<li id=pag" + pag + " class='pagination'><a><lavel>" + pag + "</label></a></li>";
-                                $("#paginador").append(s);
-                                q = q + 2;
-                            }
-                            var comple = jso[i].id_p_virtual + "$$" + jso[i].nom_p_virtual + "$$" + jso[i].des_p_virtual;
-                            oAItem = selector.clone();
-                            oAItem.find("#ImagenOA").attr('src', 'Archivos/Formatos/' + jso[i].nom_tipo_formato + '.png');
-                            oAItem.find("#TituloOa").text(jso[i].nom_p_virtual);
-                            oAItem.find("#AutoresOa").text(jso[i].Autores);
-                            oAItem.find("#FechaPublicacionOa").text(jso[i].fecha_publicacion);
-                            oAItem.find("#DescripcionOa").text(jso[i].des_p_virtual);
-                            oAItem.find("#BtnDescargar").val(comple);
-                            oAItem.find("#BtnDescargar").addClass('mom');
-                            oAItem.find("#Contenedora").addClass(jso[i].id_p_virtual);
-                            oAItem.find("#Contenedora").addClass('pag' + pag);
-                            oAItem.children().appendTo($("#resultadosProductos"));
-                            if (pag > 0) {
-                                $(".pag" + pag).hide();
-                            }
-                        }
-                    } else {
-                        var di = ("<label>No existe ningun producto virtual.</label>");
-                        $("#resultadosProductos").append(di);
-                    }
-                    break;
+//                    var pag = 1;
+//                    var q = 2;
+//                    var jso = jQuery.parseJSON(json);
+//                    console.log("el jso"+jso);
+//                    if (jso != null) {
+//                        var oAItem;
+//                        for (var i = 0; i < jso.length; i++) {
+//                            if (q == i) {
+//                                pag++;
+//                                s = "<li id=pag" + pag + " class='pagination'><a><lavel>" + pag + "</label></a></li>";
+//                                $("#paginador").append(s);
+//                                q = q + 2;
+//                            }
+//                            var comple = jso[i].id_p_virtual + "$$" + jso[i].nom_p_virtual + "$$" + jso[i].des_p_virtual;
+//                            oAItem = selector.clone();
+//                            oAItem.find("#ImagenOA").attr('src', 'Archivos/Formatos/' + jso[i].nom_tipo_formato + '.png');
+//                            oAItem.find("#TituloOa").text(jso[i].nom_p_virtual);
+//                            oAItem.find("#AutoresOa").text(jso[i].Autores);
+//                            oAItem.find("#FechaPublicacionOa").text(jso[i].fecha_publicacion);
+//                            oAItem.find("#DescripcionOa").text(jso[i].des_p_virtual);
+//                            oAItem.find("#BtnDescargar").val(comple);
+//                            oAItem.find("#BtnDescargar").addClass('mom');
+//                            oAItem.find("#Contenedora").addClass(jso[i].id_p_virtual);
+//                            oAItem.find("#Contenedora").addClass('pag' + pag);
+//                            oAItem.children().appendTo($("#resultadosProductos"));
+//                            if (pag > 0) {
+//                                $(".pag" + pag).hide();
+//                            }
+//                        }
+//                    } else {
+//                        var di = ("<label>No existe ningun producto virtual.</label>");
+//                        $("#resultadosProductos").append(di);
+//                    }
+//                    break;
                 case "calificar":
                     var jso = jQuery.parseJSON(json);
                     var row = "", cc = 1;

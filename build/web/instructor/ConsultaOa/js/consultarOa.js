@@ -43,17 +43,32 @@ $(document).on('ready', function () {
           
     });
 });
-    
+$("#btnBuscar").click(function(){
+    var titulo=$("#txtBuscarTitle").val();
+    var autor=$("#Autores").val();
+    var programas=$("#Programas").val();
+    var categoria=$("#Categoria").val();
+//    $.ajax({
+//      type:'POST',
+//      data:{},
+//      url:'archivo',
+//success: function (data, textStatus, jqXHR) {   
+// $(".modal").show();
+// $(".modal-body").append("<p id='mensaje'>'"+data+"'</p>");
+// //console.log("DATA"+data);
+//  }
+ // });
+});
 function descargar(id){
     var info;
     $.ajax({
       type:'POST',
       data:{id:id,opcion:1},
       url:'archivo',
-        success: function (data, textStatus, jqXHR) {   
- $(".modal").show(); 
+success: function (data, textStatus, jqXHR) {   
+ $(".modal").show();
  $(".modal-body").append("<p id='mensaje'>'"+data+"'</p>");
- console.log("DATA"+data);
+ //console.log("DATA"+data);
   }
   });
   if($("#cerrar").click(function (){

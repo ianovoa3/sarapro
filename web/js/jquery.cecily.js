@@ -550,6 +550,7 @@ jQuery.Luna = function (Datos, selector) {
                             jsItem[i].nom_estado,
                             "<a class='btn btn-info' href=DescargaArchivo?archivo=" + jsItem[i].url_version+ ">Descargar P.V</a>"
                         ]);
+                        console.log("url:"+jsItem[i].url_version);
                     }
                     break;
                 case "consutarOa":

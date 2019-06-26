@@ -1,5 +1,5 @@
 $(document).on('ready', function () {
-     $("#alerta").hide();
+     $(".modal").hide();
     $.ajax({
         type:'POST',
         data:{opcion:2},
@@ -45,18 +45,21 @@ $(document).on('ready', function () {
 });
     
 function descargar(id){
-    var contador=0;
+    var info;
     $.ajax({
       type:'POST',
       data:{id:id,opcion:1},
       url:'archivo',
-        success: function (data, textStatus, jqXHR) {
-        $("#alerta").show();
-        $("#mensaje").after(data);
-        contador=contador+1;
-        //if(contador==1)
-        }
+        success: function (data, textStatus, jqXHR) {   
+ $(".modal").show(); 
+ $(".modal-body").append("<p id='mensaje'>'"+data+"'</p>");
+ console.log("DATA"+data);
+  }
   });
+  if($("#cerrar").click(function (){
+   $(".modal").hide();
+   $(".modal-body").empty();
+  }));
 }
    
     var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, arraySelecionPrograma = [], arraySelectCategoria = [];

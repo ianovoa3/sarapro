@@ -719,13 +719,13 @@ jQuery.Luna = function (Datos, selector) {
                     var jsSelect = jQuery.parseJSON(json);
                     var data = "";
                     selector.dataTable().fnClearTable();
-                    for (var i = 0; i < jsSelect.length; i++) {
-                        data = jsSelect[i].id_tipo_formato + "$$" + jsSelect[i].nom_tipo_formato + "$$" + jsSelect[i].urlimgtipoformato;
-                        table = selector.dataTable().fnAddData([
-                            jsSelect[i].nom_tipo_formato,
-                            "<button id='" + data + "' class='btnModificarTipoFor btn btn-info'>Modificar</button>"
-                        ]);
-                    }
+//                    for (var i = 0; i < jsSelect.length; i++) {
+//                        data = jsSelect[i].id_tipo_formato + "$$" + jsSelect[i].nom_tipo_formato + "$$" + jsSelect[i].urlimgtipoformato;
+//                        table = selector.dataTable().fnAddData([
+//                            //jsSelect[i].nom_tipo_formato,
+//                            //"<button id='" + data + "' class='btnModificarTipoFor btn btn-info'>Modificar</button>"
+//                        ]);
+//                    }
                     break;
                 case "ConsultaCentros":
                     var jsSelect = jQuery.parseJSON(json);

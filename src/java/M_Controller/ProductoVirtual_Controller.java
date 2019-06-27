@@ -52,7 +52,6 @@ public class ProductoVirtual_Controller extends HttpServlet {
             String arrayFun = null;
             String data = request.getParameter("data");
             JSONObject jData = new JSONArray(data).getJSONObject(0);
-
             int opcion = jData.getInt("opcion");
 
             response.setContentType("application/json;charset=UTF-8");

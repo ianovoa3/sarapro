@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.gson.JsonElement;
+import org.json.JSONArray;
 /**
  *
  * @author Isaac
@@ -40,15 +41,13 @@ public class consulta extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             try {
                 int opcion=Integer.parseInt(request.getParameter("opcion"));
+                String red=request.getParameter("option");
                 switch(opcion){
                     case 1:
-                        ArrayList informacion=new ArrayList();
-                        Ciudad ciudad=new Ciudad();
-                        Centro centro=new Centro();
-                        Red_deConocimiento red=new Red_deConocimiento();
-                        out.print(ciudad.consultaciudad());
-                        out.print(centro.consultacentro());
-                        out.print(red.selectred());
+                        
+                      break;
+                        
+                        
                 }
             } catch (Exception e) {
                 e.printStackTrace();

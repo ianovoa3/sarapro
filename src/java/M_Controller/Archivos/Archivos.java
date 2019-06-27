@@ -33,7 +33,7 @@ public class Archivos{
     }
 
     public String rutaTem() {
-      return "\\Archivos\\TemArchivos\\";
+      return "\\Archivos\\";
      //return "/Archivos/TemArchivos/";
     }
 

@@ -1,3 +1,7 @@
+<%@page import="M_Modelo.Centro"%>
+<%@page import="M_Modelo.Ciudad"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="M_Modelo.Red_deConocimiento"%>
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -36,19 +40,37 @@
                                 <label for="CiudadFormacion" class="col-md-12">Cíudad</label>
                                 <select id="CiudadFormacion" class="form-control">
                                     <option>Seleccionar...</option>
+                                    <%Ciudad ciudad=new Ciudad();
+                                ArrayList listaciudad=ciudad.consultaciudad();
+                           for(int i=0;i<listaciudad.size();i++){
+                              %>
+                              <option><%=listaciudad.get(i)%></option>
+                            <%}%>
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <label for="CentroF" class="col-md-12">Centro de Formación</label>
                                 <select  id="CentroF" class="form-control">
                                     <option value="A0">Seleccionar...</option>
+                                    <%Centro centro=new Centro();
+                                ArrayList listacentro=centro.consultacentro();
+                           for(int i=0;i<listacentro.size();i++){
+                              %>
+                              <option><%=listacentro.get(i)%></option>
+                            <%}%>
                                 </select>    
                             </div>
                             <div class="col-md-6">
                                 <label for="Area" class="col-md-12">Area de Formación:</label>
                                 <select  id="Area" class="form-control">
                                     <option value="A0">Seleccionar...</option>
-                                </select>                                
+                                    <%Red_deConocimiento reddeconocimiento=new Red_deConocimiento();
+                                ArrayList lista=reddeconocimiento.selectred();
+                           for(int i=0;i<lista.size();i++){
+                              %>
+                                <option><%=lista.get(i)%></option>
+                            <%}%>
+                            </select>                                
                             </div>
                             <div id="ElementoPrograma" style="display: none;" class="col-md-12">
                                 <label class="col-md-12">Programa de formacion:</label>
@@ -80,12 +102,6 @@
                     </div>
                     <div class="col-md-12">
                         <div class="col-md-6">
-                            <label for="Formato" class="col-md-12">Formato</label>
-                                <select class="form-control select" id="Formato">
-                                    <option value="AF">Seleccionar...</option>
-                                </select>                            
-                        </div>
-                        <div class="col-md-6">
                             <label for="Palabras">Palabras Clave</label>
                             <input type="text" id="Palabras" value="" placeholder="Palabras clave" class="form-control inputs">
                         </div>
@@ -96,7 +112,7 @@
     <div class="col-md-6">
         <br>    
         <button id="btnBuscar" type="button" class="btn btn-block">Buscar Productos Virtuales</button>        
-    </div>
+    </div>  
     <div class="col-md-6">
         <br>   
         <button id="btnActu" type="button" class="btn btn-block">Actualizar Lista</button>        

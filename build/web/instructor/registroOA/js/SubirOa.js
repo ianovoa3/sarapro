@@ -409,6 +409,7 @@ $(document).ready(function () {
             }
             men = $("#Titulo_Publicacion").val();
             var path = $("#myfile").val();
+            console.log(path);
             var nomArchivo = path.replace(/C:\\fakepath\\/, '');
             console.log("valorchecked"+valorchecked);
             jso[11] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + extFrom + ',0,0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],derechosdeautor:[' + valorchecked + '],archivoNom:' + nomArchivo + '}]'];

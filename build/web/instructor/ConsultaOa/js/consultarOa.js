@@ -43,19 +43,6 @@ $(document).on('ready', function () {
           
     });
 });
-$("#BusquedaAvanzada").click(function (){
-    $.ajax({
-     type:'POST',
-     data:{opcion:1},
-      url:'consulta',
-success: function (data, textStatus, jqXHR) {   
-console.log("da"+data);
-for(var i=0;i<data.length;i++){
-$("#CiudadFormacion").append('<option>"'+i,data[i]+'"</option>');
-    }
-  }
- });
-});
 function descargar(id){
     $.ajax({
       type:'POST',
@@ -158,44 +145,40 @@ success: function (data, textStatus, jqXHR) {
         }
     });
 
-    $("#CiudadFormacion").change(function () {
-        var option = $("#CiudadFormacion").val();
-        ob.limpiarSelector($("#CentroF"));
-        ob.limpiarSelector($("#Area"));
-        $("#Programa").empty();
-        if (option != "A0") {
-            $("#ElementoPrograma").hide();
-            jso[7] = ['Crud_Controller', '[{opcion:3,tabla2:1,tipo:2,elegir:[1,3],delimitador:"[{colum:5,operador:0,valor1:' + $("#CiudadFormacion").val() + '}]",id:0,opSelect:6}]'];
-            selector[7] = $("#CentroF");
-            datos[7] = {nombre: "Select"};
-            ob.limpiarSelector(selector[7]);
-            ajax(7, datos[7]);
-        }
-    });
-    $("#CentroF").change(function () {
-        var option = $("#CentroF").val();
-        $("#ElementoPrograma").hide();
-        ob.limpiarSelector($("#Area"));
-        if (option != "A0") {
-            jso[10] = ['Crud_Controller', '[{opcion:3,tabla2:1,tipo:2,elegir:[7,8],delimitador:"[{colum:5,operador:0,valor1:' + $("#CiudadFormacion").val() + ',añadir:0},{colum:1,operador:0,valor1:' + $("#CentroF").val() + '}]",id:0,opSelect:6}]'];
-            selector[10] = $("#Area");
-            datos[10] = {nombre: "Select"};
-            ob.limpiarSelector(selector[10]);
-            ajax(10, datos[10]);
-        }
-    });
+//    $("#CiudadFormacion").change(function () {
+//        var option = $("#CiudadFormacion").val();
+//        ob.limpiarSelector($("#CentroF"));
+//        ob.limpiarSelector($("#Area"));
+//        $("#Programa").empty();
+//        if (option != "A0") {
+//            $("#ElementoPrograma").hide();
+//            jso[7] = ['Crud_Controller', '[{opcion:3,tabla2:1,tipo:2,elegir:[1,3],delimitador:"[{colum:5,operador:0,valor1:' + $("#CiudadFormacion").val() + '}]",id:0,opSelect:6}]'];
+//            selector[7] = $("#CentroF");
+//            datos[7] = {nombre: "Select"};
+//            ob.limpiarSelector(selector[7]);
+//            ajax(7, datos[7]);
+//        }
+//    });
+//    $("#CentroF").change(function () {
+//        var option = $("#CentroF").val();
+//        $("#ElementoPrograma").hide();
+//        ob.limpiarSelector($("#Area"));
+//        if (option != "A0") {
+//            jso[10] = ['Crud_Controller', '[{opcion:3,tabla2:1,tipo:2,elegir:[7,8],delimitador:"[{colum:5,operador:0,valor1:' + $("#CiudadFormacion").val() + ',añadir:0},{colum:1,operador:0,valor1:' + $("#CentroF").val() + '}]",id:0,opSelect:6}]'];
+//            selector[10] = $("#Area");
+//            datos[10] = {nombre: "Select"};
+//            ob.limpiarSelector(selector[10]);
+//            ajax(10, datos[10]);
+//        }
+//    });
     $("#Area").change(function () {
         var option = $("#Area").val();
         $("#Programa").empty();
-        if (option != "A0") {
-            $("#ElementoPrograma").show();
-            jso[9] = ['Crud_Controller', '[{opcion:3,tabla2:2,tipo:2,elegir:[4,5],delimitador:"[{colum:1,operador:0,valor1:' + $("#Area").val() + '}]",id:0,opSelect:6}]'];
-            selector[9] = $("#Programa");
-            datos[9] = {nombre: "MultiSelect"};
-            ajax(9, datos[9]);
-        } else if (option == "A0") {
-            $("#ElementoPrograma").hide();
-        }
+        $.ajax({
+        type:'POST',
+        data:{red:option,opcion:1},
+        url:'consulta'
+        });
     });
 
     $("#BusquedaAvanzada").on('click', function () {

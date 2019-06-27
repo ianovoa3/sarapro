@@ -16,8 +16,6 @@ $(document).on('ready', function () {
         $("#desFormato").val(valors[2]);
         $("#btnAccionFormato").val("Modificar formato");
     });
-
-
     var options = {
         beforeSend: function () {
             $("#percent").show();
@@ -57,7 +55,6 @@ $(document).on('ready', function () {
 
     $('.input-file').change(function () {
         var nomArh = document.getElementById("myfile").files[0].name;
-        ;
         var ex = nomArh.split(".");
         nomArh = ex[ex.length - 1];
         var sizeByte = this.files[0].size;
@@ -100,11 +97,11 @@ $(document).on('ready', function () {
                 datos[7] = {nombre: "consultaTipoFormatos"};
                 ob.cargarTabla(data[i], selector[1], datos[7]);
                 estado = ("success");
-                men = "Tipo de formato " + men + " se a guardado correctamente";
+                men = "Tipo de formato " + men + " se ha guardado correctamente";
 
             } else {
                 estado = ("error");
-                men = "Tipo de formato " + men + " no se a agregado";
+                men = "Tipo de formato " + men + " no se ha agregado";
             }
             $.notify(men, estado);
         } else if (i == 4) {//Modificar formato
@@ -115,11 +112,11 @@ $(document).on('ready', function () {
                     datos[7] = {nombre: "consultaTipoFormatos"};
                     ob.cargarTabla(data[i], selector[1], datos[7]);
                     estado = ("success");
-                    men = "Tipo de formato " + men + " se a modificado correctamente";
+                    men = "Tipo de formato " + men + " se ha modificado correctamente";
                 }
             } catch (e) {
                 estado = ("error");
-                men = "Tipo de formato " + men + " no se a modificado";
+                men = "Tipo de formato " + men + " no se ha modificado";
             }
             $("#formato").val("");
             $("#myfile").val("");

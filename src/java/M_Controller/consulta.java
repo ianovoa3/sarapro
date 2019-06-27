@@ -7,6 +7,7 @@ package M_Controller;
 
 import M_Modelo.Centro;
 import M_Modelo.Ciudad;
+import M_Modelo.Programa;
 import M_Modelo.Red_deConocimiento;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -44,7 +45,9 @@ public class consulta extends HttpServlet {
                 String red=request.getParameter("option");
                 switch(opcion){
                     case 1:
-                        
+                        Programa consultaprograma=new Programa();
+                        String info=new Gson().toJson(consultaprograma.consultaprograma(red));
+                        out.print(info);
                       break;
                         
                         

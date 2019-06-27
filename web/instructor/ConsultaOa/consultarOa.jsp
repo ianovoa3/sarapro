@@ -75,7 +75,7 @@
                             <div id="ElementoPrograma" style="display: none;" class="col-md-12">
                                 <label class="col-md-12">Programa de formacion:</label>
                                 <select id="Programa" class="Programa" multiple="multiple">
-                                    <option>null</option>
+                                    <option id="option">null</option>
                                 </select>
                             </div>
                         </div>

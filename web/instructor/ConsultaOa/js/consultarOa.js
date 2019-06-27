@@ -172,12 +172,19 @@ success: function (data, textStatus, jqXHR) {
 //        }
 //    });
     $("#Area").change(function () {
-        var option = $("#Area").val();
+     var option = $("#Area").val();
         $("#Programa").empty();
         $.ajax({
         type:'POST',
         data:{red:option,opcion:1},
-        url:'consulta'
+        url:'consulta',
+        success: function (data, textStatus, jqXHR) {   
+            for(var i=0;i<data.length;i++){
+                $("#ElementoPrograma").show();
+                $("#Programa").append('<option>"'+data[i]+'"</option>');
+                
+            }
+  }
         });
     });
 

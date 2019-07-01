@@ -341,6 +341,7 @@ jQuery.Luna = function (Datos, selector) {
                         var opcion = "<option value=" + jso[i][j[0]] + ">" + jso[i][j[1]] + "</option>";
                         selector.append(opcion);
                     }
+                    
                     $('.' + sele).multiSelect({
                         selectableHeader: tipo,
                         selectionHeader: tipo,
@@ -350,7 +351,7 @@ jQuery.Luna = function (Datos, selector) {
                                     $selectionSearch = that.$selectionUl.prev(),
                                     selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
                                     selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
-                            that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                                    that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
                                     .on('keydown', function (e) {
                                         if (e.which === 40) {
                                             that.$selectableUl.focus();
@@ -379,6 +380,7 @@ jQuery.Luna = function (Datos, selector) {
                             arraySelecion.splice(busqueda, 1);
                             setBus(arraySelecion);
                         }
+                        
                     });
                     break;
 

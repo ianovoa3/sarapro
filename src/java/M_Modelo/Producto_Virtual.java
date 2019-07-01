@@ -81,15 +81,27 @@ public class Producto_Virtual extends Elomac {
           if(derechosdeautor.equals("rnc")){
           derechosdeautor="Reconocimiento - No comercial - Compartir igual : El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial y las obras derivadas tienen que estar bajo los mismos términos de licencia que el trabajo original.";
             }
-          descargarpv(urlnombre);
         } catch (Exception e) {
            Logger.getLogger(Producto_Virtual.class.getName()).log(Level.SEVERE, null, e);  
         }
         return derechosdeautor;
     }
-    public void descargarpv(String nombrearchivo){
-        System.out.println(nombrearchivo);
-
+    public String descargarpv(int idpv){
+        Connection cnn=null;
+            Statement sentencia;
+            ResultSet rs;
+            String urlnombre="";
+        try {
+            cnn=obtenerConn();
+            sentencia=cnn.createStatement();
+            rs=sentencia.executeQuery("SELECT * FROM producto_virtual pv inner join version v on pv.id_p_virtual=v.id_p_virtual WHERE pv.id_p_virtual='"+idpv+"'");
+            while(rs.next()){
+                urlnombre=rs.getString("v.url_version");
+            }           
+        } catch (Exception e) {
+           Logger.getLogger(Producto_Virtual.class.getName()).log(Level.SEVERE, null, e);  
+        }
+        return urlnombre;
     }
     public ArrayList consultahabilitados(){
             Connection cnn=null;

@@ -26,10 +26,8 @@ public class DescargaArchivo extends HttpServlet {
             throws ServletException, IOException, JSONException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+        //System.out.printl();
         try {
-            //int id=Integer.parseInt(request.getParameter("id"));
-        //int opcion=Integer.parseInt(request.getParameter("opcion"));
             String nombre = "archivo";
             String tipo = "pdf";
             if (request.getParameter("version") != null) {
@@ -71,7 +69,7 @@ public class DescargaArchivo extends HttpServlet {
             outs.close();
             in.close();
         } finally {
-            //out.close();
+            out.close();
         }
     }
 

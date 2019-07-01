@@ -97,7 +97,7 @@ public class Programa extends Elomac{
               rs=sentencia.executeQuery("SELECT p.nom_programa FROM programa p inner join detalles_area d on d.id_programa=p.id_programa INNER JOIN area a on a.id_area=d.id_area WHERE a.nom_area='"+nomarea+"'");
               while(rs.next()){
                   lista.add(rs.getString("p.nom_programa"));
-                //  System.out.println("nombreprograma"+rs.getString("p.nom_programa"));
+                  System.out.println("lista"+lista);
               }
             } catch (Exception e) {
                 Logger.getLogger(Red_deConocimiento.class.getName()).log(Level.SEVERE, null, e);

@@ -1,5 +1,6 @@
 package M_Controller.Archivos;
 
+import M_Modelo.Producto_Virtual;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,9 +15,9 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
+import java.lang.String;
+import javax.mail.Part;
 import org.apache.commons.io.FilenameUtils;
-
 /**
  * La clase ArchivosController se encarga de gestionar los archivos de los
  * productos virtuales crear eliminar modificar
@@ -43,7 +44,8 @@ public class ArchivosController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-            Archivos a = new Archivos();
+            Archivos a = new Archivos(); 
+            
         if (isMultipart) {
             FileItemFactory factory = new DiskFileItemFactory();
             ServletFileUpload upload = new ServletFileUpload(factory);
@@ -51,11 +53,12 @@ public class ArchivosController extends HttpServlet {
             try {
                 String nombreArchivo = "";
                 List<FileItem> multiparts = upload.parseRequest(request);
+                 
                 for (FileItem item : multiparts) {
                     if (!item.isFormField()) {
                         nombreArchivo = new File(item.getName()).getName();
-                        item.write(new File(path + a.rutaTem() + nombreArchivo));
-                        System.out.println(path + a.rutaTem() + nombreArchivo);
+                        File file=new File(path + a.rutaTem() + nombreArchivo);
+                        item.write(file);
                     }
                 }
             } catch (Exception e) {

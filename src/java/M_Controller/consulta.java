@@ -42,11 +42,13 @@ public class consulta extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             try {
                 int opcion=Integer.parseInt(request.getParameter("opcion"));
-                String red=request.getParameter("option");
+                String option=request.getParameter("option");
                 switch(opcion){
                     case 1:
                         Programa consultaprograma=new Programa();
-                        String info=new Gson().toJson(consultaprograma.consultaprograma(red));
+                        System.out.print("red"+option);
+                        ArrayList informacion=consultaprograma.consultaprograma(option);
+                        String info=new Gson().toJson(informacion);
                         out.print(info);
                       break;
                         

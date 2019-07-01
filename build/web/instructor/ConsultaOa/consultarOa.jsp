@@ -75,7 +75,6 @@
                             <div id="ElementoPrograma" style="display: none;" class="col-md-12">
                                 <label class="col-md-12">Programa de formacion:</label>
                                 <select id="Programa" class="Programa" multiple="multiple">
-                                    <option id="option">null</option>
                                 </select>
                             </div>
                         </div>
@@ -158,11 +157,10 @@
         <h5 class="modal-title">RECUERDE DERECHOS DE AUTOR</h5>
         </button>
       </div>
-      <div class="modal-body">
-        
+      <div class="modal-body">       
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cerrar">Aceptar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cerrar" >Cerrar</button>
       </div>
     </div>
   </div>

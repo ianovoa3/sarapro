@@ -5,6 +5,7 @@
  */
 package M_Controller;
 
+import M_Controller.Archivos.Archivos;
 import M_Modelo.Producto_Virtual;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -40,9 +41,15 @@ public class archivo extends HttpServlet {
            switch(opcion){
                case 1:
                   Producto_Virtual pv=new Producto_Virtual();
-                  String derechos=pv.searchpv(id);
-                  String derechosstring=new Gson().toJson(derechos);
-                  out.print(derechosstring);
+                  String path = request.getRealPath("");
+                  Archivos a = new Archivos(); 
+                  String ruta=pv.descargarpv(id);
+                  String informacion[]=new String[2];
+                  informacion[0]=pv.searchpv(id);
+                  informacion[1]=ruta;
+                  String envio=new Gson().toJson(informacion);
+                  out.print(envio);
+                  
                    break;
            }
         }

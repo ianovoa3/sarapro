@@ -30,7 +30,7 @@ $(document).on('ready', function () {
             $("#formulario1").append("<div id='lafecha'><label>"+jsondata[fecha]+"</label></div>");
             $("#formulario1").append("<div id='descripcionp'><label>Descripcion</label></div>");
             $("#formulario1").append("<div id='ladescripcion'><label>"+jsondata[descripcion]+"</label></div>");
-            $("#formulario1").append("<div><input type='submit' onclick='descargar("+jsondata[id]+")' id='descargar' class='btn btn-info'  value='Aceptar'/></div>");
+            $("#formulario1").append("<div><input type='submit' onclick='descargar("+jsondata[id]+")' id='descargar' class='btn btn-info'  value='Descargar'/></div>");
             id=id+6;
             formato=formato+6;
             titulo=titulo+6;
@@ -54,21 +54,24 @@ success: function (data, textStatus, jqXHR) {
  $(".modal").show();
  $(".modal-body").append("<p id='mensaje'>'"+jsondata[0]+"'</p>");
  $("#cerrar").attr("value",jsondata[1]);
+ var archivo=jsondata[1];
+ enviodearchivo(archivo);
   }
   });
-  if($("#cerrar").click(function (){
-      var archivo=$("#cerrar").val();
-      console.log("valor"+archivo);
+}
+if($("#cerrar").click(function (){
    $(".modal").hide();
    $(".modal-body").empty();
-   $.ajax({
-      type:'POST',
-      data:{archivo},
-      url:'DescargaArchivo',
-      success: function (data, textStatus, jqXHR) { 
-      }
-  });
   }));
+function enviodearchivo(nombre){
+    $.ajax({
+      type:'POST',
+      data:{nombre:nombre,opcion:2},
+      url:'consulta',
+success: function (data, textStatus, jqXHR) {
+    
+    }
+});
 }
    
     var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, arraySelecionPrograma = [], arraySelectCategoria = [];
@@ -191,15 +194,18 @@ success: function (data, textStatus, jqXHR) {
         url:'consulta',
         success: function (data, textStatus, jqXHR) {   
                 var jsondata=JSON.parse(data);
+                console.log("jsondata"+jsondata);
                 $("#ElementoPrograma").show();
                 for(var i=0;i<jsondata.length;i++){
-                $("").append("<span>'"+jsondata[i]+"'</span>");
-            }
-            
+                    $(".ms-selectable").append('<li id="programaleft"><span>"'+jsondata[i]+'"</span></li>');
+            }          
   }
         });
     });
-
+    $("#programaleft").click(function (){
+        console.log("JAAAA");
+        
+    });
     $("#BusquedaAvanzada").on('click', function () {
         if (constan == true) {
             $("#Avando").show();
@@ -268,29 +274,29 @@ success: function (data, textStatus, jqXHR) {
     $('.Programa').multiSelect({
         selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un programa...'>",
         selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un programa...'>",
-//        afterInit: function (ms) {
-//            var that = this,
-//                    $selectableSearch = that.$selectableUl.prev(),
-//                    $selectionSearch = that.$selectionUl.prev(),
-//                    selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
-//                    selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
-//
-//            that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
-//                    .on('keydown', function (e) {
-//                        if (e.which === 40) {
-//                            that.$selectableUl.focus();
-//                            return false;
-//                        }
-//                    });
-//
-//            that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
-//                    .on('keydown', function (e) {
-//                        if (e.which == 40) {
-//                            that.$selectionUl.focus();
-//                            return false;
-//                        }
-//                    });
-//        },
+        afterInit: function (ms) {
+            var that = this,
+                    $selectableSearch = that.$selectableUl.prev(),
+                    $selectionSearch = that.$selectionUl.prev(),
+                    selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
+                    selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
+
+            that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                    .on('keydown', function (e) {
+                        if (e.which === 40) {
+                            that.$selectableUl.focus();
+                            return false;
+                        }
+                    });
+
+            that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+                    .on('keydown', function (e) {
+                        if (e.which == 40) {
+                            that.$selectionUl.focus();
+                            return false;
+                        }
+                    });
+        },
         afterSelect: function (val) {
             this.qs1.cache();
             this.qs2.cache();

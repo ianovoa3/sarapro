@@ -45,9 +45,10 @@ public class DescargaArchivo extends HttpServlet {
             String path = request.getRealPath("");
             Archivos archivo1 = new Archivos();
             String archivos1 = path+archivo1.getBase();
-            String archivo = archivos1 + request.getParameter("archivo");
-            String[] parts = archivo.split("\\.");
             nombre = request.getParameter("archivo");
+            //System.out.println("NOMBRE ARCHIVO"+nombre);
+            String archivo = archivos1 + nombre;
+            String[] parts = archivo.split("\\.");
             System.out.println("archivo"+archivo);
             int i = parts.length - 1;
             tipo = parts[i];

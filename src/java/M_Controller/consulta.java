@@ -5,6 +5,7 @@
  */
 package M_Controller;
 
+import M_Controller.Archivos.Archivos;
 import M_Modelo.Centro;
 import M_Modelo.Ciudad;
 import M_Modelo.Programa;
@@ -19,6 +20,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.gson.JsonElement;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import javax.servlet.ServletOutputStream;
 import org.json.JSONArray;
 /**
  *
@@ -39,8 +44,10 @@ public class consulta extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+       PrintWriter out = response.getWriter();
+        try  {
             try {
+                
                 int opcion=Integer.parseInt(request.getParameter("opcion"));
                 String option=request.getParameter("option");
                 switch(opcion){
@@ -51,12 +58,36 @@ public class consulta extends HttpServlet {
                         String info=new Gson().toJson(informacion);
                         out.print(info);
                       break;
-                        
-                        
+                    case 2:
+            String tipo;
+            String nombre;
+            nombre = request.getParameter("nombre");
+            String path = request.getRealPath("");
+            Archivos archivo1 = new Archivos();
+            String archivos1 = path+archivo1.getBase();
+            String archivo = archivos1 + nombre;
+            String[] parts = archivo.split("\\.");
+            int i = parts.length - 1;
+            tipo = parts[i];
+            File f = new File(archivo);
+            response.setContentType("application/" + tipo + "");
+            response.setHeader("Content-Disposition", "attachment; filename= " + nombre + "  ");
+            InputStream in = new FileInputStream(f);
+            int bit = 256;
+                while ((bit) >= 0) {
+                    bit = in.read();
+                    out.write(bit);
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            in.close();
+            out.flush();
+            break;
+        }        
+       }
+            catch (IOException ioe) {
+                ioe.printStackTrace(System.out);
+            }  
+        }finally {
+          out.close();
         }
     }
 

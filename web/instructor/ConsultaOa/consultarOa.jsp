@@ -25,7 +25,7 @@
                 <div class="col-md-10">
                     <input required type="text" id="Autores" value="" class="form-control inputs" placeholder="Autores del producto virtual">
                 </div>
-            </div>
+            </div>  
             <div class="col-md-12">
                 <div class="col-md-12">
                     <label><a id="BusquedaAvanzada">Busqueda avanzada</a></label>    
@@ -160,7 +160,8 @@
       <div class="modal-body">       
       </div>
       <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cerrar" >Cerrar</button>
+          <!--<button type="button" class="btn btn-secondary" data-dismiss="modal" id="cerrar" >Cerrar</button>!-->
+          <a class='btn btn-info' id="cerrar">Cerrar</a>
       </div>
     </div>
   </div>

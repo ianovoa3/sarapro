@@ -16,6 +16,7 @@ $(document).ready(function () {
     ///jso[0] = ['SubirPv_Controller','[{opcion:1,tipoFormato:[2,'+idTipoFormato+']}]'];
     var valorchecked;
     $("#botonderechos").click(function(){
+        valorchecked=1;
         if(document.getElementById('r').checked){
             $("#divrs").hide();
             $("#divrcs").hide();
@@ -50,6 +51,7 @@ $(document).ready(function () {
             $("#divrc").hide(); 
             valorchecked=document.getElementById('rnc').value;
         }
+        
     });
     $("#formato").change(function () {
         $("#myfile").val("");
@@ -412,10 +414,12 @@ $(document).ready(function () {
             console.log(path);
             var nomArchivo = path.replace(/C:\\fakepath\\/, '');
             console.log("valorchecked"+valorchecked);
+    
             jso[11] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + extFrom + ',0,0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],derechosdeautor:[' + valorchecked + '],archivoNom:' + nomArchivo + '}]'];
             selector[11] = null;
             datos[11] = {nombre: "btn"};
             ajax(11, datos[11]);
+        
         } else if (i == 11) {
             var daMen = data[i].split("$$");
             if (daMen[0] === "true") {

@@ -46,8 +46,7 @@ public class consulta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
        PrintWriter out = response.getWriter();
         try  {
-            try {
-                
+            try {    
                 int opcion=Integer.parseInt(request.getParameter("opcion"));
                 String option=request.getParameter("option");
                 switch(opcion){
@@ -81,7 +80,11 @@ public class consulta extends HttpServlet {
             in.close();
             out.flush();
             break;
-        }        
+            case 3:
+                System.out.println("HOLA  CHICOS");
+                break;
+        }
+                
        }
             catch (IOException ioe) {
                 ioe.printStackTrace(System.out);

@@ -111,7 +111,7 @@
     <div class="col-md-6">
         <br>    
         <button id="btnBuscar" type="button" class="btn btn-block">Buscar Productos Virtuales</button>        
-    </div>  
+    </div> 
     <div class="col-md-6">
         <br>   
         <button id="btnActu" type="button" class="btn btn-block">Actualizar Lista</button>        

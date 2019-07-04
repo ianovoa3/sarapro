@@ -185,27 +185,29 @@ success: function (data, textStatus, jqXHR) {
 //            ajax(10, datos[10]);
 //        }
 //    });
-    $("#Area").change(function () {
-     var option = $("#Area").val();
-        $("#Programa").empty();
-        $.ajax({
-        type:'POST',
-        data:{option:option,opcion:1},
-        url:'consulta',
-        success: function (data, textStatus, jqXHR) {   
-                var jsondata=JSON.parse(data);
-                console.log("jsondata"+jsondata);
-                $("#ElementoPrograma").show();
-                for(var i=0;i<jsondata.length;i++){
-                    $(".ms-selectable").append('<li id="programaleft"><span>"'+jsondata[i]+'"</span></li>');
-            }          
-  }
-        });
-    });
-    $("#programaleft").click(function (){
-        console.log("JAAAA");
-        
-    });
+//    $("#Area").change(function () {
+//     var option = $("#Area").val();
+//        $("#Programa").empty();
+//        $.ajax({
+//        type:'POST',
+//        data:{option:option,opcion:1},
+//        url:'consulta',
+//        success: function (data, textStatus, jqXHR) {   
+//                var jsondata=JSON.parse(data);
+//                var contador=0;
+//                $("#ElementoPrograma").show();
+//                for(var i=0;i<jsondata.length;i++){
+//                    $(".ms-selectable").append("<li><span id='programaleft' value="+jsondata[i]+">"+jsondata[i]+"</span></li>");
+//                    
+//            }
+//            var programa=$("#Programa");
+//            var dats={nombre: "MultiSelect", compuesto: true};
+//            ob.cargarTabla(data,programa,dats);
+//            
+//  }
+//        });
+//    });
+    
     $("#BusquedaAvanzada").on('click', function () {
         if (constan == true) {
             $("#Avando").show();
@@ -228,7 +230,13 @@ success: function (data, textStatus, jqXHR) {
         }
     });
     $("#btnBuscar").click(function () {
-        btnbuscar();
+       $.ajax({type:'POST',
+        data:{opcion:3,titulo:$("#txtBuscarTitle").val(),autor:$("#Autores").val(),ciudad:$("#CiudadFormacion").val(),centro:$("#CentroF").val(),area:$("#Area").val()},
+        url:'consulta',
+    success: function(){
+        
+    }
+        });
     });
 
     $('.SelectCategoria').multiSelect({

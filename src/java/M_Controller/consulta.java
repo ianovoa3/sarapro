@@ -46,7 +46,7 @@ public class consulta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
        PrintWriter out = response.getWriter();
         try  {
-            try {    
+               
                 int opcion=Integer.parseInt(request.getParameter("opcion"));
                 String option=request.getParameter("option");
                 switch(opcion){
@@ -57,38 +57,11 @@ public class consulta extends HttpServlet {
                         String info=new Gson().toJson(informacion);
                         out.print(info);
                       break;
-                    case 2:
-            String tipo;
-            String nombre;
-            nombre = request.getParameter("nombre");
-            String path = request.getRealPath("");
-            Archivos archivo1 = new Archivos();
-            String archivos1 = path+archivo1.getBase();
-            String archivo = archivos1 + nombre;
-            String[] parts = archivo.split("\\.");
-            int i = parts.length - 1;
-            tipo = parts[i];
-            File f = new File(archivo);
-            response.setContentType("application/" + tipo + "");
-            response.setHeader("Content-Disposition", "attachment; filename= " + nombre + "  ");
-            InputStream in = new FileInputStream(f);
-            int bit = 256;
-                while ((bit) >= 0) {
-                    bit = in.read();
-                    out.write(bit);
-                }
-            in.close();
-            out.flush();
-            break;
             case 3:
                 System.out.println("HOLA  CHICOS");
                 break;
         }
-                
-       }
-            catch (IOException ioe) {
-                ioe.printStackTrace(System.out);
-            }  
+    
         }finally {
           out.close();
         }

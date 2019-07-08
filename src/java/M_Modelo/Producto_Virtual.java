@@ -4,9 +4,11 @@ import M_Util.Elomac;
 import static M_Util.M_Crud.M_Format;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Array;
@@ -23,10 +25,15 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Producto_Virtual extends Elomac {
-
+FileReader entrada;
     public Producto_Virtual() {
         super("producto_virtual", 1);
     }
+    
+    public void descargar(String nombre,String ruta){
+       
+   }
+      
     public boolean derechosdeautor(String derechosdeautor){
         Connection cnn=null;
         Statement sentencia=null;

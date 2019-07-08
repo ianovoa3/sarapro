@@ -48,7 +48,9 @@ $(document).on('ready', function () {
         }
     });
 
-
+    $("#modificar").click(function (){
+        console.log($("#modificar").val());
+    });
 
     $("#btnArea").on('click', function () {
         $(".remove").remove();

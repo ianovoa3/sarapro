@@ -5,7 +5,7 @@ $(document).on('ready', function () {
     jso[0] = ['Modificar_Controller', '[{opcion:6,TipoFormatoAdmin:[0,0,0,0]}]'];
     selector[0] = $("#tablaTipoFormato");
     ob.TablaEspa(selector[0]);
-    datos[0] = {nombre: "consultaTipoFormatos"};
+    datos[0] = {nombre:"consultaTipoFormatos"};
     ajax(0, datos[0]);
 
 

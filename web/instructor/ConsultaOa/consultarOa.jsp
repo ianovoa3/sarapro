@@ -166,6 +166,23 @@
     </div>
   </div>
 </div>
+
+<div class="modal1" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal1-header">
+        <h5 class="modal1-title">QUIERE DESCARGARLOS?</h5>
+        </button>
+      </div>
+      <div class="modal1-body">       
+      </div>
+      <div class="modal1-footer">
+          <!--<button type="button" class="btn btn-secondary" data-dismiss="modal" id="cerrar" >Cerrar</button>!-->
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>
     </article>
 <div id="resultadosProductos" class="col-md-10 col-md-offset-1 "></div>

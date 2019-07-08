@@ -1,3 +1,6 @@
+<%@page import="VO.Formatos"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="M_Modelo.Formato"%>
 <div class="content">
     <div class="container-fluid">
         <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
@@ -31,11 +34,11 @@
                             <tr class="active">
                                 <td>N°</td>
                                 <td>Nombre</td>
-                                <td>Url</td>
                                 <td>Modificar tipo de formato</td>
                             </tr>
                         </thead>
-                        <tbody id="tablabody">
+                        <tbody>
+                            
                         </tbody>
                     </table>  
                 </div>

@@ -2,6 +2,7 @@ package M_Controller.Archivos;
 
 import M_Modelo.Rankin;
 import M_Util.Elomac;
+import com.sun.activation.registries.MimeTypeFile;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,6 +11,7 @@ import java.io.PrintWriter;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.activation.MimetypesFileTypeMap;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -25,10 +27,10 @@ public class DescargaArchivo extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, JSONException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+       //PrintWriter out = response.getWriter();
         //System.out.printl();
         try {
-            String nombre = "archivo";
+            String nombrearchivo = "archivo";
             String tipo = "pdf";
             if (request.getParameter("version") != null) {
                 String[] paramRankin;
@@ -45,22 +47,23 @@ public class DescargaArchivo extends HttpServlet {
             String path = request.getRealPath("");
             Archivos archivo1 = new Archivos();
             String archivos1 = path+archivo1.getBase();
-            nombre = request.getParameter("archivo");
+            nombrearchivo = request.getParameter("archivo");
             //System.out.println("NOMBRE ARCHIVO"+nombre);
-            String archivo = archivos1 + nombre;
+            String archivo = archivos1 + nombrearchivo;
             String[] parts = archivo.split("\\.");
             System.out.println("archivo"+archivo);
             int i = parts.length - 1;
             tipo = parts[i];
             File f = new File(archivo);
-            response.setContentType("application/" + tipo + "");
-            response.setHeader("Content-Disposition", "attachment; filename= " + nombre + "  ");
             InputStream in = new FileInputStream(f);
             ServletOutputStream outs = response.getOutputStream();
-            int bit = 256;
+            String mimeType=new MimetypesFileTypeMap().getContentType(f);
+            response.setContentType(mimeType);
+            response.setContentLength(in.available());
+            response.setHeader("Content-Disposition", "attachment; filename=\""+f.getName()+"\"");
+            int bit = 0;
             try {
-                while ((bit) >= 0) {
-                    bit = in.read();
+                while ((bit=in.read())!=-1) {
                     outs.write(bit);
                 }
             } catch (IOException ioe) {
@@ -69,8 +72,9 @@ public class DescargaArchivo extends HttpServlet {
             outs.flush();
             outs.close();
             in.close();
+           
         } finally {
-            out.close();
+            //out.close();
         }
     }
 

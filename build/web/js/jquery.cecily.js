@@ -428,6 +428,20 @@ jQuery.Luna = function (Datos, selector) {
                         }));
                     }
                     break;
+                    case "consultaTipoFormatos":
+//                    console.log("TIPO");
+//                    var jsSelect = jQuery.parseJSON(json);
+//                    var data = "";
+//                    selector.dataTable().fnClearTable();
+//                   for (var i = 0; i < jsSelect.length; i++) {
+//                       data = jsSelect[i].id_tipo_formato + "$$" + jsSelect[i].nom_tipo_formato + "$$" + jsSelect[i].urlimgtipoformato;
+//                       table = selector.dataTable().fnAddData([
+//                            i+1,
+//                            jsSelect[i].nom_tipo_formato,
+//                            "<button id='" + data + "' class='btnModificarTipoFor btn btn-info'>Modificar</button>"
+//                      ]);
+//                  }
+//                    break;
                 case "ConsOaP":
 //                    var pag = 1;
 //                    var q = 2;
@@ -716,18 +730,6 @@ jQuery.Luna = function (Datos, selector) {
                             "<button id='" + data + "' class='btn btn-success modificarRol'value='b' >Asignar rol</button>"
                         ]);
                     }
-                    break;
-                case "consultaTipoFormatos":
-                    var jsSelect = jQuery.parseJSON(json);
-                    var data = "";
-                    selector.dataTable().fnClearTable();
-//                    for (var i = 0; i < jsSelect.length; i++) {
-//                        data = jsSelect[i].id_tipo_formato + "$$" + jsSelect[i].nom_tipo_formato + "$$" + jsSelect[i].urlimgtipoformato;
-//                        table = selector.dataTable().fnAddData([
-//                            //jsSelect[i].nom_tipo_formato,
-//                            //"<button id='" + data + "' class='btnModificarTipoFor btn btn-info'>Modificar</button>"
-//                        ]);
-//                    }
                     break;
                 case "ConsultaCentros":
                     var jsSelect = jQuery.parseJSON(json);

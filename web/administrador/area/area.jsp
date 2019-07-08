@@ -42,8 +42,8 @@
                                 %>
                             <tr class="active">
                             <td><%=j=j+1%></td>
-                            <td><%=lista.get(i)%></td>
-                            <td><button  class='btn btn-info botonArea' id="modificar">Modificar</button></td>
+                            <td id="redconocimiento" value="<%=lista.get(i)%>"><%=lista.get(i)%></td>
+                            <td><button  class='btn btn-info botonArea' id="modificar" value="<%=i%>">Modificar</button></td>
                             </tr>
                              <%}%>
                             </tbody>

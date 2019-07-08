@@ -1,5 +1,6 @@
 $(document).on('ready', function () {
      $(".modal").hide();
+     $(".modal1").hide();
     $.ajax({
         type:'POST',
         data:{opcion:2},
@@ -43,6 +44,7 @@ $(document).on('ready', function () {
           
     });
 });
+var archivo;
 function descargar(id){
     $.ajax({
       type:'POST',
@@ -53,24 +55,23 @@ success: function (data, textStatus, jqXHR) {
      console.log(jsondata);
  $(".modal").show();
  $(".modal-body").append("<p id='mensaje'>'"+jsondata[0]+"'</p>");
- $("#cerrar").attr("value",jsondata[1]);
- var archivo=jsondata[1];
- enviodearchivo(archivo);
-  }
+ archivo=jsondata[1];
+  }  
   });
 }
 if($("#cerrar").click(function (){
    $(".modal").hide();
    $(".modal-body").empty();
+    enviodearchivo(archivo);
   }));
-function enviodearchivo(nombre){
+function enviodearchivo(archivo){
     $.ajax({
       type:'POST',
-      data:{nombre:nombre,opcion:2},
-      url:'consulta',
+      data:{nombrearchivo:archivo},
+      url:'DescargaArchivo',
 success: function (data, textStatus, jqXHR) {
-    
-    }
+    alert('Descargado');
+    } 
 });
 }
    

@@ -30,7 +30,7 @@ public class DescargaArchivo extends HttpServlet {
        //PrintWriter out = response.getWriter();
         //System.out.printl();
         try {
-            String nombrearchivo = "archivo";
+            String archivos = request.getParameter("archivo");
             String tipo = "pdf";
             if (request.getParameter("version") != null) {
                 String[] paramRankin;
@@ -47,9 +47,8 @@ public class DescargaArchivo extends HttpServlet {
             String path = request.getRealPath("");
             Archivos archivo1 = new Archivos();
             String archivos1 = path+archivo1.getBase();
-            nombrearchivo = request.getParameter("archivo");
             //System.out.println("NOMBRE ARCHIVO"+nombre);
-            String archivo = archivos1 + nombrearchivo;
+            String archivo = archivos1 + archivos;
             String[] parts = archivo.split("\\.");
             System.out.println("archivo"+archivo);
             int i = parts.length - 1;

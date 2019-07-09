@@ -155,42 +155,24 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">RECUERDE DERECHOS DE AUTOR</h5>
-        </button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="cerrar">X</button>
       </div>
       <div class="modal-body">       
       </div>
       <div class="modal-footer">
           <!--<button type="button" class="btn btn-secondary" data-dismiss="modal" id="cerrar" >Cerrar</button>!-->
-          <a class='btn btn-info' id="cerrar">Cerrar</a>
       </div>
     </div>
   </div>
 </div>
-
-<div class="modal1" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal1-header">
-        <h5 class="modal1-title">QUIERE DESCARGARLOS?</h5>
-        </button>
-      </div>
-      <div class="modal1-body">       
-      </div>
-      <div class="modal1-footer">
-          <!--<button type="button" class="btn btn-secondary" data-dismiss="modal" id="cerrar" >Cerrar</button>!-->
-      </div>
-    </div>
-  </div>
-</div>
-
 </div>
     </article>
-<div id="resultadosProductos" class="col-md-10 col-md-offset-1 "></div>
+<!--<div id="resultadosProductos" class="col-md-10 col-md-offset-1 "></div>
 <div class="col-md-12 col-md-offset-1">
     <ul class="pagination col-md-8 col-md-offset-2" id="paginador">
         <li id="pag1" class='pagination'><a><lavel>1</label></a></li>
     </ul>
-</div>
+</div>!-->
 <input value="pag0" id="pagActual" style="display: none;">
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jqueryUi.js"></script>    

@@ -23,6 +23,7 @@ import com.google.gson.JsonElement;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import javax.activation.MimetypesFileTypeMap;
 import javax.servlet.ServletOutputStream;
 import org.json.JSONArray;
 /**
@@ -44,26 +45,27 @@ public class consulta extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       PrintWriter out = response.getWriter();
+       
         try  {
                
                 int opcion=Integer.parseInt(request.getParameter("opcion"));
                 String option=request.getParameter("option");
                 switch(opcion){
                     case 1:
+                        PrintWriter out = response.getWriter();
                         Programa consultaprograma=new Programa();
                         System.out.print("red"+option);
                         ArrayList informacion=consultaprograma.consultaprograma(option);
                         String info=new Gson().toJson(informacion);
                         out.print(info);
                       break;
-            case 3:
-                System.out.println("HOLA  CHICOS");
+            case 2:
+            
                 break;
         }
     
-        }finally {
-          out.close();
+        }finally{
+            
         }
     }
 

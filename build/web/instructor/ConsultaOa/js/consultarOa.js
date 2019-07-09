@@ -1,6 +1,5 @@
 $(document).on('ready', function () {
      $(".modal").hide();
-     $(".modal1").hide();
     $.ajax({
         type:'POST',
         data:{opcion:2},
@@ -14,7 +13,6 @@ $(document).on('ready', function () {
            var autor=2;
            var fecha=3;
            var descripcion=4;
-           var boton=1;
            for(var i=0;i<jsondata[jsondata.length-1];i++){
            if(jsondata[formato]==("imagen"))
            $("#formulario1").append("<img src='Archivos/Formatos/imagen.png' id='formato'></img>");    
@@ -39,12 +37,12 @@ $(document).on('ready', function () {
             fecha=fecha+6;
             descripcion=descripcion+6;
            } 
-
           }
           
     });
 });
-var archivo;
+var archivos;
+var constan = true;
 function descargar(id){
     $.ajax({
       type:'POST',
@@ -52,67 +50,70 @@ function descargar(id){
       url:'archivo',
 success: function (data, textStatus, jqXHR) {  
      var jsondata=JSON.parse(data);
-     console.log(jsondata);
  $(".modal").show();
+ if(jsondata[0]=='undefined'){
+     jsondata[0]="No se registro derechos de autor en este producto virtual";
+ }
  $(".modal-body").append("<p id='mensaje'>'"+jsondata[0]+"'</p>");
- archivo=jsondata[1];
+ archivos=jsondata[1];
+ $(".modal-footer").append("<a class='btn btn-info' href='DescargaArchivo?archivo="+archivos+"' id='adescarga'>Descargar P.V</a>");
   }  
   });
 }
+
 if($("#cerrar").click(function (){
    $(".modal").hide();
    $(".modal-body").empty();
-    enviodearchivo(archivo);
+   $(".modal-footer").empty();
   }));
-function enviodearchivo(archivo){
-    $.ajax({
-      type:'POST',
-      data:{nombrearchivo:archivo},
-      url:'DescargaArchivo',
-success: function (data, textStatus, jqXHR) {
-    alert('Descargado');
-    } 
-});
-}
+ $("#btnBuscar").click(function () {
+       $.ajax({type:'POST',
+        data:{opcion:3,titulo:$("#txtBuscarTitle").val(),autor:$("#Autores").val(),ciudad:$("#CiudadFormacion").val(),centro:$("#CentroF").val(),area:$("#Area").val()},
+        url:'consulta',
+    success: function(){
+        
+    }
+        });
+    });
    
-    var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, arraySelecionPrograma = [], arraySelectCategoria = [];
-    var pagina = "<li id='pag1' class='pagination'><a><lavel>1</label></a></li>";
-    $("#dataInicialA").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2});
-    $("#dataFinalA").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2});
-    $("#dataInicialA").datepicker("option", "maxDate", new Date());
-    $("#dataFinalA").datepicker("option", "maxDate", new Date());
-    $("#dataInicialA").change(function () {
-        $("#dataFinalA").datepicker("option", "minDate", $("#dataInicialA").val());
-    });
-    $("#dataFinalA").change(function () {
-        $("#dataInicialA").datepicker("option", "maxDate", $("#dataFinalA").val());
-    });
+//    var selector = [], hilo = [], jso = [], data = [], datos = [], arraySelecionPrograma = [], arraySelectCategoria = [];
+//    var pagina = "<li id='pag1' class='pagination'><a><lavel>1</label></a></li>";
+//    $("#dataInicialA").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2});
+//    $("#dataFinalA").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2});
+//    $("#dataInicialA").datepicker("option", "maxDate", new Date());
+//    $("#dataFinalA").datepicker("option", "maxDate", new Date());
+//    $("#dataInicialA").change(function () {
+//        $("#dataFinalA").datepicker("option", "minDate", $("#dataInicialA").val());
+//    });
+//    $("#dataFinalA").change(function () {
+//        $("#dataInicialA").datepicker("option", "maxDate", $("#dataFinalA").val());
+//    });
+//
+//
+//    //    filtros[0]="0";//id Producto virtual
+////    filtros[1]="";//Id Formato
+////    filtros[2]="2017/04/15";//Fecha Inicial o Fecha unica
+////    filtros[3]="2017/04/15";//Fecha finalS
+////    filtros[4]="";//id Funcionario
+////    filtros[5]="";//Categoria o Programa 
+////    filtros[6]="";//tipoTEMA C O P = 0 -> Programa De Formacion 1 -> Categoria 
+//
+////    caso = 0 o 1 = 0 Cuando consulta inical sin ningun filtro, 1 consulta por los filtros
+//    jso[0] = ['ProductoVirtual_Controller', '[{opcion:5,filtrar:["","","","","","",""],caso:1}]'];//--->17/04/2017
+//
+//    //jso[0] = ['ProductoVirtual_Controller', '[{opcion:5,filtrar:[],caso:29}]'];
+//    selector[0] = $("#formulario1");
+//    datos[0] = {nombre: "ConsOaP"};
+//    ajax(0, datos[0]);
+//    var ob = new $.Luna("Consultar PV", $("#formulario1"));
+//    ob.Vivo("ConsultarPV");
 
-
-    //    filtros[0]="0";//id Producto virtual
-//    filtros[1]="";//Id Formato
-//    filtros[2]="2017/04/15";//Fecha Inicial o Fecha unica
-//    filtros[3]="2017/04/15";//Fecha finalS
-//    filtros[4]="";//id Funcionario
-//    filtros[5]="";//Categoria o Programa 
-//    filtros[6]="";//tipoTEMA C O P = 0 -> Programa De Formacion 1 -> Categoria 
-
-//    caso = 0 o 1 = 0 Cuando consulta inical sin ningun filtro, 1 consulta por los filtros
-    jso[0] = ['ProductoVirtual_Controller', '[{opcion:5,filtrar:["","","","","","",""],caso:1}]'];//--->17/04/2017
-
-    //jso[0] = ['ProductoVirtual_Controller', '[{opcion:5,filtrar:[],caso:29}]'];
-    selector[0] = $("#formulario1");
-    datos[0] = {nombre: "ConsOaP"};
-    ajax(0, datos[0]);
-    var ob = new $.Luna("Consultar PV", $("#formulario1"));
-    ob.Vivo("ConsultarPV");
-
-    $("#btnActu").click(function () {
-        $("#paginador").empty().append(pagina);
-        $("#resultadosProductos").empty();
-        datos[0] = {nombre: "ConsOaP", op: true};
-        ajax(0, datos[0]);
-    });
+//    $("#btnActu").click(function () {
+//        $("#paginador").empty().append(pagina);
+//        $("#resultadosProductos").empty();
+//        datos[0] = {nombre: "ConsOaP", op: true};
+//        ajax(0, datos[0]);
+//    });
     $("#Programas").change(function () {
         $("#SelectCategoria").empty();
         $("#ElementoCategoria").hide();
@@ -230,16 +231,6 @@ success: function (data, textStatus, jqXHR) {
             $("#pag" + this.id).css("background-color", "blue");
         }
     });
-    $("#btnBuscar").click(function () {
-       $.ajax({type:'POST',
-        data:{opcion:3,titulo:$("#txtBuscarTitle").val(),autor:$("#Autores").val(),ciudad:$("#CiudadFormacion").val(),centro:$("#CentroF").val(),area:$("#Area").val()},
-        url:'consulta',
-    success: function(){
-        
-    }
-        });
-    });
-
     $('.SelectCategoria').multiSelect({
         selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca una categoria...'>",
         selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca una categoria...'>",

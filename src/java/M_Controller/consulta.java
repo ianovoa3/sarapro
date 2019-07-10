@@ -8,8 +8,10 @@ package M_Controller;
 import M_Controller.Archivos.Archivos;
 import M_Modelo.Centro;
 import M_Modelo.Ciudad;
+import M_Modelo.Producto_Virtual;
 import M_Modelo.Programa;
 import M_Modelo.Red_deConocimiento;
+import VO.ConsultaVO;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -60,7 +62,17 @@ public class consulta extends HttpServlet {
                         out.print(info);
                       break;
             case 2:
-            
+                    String titulo=request.getParameter("titulo");
+                    String autor=request.getParameter("autor");
+                    String ciudad=request.getParameter("ciudad");
+                    String centro=request.getParameter("centro");
+                    String area=request.getParameter("area");
+                    String palabraclave=request.getParameter("palabraclave");
+                    String categoria=request.getParameter("categoria");
+                    ConsultaVO consultavo=new ConsultaVO(titulo, autor, ciudad, centro, area, palabraclave, categoria);
+                    Producto_Virtual pv=new Producto_Virtual();
+                    pv.Producto_Virtual(consultavo);
+                    
                 break;
         }
     

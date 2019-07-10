@@ -1,5 +1,6 @@
 package M_Util;
 
+import VO.ConsultaVO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,7 +12,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Elomac extends M_Crud {
-
+     @Override
+     public void Producto_Virtual(ConsultaVO consultaVO) {
+        try {
+            
+        } catch (Exception e) {
+            
+        }
+    }
     public Map<String, Object> atributos = new LinkedHashMap<String, Object>();
     private String tabla;
     private String primaryKey;
@@ -127,7 +135,6 @@ public class Elomac extends M_Crud {
             e.printStackTrace();
         }
     }
-
     //------------------------- SELECT -----------------------------
     private void EspecificarColumnas(String[] numsTablas) {
         Map<String, Object> redefinir = new LinkedHashMap<String, Object>();

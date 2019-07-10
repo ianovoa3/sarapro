@@ -68,7 +68,7 @@ if($("#cerrar").click(function (){
   }));
  $("#btnBuscar").click(function () {
        $.ajax({type:'POST',
-        data:{opcion:3,titulo:$("#txtBuscarTitle").val(),autor:$("#Autores").val(),ciudad:$("#CiudadFormacion").val(),centro:$("#CentroF").val(),area:$("#Area").val()},
+        data:{opcion:2,titulo:$("#txtBuscarTitle").val(),autor:$("#Autores").val(),ciudad:$("#CiudadFormacion").val(),centro:$("#CentroF").val(),area:$("#Area").val(),palabraclave:$("Palabras").val(),categoria:$("#SelectCategoria").val()},
         url:'consulta',
     success: function(){
         

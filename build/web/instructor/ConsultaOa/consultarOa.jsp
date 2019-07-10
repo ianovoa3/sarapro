@@ -87,7 +87,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+<!--                    <div class="col-md-12">
                         <div class="col-md-6">
                             <label for="dataInicialA">Fecha Inicial</label>  
                             <br>
@@ -98,7 +98,7 @@
                             <br> 
                             <input required class="form-control inputs" type="text" id="dataFinalA" placeholder="D/M/A">
                         </div>
-                    </div>
+                    </div>-->
                     <div class="col-md-12">
                         <div class="col-md-6">
                             <label for="Palabras">Palabras Clave</label>

@@ -1,7 +1,9 @@
 package M_Modelo;
 
 import M_Util.Elomac;
+import M_Util.M_Connection;
 import static M_Util.M_Crud.M_Format;
+import VO.ConsultaVO;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -24,16 +26,43 @@ import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Producto_Virtual extends Elomac {
+public class Producto_Virtual extends Elomac{
 FileReader entrada;
     public Producto_Virtual() {
         super("producto_virtual", 1);
     }
-    
-    public void descargar(String nombre,String ruta){
-       
-   }
-      
+@Override
+     public void Producto_Virtual(ConsultaVO consultaVO) {
+        try {
+            String titulo=consultaVO.getTitulo();
+            String autor=consultaVO.getAutor();
+            String ciudad=consultaVO.getCiudad();
+            String centro=consultaVO.getCentro();
+            String area=consultaVO.getArea();
+            String palabraclave=consultaVO.getPalabraclave();
+            String categoria=consultaVO.getCategoria();
+        } catch (Exception e) {
+            
+        }
+    }
+    public ArrayList<ConsultaVO> methodarraylist(){
+     ArrayList<ConsultaVO> lista=new ArrayList();
+          M_Connection conexion=new M_Connection();
+            Connection cnn=null;
+            Statement sentencia=null;
+            ResultSet rs=null;   
+     try {
+         cnn=obtenerConn();
+          sentencia=cnn.createStatement();
+          rs=sentencia.executeQuery("SELECT pv.nom_p_virtual,f.nom_funcionario,v.fecha_publicacion,pv.des_p_virtual from producto_virtual pv inner join version v on pv.id_p_virtual=v.id_p_virtual inner join autor a on a.id_version=v.id_version inner join funcionario f on f.id_funcionario=a.id_funcionario inner join ciudad c inner join centro ce on ce.id_ciudad=c.id_ciudad inner join area_centro ar on  WHERE pv.nom_p_virtual='Prueba' OR f.nom_funcionario='Isaac' OR c.nom_ciudad='bogotá' OR ce.nom_centro='centro de gestion de mercados, logistica y tecnologias de la información' or ");
+          while(rs.next()){
+          
+          }
+        } catch (Exception e) {
+             Logger.getLogger(Producto_Virtual.class.getName()).log(Level.SEVERE, null, e);
+        }
+     return lista;
+     }
     public boolean derechosdeautor(String derechosdeautor){
         Connection cnn=null;
         Statement sentencia=null;

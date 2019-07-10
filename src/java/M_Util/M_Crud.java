@@ -1,5 +1,6 @@
 package M_Util;
 
+import VO.ConsultaVO;
 import com.google.gson.Gson;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
@@ -117,5 +118,13 @@ public class M_Crud extends M_Procedure {
         fecha = f.format(d);
         return fecha;
     }
+        public void Producto_Virtual(ConsultaVO consultaVO) {
+        try {
+            
+        } catch (Exception e) {
+            
+        }
+    }
+     
 
 }

@@ -42,7 +42,7 @@ FileReader entrada;
             String palabraclave=consultaVO.getPalabraclave();
             String categoria=consultaVO.getCategoria();
         } catch (Exception e) {
-            
+         Logger.getLogger(Producto_Virtual.class.getName()).log(Level.SEVERE, null, e);
         }
     }
     public ArrayList<ConsultaVO> methodarraylist(){
@@ -54,7 +54,7 @@ FileReader entrada;
      try {
          cnn=obtenerConn();
           sentencia=cnn.createStatement();
-          rs=sentencia.executeQuery("SELECT pv.nom_p_virtual,f.nom_funcionario,v.fecha_publicacion,pv.des_p_virtual from producto_virtual pv inner join version v on pv.id_p_virtual=v.id_p_virtual inner join autor a on a.id_version=v.id_version inner join funcionario f on f.id_funcionario=a.id_funcionario inner join ciudad c inner join centro ce on ce.id_ciudad=c.id_ciudad inner join area_centro ar on  WHERE pv.nom_p_virtual='Prueba' OR f.nom_funcionario='Isaac' OR c.nom_ciudad='bogotá' OR ce.nom_centro='centro de gestion de mercados, logistica y tecnologias de la información' or ");
+          rs=sentencia.executeQuery("select * from producto_virtual pv inner join funcionario f inner join autor a inner join version v on pv.id_p_virtual=v.id_p_virtual on a.id_funcionario=f.id_funcionario where pv.nom_p_virtual='Prueba' AND a.autor='Isaac' AND v.id_estado=6");
           while(rs.next()){
           
           }

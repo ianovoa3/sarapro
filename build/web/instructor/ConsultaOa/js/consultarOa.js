@@ -1,12 +1,13 @@
 $(document).on('ready', function () {
      $(".modal").hide();
+     $("#resultadosProductos").hide();
     $.ajax({
         type:'POST',
         data:{opcion:2},
         url:'actor',
         success: function (data) {
-            var jsondata=JSON.parse(data);
-           console.log(jsondata);
+           var jsondata=JSON.parse(data);
+           //console.log(jsondata);
            var id=0;
            var formato=5;
            var titulo=1;
@@ -67,13 +68,34 @@ if($("#cerrar").click(function (){
    $(".modal-footer").empty();
   }));
  $("#btnBuscar").click(function () {
-       $.ajax({type:'POST',
-        data:{opcion:2,titulo:$("#txtBuscarTitle").val(),autor:$("#Autores").val(),ciudad:$("#CiudadFormacion").val(),centro:$("#CentroF").val(),area:$("#Area").val(),palabraclave:$("Palabras").val(),categoria:$("#SelectCategoria").val()},
-        url:'consulta',
-    success: function(){
-        
+     
+     var titulo=0;
+     var fecha=2;
+     var descripcion=3;
+     if(constan==true){
+     $.ajax({type:'POST',
+     data:{opcion:2,titulo:$("#txtBuscarTitle").val(),autor:$("#Autores").val(),constante:constan},
+     url:'consulta',
+    success: function(data){ 
+        var datarespuesta=JSON.parse(data);
+        console.log(datarespuesta);
+        var contador=4;
+        $("#formulario1").hide();
+        $("#resultadosProductos").show();
+//        for(var i=1;i<=datarespuesta.length;i++){    
+//           if(datarespuesta[contador]){}
+//            
+//        }
     }
-        });
+   });
+     }else{
+        $.ajax({type:'POST',
+     data:{opcion:2,titulo:$("#txtBuscarTitle").val(),autor:$("#Autores").val(),ciudad:$("#CiudadFormacion").val(),centro:$("#CentroF").val(),area:$("#Area").val(),palabraclave:$("Palabras").val(),categoria:$("#SelectCategoria").val()},
+     url:'consulta',
+    success: function(){    
+    }
+        });  
+     }
     });
    
 //    var selector = [], hilo = [], jso = [], data = [], datos = [], arraySelecionPrograma = [], arraySelectCategoria = [];

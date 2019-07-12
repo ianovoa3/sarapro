@@ -45,7 +45,27 @@ FileReader entrada;
          Logger.getLogger(Producto_Virtual.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-    public ArrayList<ConsultaVO> methodarraylist(){
+    public ArrayList searchnormal(String nombreproducto,String autor){
+        ArrayList lista=new ArrayList();
+            Connection cnn=null;
+            Statement sentencia=null;
+            ResultSet rs=null;   
+     try {
+         cnn=obtenerConn();
+          sentencia=cnn.createStatement();
+          rs=sentencia.executeQuery("select pv.nom_p_virtual,f.nom_funcionario,v.fecha_publicacion,pv.des_p_virtual from funcionario f inner join autor a on a.id_funcionario=f.id_funcionario inner join producto_virtual pv inner join version v on v.id_p_virtual=pv.id_p_virtual WHERE pv.nom_p_virtual='"+nombreproducto+"' OR f.nom_funcionario='"+autor+"' AND v.id_estado=6");
+          while(rs.next()){
+          lista.add(rs.getString("pv.nom_p_virtual"));
+          lista.add(rs.getString("f.nom_funcionario"));
+          lista.add(rs.getString("v.fecha_publicacion"));
+          lista.add(rs.getString("pv.des_p_virtual")); 
+          }
+        } catch (Exception e) {
+             Logger.getLogger(Producto_Virtual.class.getName()).log(Level.SEVERE, null, e);
+        }
+     return lista;
+    } 
+    public ArrayList<ConsultaVO> searchadvance(){
      ArrayList<ConsultaVO> lista=new ArrayList();
           M_Connection conexion=new M_Connection();
             Connection cnn=null;

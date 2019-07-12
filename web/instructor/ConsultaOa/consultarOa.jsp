@@ -167,12 +167,13 @@
 </div>
 </div>
     </article>
-<!--<div id="resultadosProductos" class="col-md-10 col-md-offset-1 "></div>
+<div id="resultadosProductos" class="col-md-10 col-md-offset-1 "></div>
 <div class="col-md-12 col-md-offset-1">
+    
     <ul class="pagination col-md-8 col-md-offset-2" id="paginador">
         <li id="pag1" class='pagination'><a><lavel>1</label></a></li>
     </ul>
-</div>!-->
+</div>
 <input value="pag0" id="pagActual" style="display: none;">
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jqueryUi.js"></script>    

@@ -22,6 +22,11 @@ public class ConsultaVO {
     public ConsultaVO() {
     }
 
+    public ConsultaVO(String titulo, String autor) {
+        this.titulo = titulo;
+        this.autor = autor;
+    }
+    
     public ConsultaVO(String titulo, String autor, String ciudad, String centro, String area, String palabraclave, String categoria) {
         this.titulo = titulo;
         this.autor = autor;

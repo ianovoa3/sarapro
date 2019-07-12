@@ -49,12 +49,12 @@ public class consulta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
        
         try  {
-               
+               PrintWriter out = response.getWriter();
                 int opcion=Integer.parseInt(request.getParameter("opcion"));
                 String option=request.getParameter("option");
                 switch(opcion){
                     case 1:
-                        PrintWriter out = response.getWriter();
+                        
                         Programa consultaprograma=new Programa();
                         System.out.print("red"+option);
                         ArrayList informacion=consultaprograma.consultaprograma(option);
@@ -62,17 +62,23 @@ public class consulta extends HttpServlet {
                         out.print(info);
                       break;
             case 2:
+                
                     String titulo=request.getParameter("titulo");
                     String autor=request.getParameter("autor");
+                    Producto_Virtual pv=new Producto_Virtual();
+                    boolean constante=Boolean.parseBoolean(request.getParameter("constante"));
+                    if(constante){
+                    String respuesta=new Gson().toJson( pv.searchnormal(titulo,autor));
+                    out.print(respuesta);
+                    }else{
                     String ciudad=request.getParameter("ciudad");
                     String centro=request.getParameter("centro");
                     String area=request.getParameter("area");
                     String palabraclave=request.getParameter("palabraclave");
                     String categoria=request.getParameter("categoria");
                     ConsultaVO consultavo=new ConsultaVO(titulo, autor, ciudad, centro, area, palabraclave, categoria);
-                    Producto_Virtual pv=new Producto_Virtual();
                     pv.Producto_Virtual(consultavo);
-                    
+                    }   
                 break;
         }
     

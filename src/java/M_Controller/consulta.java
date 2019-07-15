@@ -68,7 +68,7 @@ public class consulta extends HttpServlet {
                     Producto_Virtual pv=new Producto_Virtual();
                     boolean constante=Boolean.parseBoolean(request.getParameter("constante"));
                     if(constante){
-                    String respuesta=new Gson().toJson( pv.searchnormal(titulo,autor));
+                    String respuesta=new Gson().toJson(pv.searchnormal(titulo,autor));
                     out.print(respuesta);
                     }else{
                     String ciudad=request.getParameter("ciudad");
@@ -77,7 +77,7 @@ public class consulta extends HttpServlet {
                     String palabraclave=request.getParameter("palabraclave");
                     String categoria=request.getParameter("categoria");
                     ConsultaVO consultavo=new ConsultaVO(titulo, autor, ciudad, centro, area, palabraclave, categoria);
-                    pv.Producto_Virtual(consultavo);
+                    pv.searchadvance(consultavo);
                     }   
                 break;
         }

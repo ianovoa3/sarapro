@@ -68,10 +68,6 @@ if($("#cerrar").click(function (){
    $(".modal-footer").empty();
   }));
  $("#btnBuscar").click(function () {
-     
-     var titulo=0;
-     var fecha=2;
-     var descripcion=3;
      if(constan==true){
      $.ajax({type:'POST',
      data:{opcion:2,titulo:$("#txtBuscarTitle").val(),autor:$("#Autores").val(),constante:constan},
@@ -79,23 +75,49 @@ if($("#cerrar").click(function (){
     success: function(data){ 
         var datarespuesta=JSON.parse(data);
         console.log(datarespuesta);
-        var contador=4;
+        var titulo=0;
+        var autor=1;
+        var fecha=2;
+        var descripcion=3;
+        var archivo=4;
+        var x=datarespuesta.length/5;
         $("#formulario1").hide();
         $("#resultadosProductos").show();
-//        for(var i=1;i<=datarespuesta.length;i++){    
-//           if(datarespuesta[contador]){}
-//            
-//        }
+       for(var i=0;i<x;i++){
+          $("#answer").append("<img src='Archivos/Formatos/productovirtual.jpg' id='formato'></img>");
+          $("#answer").append("<div><label>Titulo</label></div>");
+          $("#answer").append("<div><label id='titulorespuesta'>"+datarespuesta[titulo]+"</label></div>");
+          $("#answer").append("<div><label>Autor</label></div>");
+          $("#answer").append("<div><label id='autorrespuesta'>"+datarespuesta[autor]+"</label></div>");
+          $("#answer").append("<div><label>Fecha</label></div>");
+          $("#answer").append("<div><label id='fecharespuesta'>"+datarespuesta[fecha]+"</label></div>");
+          $("#answer").append("<div><label>Descripcion</label></div>");
+          $("#answer").append("<div><label id='descripcionrespuesta'>"+datarespuesta[descripcion]+"</label></div>");
+          $("#answer").append("<div><a class='btn btn-info' href=DescargaArchivo?archivo="+datarespuesta[archivo]+">Descargar P.V</a></div>");
+            titulo=titulo+5;
+            autor=autor+5;
+            fecha=fecha+5;
+            descripcion=descripcion+5;
+            archivo=archivo+5;
+        }
+        $("#btnBuscar").hide();   
     }
    });
      }else{
         $.ajax({type:'POST',
      data:{opcion:2,titulo:$("#txtBuscarTitle").val(),autor:$("#Autores").val(),ciudad:$("#CiudadFormacion").val(),centro:$("#CentroF").val(),area:$("#Area").val(),palabraclave:$("Palabras").val(),categoria:$("#SelectCategoria").val()},
      url:'consulta',
-    success: function(){    
+    success: function(data){
+        
     }
         });  
      }
+    });
+    
+    $("#btnActu").click(function(){
+         $("#btnBuscar").show();
+         $("#formulario1").show();
+         $("#answer").empty();
     });
    
 //    var selector = [], hilo = [], jso = [], data = [], datos = [], arraySelecionPrograma = [], arraySelectCategoria = [];

@@ -31,20 +31,6 @@ FileReader entrada;
     public Producto_Virtual() {
         super("producto_virtual", 1);
     }
-@Override
-     public void Producto_Virtual(ConsultaVO consultaVO) {
-        try {
-            String titulo=consultaVO.getTitulo();
-            String autor=consultaVO.getAutor();
-            String ciudad=consultaVO.getCiudad();
-            String centro=consultaVO.getCentro();
-            String area=consultaVO.getArea();
-            String palabraclave=consultaVO.getPalabraclave();
-            String categoria=consultaVO.getCategoria();
-        } catch (Exception e) {
-         Logger.getLogger(Producto_Virtual.class.getName()).log(Level.SEVERE, null, e);
-        }
-    }
     public ArrayList searchnormal(String nombreproducto,String autor){
         ArrayList lista=new ArrayList();
             Connection cnn=null;
@@ -53,35 +39,48 @@ FileReader entrada;
      try {
          cnn=obtenerConn();
           sentencia=cnn.createStatement();
-          rs=sentencia.executeQuery("select pv.nom_p_virtual,f.nom_funcionario,v.fecha_publicacion,pv.des_p_virtual from funcionario f inner join autor a on a.id_funcionario=f.id_funcionario inner join producto_virtual pv inner join version v on v.id_p_virtual=pv.id_p_virtual WHERE pv.nom_p_virtual='"+nombreproducto+"' OR f.nom_funcionario='"+autor+"' AND v.id_estado=6");
+          rs=sentencia.executeQuery("select DISTINCT pv.nom_p_virtual,f.nom_funcionario,v.fecha_publicacion,pv.des_p_virtual,v.url_version from funcionario f inner join autor a on a.id_funcionario=f.id_funcionario inner join producto_virtual pv inner join version v on v.id_p_virtual=pv.id_p_virtual WHERE pv.nom_p_virtual='"+nombreproducto+"' OR f.nom_funcionario='"+autor+"' AND v.id_estado=6");
           while(rs.next()){
           lista.add(rs.getString("pv.nom_p_virtual"));
           lista.add(rs.getString("f.nom_funcionario"));
           lista.add(rs.getString("v.fecha_publicacion"));
-          lista.add(rs.getString("pv.des_p_virtual")); 
+          lista.add(rs.getString("pv.des_p_virtual"));
+          lista.add(rs.getString("v.url_version"));
           }
         } catch (Exception e) {
              Logger.getLogger(Producto_Virtual.class.getName()).log(Level.SEVERE, null, e);
         }
      return lista;
     } 
-    public ArrayList<ConsultaVO> searchadvance(){
-     ArrayList<ConsultaVO> lista=new ArrayList();
-          M_Connection conexion=new M_Connection();
-            Connection cnn=null;
-            Statement sentencia=null;
-            ResultSet rs=null;   
-     try {
-         cnn=obtenerConn();
-          sentencia=cnn.createStatement();
-          rs=sentencia.executeQuery("select * from producto_virtual pv inner join funcionario f inner join autor a inner join version v on pv.id_p_virtual=v.id_p_virtual on a.id_funcionario=f.id_funcionario where pv.nom_p_virtual='Prueba' AND a.autor='Isaac' AND v.id_estado=6");
-          while(rs.next()){
-          
+    public ArrayList<ConsultaVO> searchadvance(ConsultaVO consultaVO){
+        Connection conex=null;
+       Statement sentence=null;
+       ResultSet resultset=null;
+        ArrayList lista=new ArrayList();
+         try {
+            String titulo=consultaVO.getTitulo();
+            String autor=consultaVO.getAutor();
+            String ciudad=consultaVO.getCiudad();
+            String centro=consultaVO.getCentro();
+            String area=consultaVO.getArea();
+            String palabraclave=consultaVO.getPalabraclave();
+            String categoria=consultaVO.getCategoria();
+            conex=obtenerConn();
+          sentence=conex.createStatement();
+          //select DISTINCT pv.nom_p_virtual,f.nom_funcionario,v.fecha_publicacion,pv.des_p_virtual,v.url_version from producto_virtual pv inner join version v ON pv.id_p_virtual=v.id_p_virtual inner join autor a inner join funcionario f on f.id_funcionario=a.id_funcionario inner join ciudad ci inner join centro ce on ci.id_ciudad=ce.id_ciudad inner join area ar inner join WHERE pv.nom_p_virtual='' OR f.nom_funcionario='' OR ci.nom_ciudad='bogotá'  OR ce.nom_centro='centro de gestion de mercados, logistica y tecnologias de la información' AND v.id_estado=6;
+          resultset=sentence.executeQuery("");
+          while(resultset.next()){
+          lista.add(resultset.getString("pv.nom_p_virtual"));
+          lista.add(resultset.getString("f.nom_funcionario"));
+          lista.add(resultset.getString("v.fecha_publicacion"));
+          lista.add(resultset.getString("pv.des_p_virtual"));
+          lista.add(resultset.getString("v.url_version"));
           }
+            
         } catch (Exception e) {
-             Logger.getLogger(Producto_Virtual.class.getName()).log(Level.SEVERE, null, e);
+         Logger.getLogger(Producto_Virtual.class.getName()).log(Level.SEVERE, null, e);
         }
-     return lista;
+         return lista;
      }
     public boolean derechosdeautor(String derechosdeautor){
         Connection cnn=null;

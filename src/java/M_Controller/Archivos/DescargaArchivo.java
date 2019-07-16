@@ -2,13 +2,11 @@ package M_Controller.Archivos;
 
 import M_Modelo.Rankin;
 import M_Util.Elomac;
-import com.sun.activation.registries.MimeTypeFile;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.activation.MimetypesFileTypeMap;

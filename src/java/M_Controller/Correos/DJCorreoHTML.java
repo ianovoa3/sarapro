@@ -35,7 +35,7 @@ public class DJCorreoHTML {
 
     }
 
-    public void mandarCorreo(String destinatario, String asunt, String user, String toq) {
+    public void mandarCorreo(String destinatario, String asunt, String contenido) {
         String destinatarios = destinatario;
         String asunto = asunt;
         Session session = Session.getInstance(properties, null);
@@ -59,10 +59,7 @@ public class DJCorreoHTML {
                     + "        </div>\n"
                     + "        <div align=\"center\">\n"
                     + "            <font size=\"6\" face=\"Candara\">     \n"
-                    + "            Estimado Funcionario, le informamos que su usuario es: " + user + "\n"
-                    + "            <br>\n"
-                    + "            Para confirmar la cuenta debe ingresar al link que se encuentra"
-                    + "a continuacion LINK: <a href='http://172.16.255.225:8083/sara/ActivacionCuenta_Controller?t=" + toq + "&c=1'>link</a>. \n"
+                    + "            Estimado Funcionario, le informamos que su usuario  fue creado satisfactoriamente su contraseña asignada es: " + contenido + "\n"
                     + "            <br>\n"
                     + "            <br>\n"
                     + "            Gracias por su atencion.\n"

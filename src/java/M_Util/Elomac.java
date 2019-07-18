@@ -46,6 +46,8 @@ public class Elomac extends M_Crud {
         cargarAtributos();
         this.arrayAtributos = cargarArrayAtributos();
     }
+    public Elomac(){
+    }
 
     public Elomac(int tab, int tipo, Object[] datos) {
         this.tipoElo = tipo;

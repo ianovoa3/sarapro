@@ -4,6 +4,7 @@ import M_Util.Elomac;
 import VO.FuncionarioVO;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -14,32 +15,31 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Funcionario extends Elomac{
-	public  Funcionario ( ){ 
-		super("Funcionario",1);
-	}
+	public void reemplazo(){
+    }
 //        public boolean RegistrarFuncionario(Object[] fun){
 //            return (boolean)this.Registar(Group(fun,'~'), 2);
 //        }
         
-        public String ListaAsignarRoles(String idCentro){
-            String[] campos ={"2"};
-            String listaFun1 = new Elomac(26,1).Select(campos);
-            String listaNegativa = "";
-            try {
-                for (int i = 0; i < new JSONArray(listaFun1).length(); i++) {
-                    JSONObject jso = new JSONArray(listaFun1).getJSONObject(i);
-                    if(i == 0)
-                        listaNegativa += jso.getString("id_funcionario"); 
-                    else
-                        listaNegativa += ","+jso.getString("id_funcionario"); 
-                }
-                    
-                   String[] campos1 = {"0","1","2","4","6","8"}; 
-                   return (new Elomac(20,2).Select(campos1,"[{colum:0,operador:7,valor1:'"+listaNegativa+"',añadir:0},{colum:3,operador:0,valor1:"+idCentro+"}]"));
-            } catch (JSONException ex) {
-                return("no se pudo");
-            }
-        }
+//        public String ListaAsignarRoles(String idCentro){
+//            String[] campos ={"2"};
+//            String listaFun1 = new Elomac(26,1).Select(campos);
+//            String listaNegativa = "";
+//            try {
+//                for (int i = 0; i < new JSONArray(listaFun1).length(); i++) {
+//                    JSONObject jso = new JSONArray(listaFun1).getJSONObject(i);
+//                    if(i == 0)
+//                        listaNegativa += jso.getString("id_funcionario"); 
+//                    else
+//                        listaNegativa += ","+jso.getString("id_funcionario"); 
+//                }
+//                    
+//                   String[] campos1 = {"0","1","2","4","6","8"}; 
+//                   return (new Elomac(20,2).Select(campos1,"[{colum:0,operador:7,valor1:'"+listaNegativa+"',añadir:0},{colum:3,operador:0,valor1:"+idCentro+"}]"));
+//            } catch (JSONException ex) {
+//                return("no se pudo");
+//            }
+//        }
         
         public boolean ModificarContraseña(String[] parametrosModifContr){
             return (boolean)this.Registar(Group(parametrosModifContr,'~'), 20);
@@ -83,12 +83,13 @@ public class Funcionario extends Elomac{
                while(rs.next()){
                id_rolfuncionario=rs.getInt("id_funcionario");
                }
-                 System.out.println("letzte id:"+id_rolfuncionario);
+                 System.out.println("tipo:"+funcionariovo.getTipoUsuario());
+                 
                sentencia.executeUpdate("INSERT INTO rol_funcionario(id_rol,id_funcionario,vigencia) VALUES ('"+funcionariovo.getTipoUsuario()+"','"+id_rolfuncionario+"','"+1+"')");
                operacion=true;
-            } catch (Exception e) {
-               // Logger.getLogger(Funcionario.class.getName()).log(Level.SEVERE, null, e);
-               System.out.println("error:"+e.getMessage());
+            } catch (SQLException e) {
+              //System.out.println("Location"+e.getClass());
+              Logger.getLogger(Funcionario.class.getName()).log(Level.SEVERE, null, e);  
             }
             return operacion;
         }

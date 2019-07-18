@@ -41,7 +41,7 @@ $("#boton1").click(function () {
             boo++;
         }
     }
-    if(boo==11){
+    if(boo==10){
         var nombre=document.getElementById('nombre').value;
         var apellido=document.getElementById('apellido').value;
         var tipoUsuario=document.getElementById('tipoUsuario').value;
@@ -52,13 +52,11 @@ $("#boton1").click(function () {
         var reddeconocimiento=document.getElementById('reddeconocimiento').value;
         var ipSena=document.getElementById('ipSena').value;
         var cargo=document.getElementById('cargo').value;
-        var clave=document.getElementById('clave').value;
-        console.log("clave:"+clave);
     $.ajax({
         type:'POST',
-        data:{nombre:nombre,apellido:apellido,tipoUsuario:tipoUsuario,tipoIdenti:tipoIdenti,numeroIdentificacion:numeroIdentificacion,email:email,centroFormacion:centroFormacion,reddeconocimiento:reddeconocimiento,ipSena:ipSena,cargo:cargo,clave:clave,opcion:3},
+        data:{nombre:nombre,apellido:apellido,tipoUsuario:tipoUsuario,tipoIdenti:tipoIdenti,numeroIdentificacion:numeroIdentificacion,email:email,centroFormacion:centroFormacion,reddeconocimiento:reddeconocimiento,ipSena:ipSena,cargo:cargo,opcion:3},
         url:'actor',
-            success: function (response) {
+            success: function (data) {
                $('#AnimacionCargando').show();
             }
         });
@@ -84,32 +82,32 @@ function ajax(i, datos) {
 }
 
 function peticionCompleta(i) {
-    if (i == 0) {
-        jso[1] = ['Crud_Controller', '[{opcion:3,tabla2:49,tipo:1,elegir:["0","1"],delimitador:[],id:0,opSelect:4}]'];
-        selector[1] = $("#tipoUsuario");
-        datos[1] = {nombre: "Select"};
+   if (i == 0) {
+       jso[1] = ['Crud_Controller', '[{opcion:3,tabla2:49,tipo:1,elegir:["0","1"],delimitador:[],id:0,opSelect:4}]'];
+       selector[1] = $("#tipoUsuario");
+       datos[1] = {nombre: "Select"};
         ajax(1, datos[1]);
-    } else if (i == 1) {
+  } else if (i == 1) {
         jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:55,tipo:1,elegir:[],delimitador:[],id:0,opSelect:1}]'];
-        selector[2] = $("#tipoIdenti");
-        datos[2] = {nombre: "Select"};
-        ajax(2, datos[2]);
-    } else if (i == 3) {
-        var daMen = data[i].split("$$");
-        if (daMen[0] == "true") {
-            estados = ("success");
-            men = "El funcionario  " + men + " " + daMen[1];
-        } else {
-            estados = ("error");
-            men = "El funcionario  " + men + " " + daMen[1];
-        }
-        $.notify(men, estados);
-        jso[6] = ['Administrador_Controller', '[{opcion:1,ti:' + idRol + '}]'];
-        datos[6] = {caso: "Deshabilitar Usuarios"};
-        ajax(6);
-    } else if (i == 6) {
-        $("#CasoNombre").text(datos[i].caso);
-        $("#cuerpo").empty();
-        $("#cuerpo").append(data[i]);
-    }
+      selector[2] = $("#tipoIdenti");
+       datos[2] = {nombre: "Select"};
+       ajax(2, datos[2]);
+//   } else if (i == 3) {
+//        var daMen = data[i].split("$$");
+//        if (daMen[0] == "true") {
+//            estados = ("success");
+//            men = "El funcionario  " + men + " " + daMen[1];
+//        } else {
+//            estados = ("error");
+//            men = "El funcionario  " + men + " " + daMen[1];
+//        }
+//        $.notify(men, estados);
+//        jso[6] = ['Administrador_Controller', '[{opcion:1,ti:' + idRol + '}]'];
+//        datos[6] = {caso: "Deshabilitar Usuarios"};
+//        ajax(6);
+//    } else if (i == 6) {
+//        $("#CasoNombre").text(datos[i].caso);
+//        $("#cuerpo").empty();
+//        $("#cuerpo").append(data[i]);
+  }
 }

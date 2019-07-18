@@ -1024,7 +1024,7 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${file.reference.opencsv-3.9.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.org.apache.commons.fileupload.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.org.json.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
-<!--        <copyfiles files="${libs.MySQLDriver.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>!-->
+        <copyfiles files="${libs.MySQLDriver.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
     </target>
     <target depends="init" if="dist.ear.dir" name="-clean-webinf-lib">
         <delete dir="${build.web.dir}/WEB-INF/lib"/>

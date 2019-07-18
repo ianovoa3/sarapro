@@ -5,6 +5,7 @@
  */
 package M_Controller;
 
+import M_Controller.Correos.DJCorreoHTML;
 import M_Modelo.Funcionario;
 import M_Modelo.Producto_Virtual;
 import M_Modelo.Programa;
@@ -14,6 +15,8 @@ import com.google.gson.JsonElement;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.stream.IntStream;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.digest.DigestUtils;
 import static org.apache.commons.codec.digest.MessageDigestAlgorithms.MD5;
+import org.apache.taglibs.standard.extra.spath.ASCII_CharStream;
 import org.json.JSONArray;
 
 /**
@@ -74,12 +78,22 @@ public class actorcontrolador extends HttpServlet {
             String reddeconocimiento=request.getParameter("centroFormacion");
             String ipSena=request.getParameter("ipSena");
             String cargo=request.getParameter("cargo");
-            String clave=request.getParameter("clave");
+            Random random =new Random();
+           String clave=String.valueOf(random.nextInt(1000));
+           ArrayList guardarabcedario=new ArrayList();
+           for(int i=97;i<123;i++){
+               guardarabcedario.add((char)i);
+           } 
+           for(int j=0;j<6;j++){
+               clave=clave+guardarabcedario.get(random.nextInt(26));
+           }
             FuncionarioVO funcionariovo=new FuncionarioVO(nombre, apellido, tipoUsuario, tipoIdenti, numeroIdentificacion, email, centroFormacion, reddeconocimiento, ipSena, cargo,clave);
-            Funcionario funcionario=new Funcionario();
-            if(funcionario.registrarUsuario(funcionariovo) && funcionario.registrorol(funcionariovo)){
-                request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
-            }    
+           Funcionario funcionario=new Funcionario();
+           DJCorreoHTML correo=new DJCorreoHTML();
+           correo.mandarCorreo(email,"Clave de Sarapro",clave);
+           if(funcionario.registrarUsuario(funcionariovo)){
+               request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
+           }    
             break;
             }
             

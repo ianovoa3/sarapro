@@ -428,8 +428,8 @@ jQuery.Luna = function (Datos, selector) {
                         }));
                     }
                     break;
-                    case "consultaTipoFormatos":
-//                    console.log("TIPO");
+                case "consultaTipoFormatos":
+                    console.log("TIPO");
 //                    var jsSelect = jQuery.parseJSON(json);
 //                    var data = "";
 //                    selector.dataTable().fnClearTable();
@@ -441,7 +441,7 @@ jQuery.Luna = function (Datos, selector) {
 //                            "<button id='" + data + "' class='btnModificarTipoFor btn btn-info'>Modificar</button>"
 //                      ]);
 //                  }
-//                    break;
+                    break;
                 case "ConsOaP":
 //                    var pag = 1;
 //                    var q = 2;
@@ -476,7 +476,7 @@ jQuery.Luna = function (Datos, selector) {
 //                        var di = ("<label>No existe ningun producto virtual.</label>");
 //                        $("#resultadosProductos").append(di);
 //                    }
-//                    break;
+                    break;
                 case "calificar":
                     var jso = jQuery.parseJSON(json);
                     var row = "", cc = 1;

@@ -39,9 +39,9 @@ public class Funcionario_Controller extends HttpServlet {
             PrintWriter respuesta = response.getWriter();
             switch (opcion) {
                 case 1:
-                    String[] fun = Elomac.M_toArray(jData.getString("datos"));
-                    fun[8] = new vasos().getVaso()+fun[2];
-                    try {
+                   // String[] fun = Elomac.M_toArray(jData.getString("datos"));
+                    //fun[8] = new vasos().getVaso()+fun[2];
+                   // try {
                      //  if (new Funcionario().RegistrarFuncionario(fun)) {
                    //         DJCorreoHTML correoHTML = new DJCorreoHTML();
                  //           correoHTML.mandarCorreo(fun[5], "Confirmacion de Cuenta SARA PRO1", fun[2], fun[8]);
@@ -49,17 +49,17 @@ public class Funcionario_Controller extends HttpServlet {
          //               } else {
              //               respuesta.println("false$$no se registro");
            //             }
-                    } catch (Exception e) {
-                        respuesta.println("[{valor:false,mensaje:'" + e.getMessage() + "'}]");
-                    }
-                    break;
+                    //} catch (Exception e) {
+                      //  respuesta.println("[{valor:false,mensaje:'" + e.getMessage() + "'}]");
+                    //}
+                    //break;
                 case 2:
-                    String centro = jData.getString("centro");
-                    try {
-                        respuesta.println("[{valor:true,mensaje:'" + new Funcionario().ListaAsignarRoles(centro) + "'}]");
-                    } catch (Exception e) {
-                        respuesta.println("[{valor:false,mensaje:'" + e.getMessage() + "'}]");
-                    }
+//                    String centro = jData.getString("centro");
+//                    try {
+//                        respuesta.println("[{valor:true,mensaje:'" + new Funcionario().ListaAsignarRoles(centro) + "'}]");
+//                    } catch (Exception e) {
+//                        respuesta.println("[{valor:false,mensaje:'" + e.getMessage() + "'}]");
+//                    }
                     break;
                 case 3://MODIFICAR CONTRASEÑA
                        //jso[1] = ['Funcionario_Controller','[{opcion:3,modificarContra:['+idUser+','+$("#user").val()+','+$("#ConActual").val()+','+$("#ConNueva").val+']}]'];
@@ -80,22 +80,22 @@ public class Funcionario_Controller extends HttpServlet {
                     }
                     break;
                 case 4:
-                    String[] datos = Elomac.M_toArray(jData.getString("datos"));
-                    Elomac funAsignar = new Elomac(26, 1, datos);
-                    System.out.println(new Funcionario().Select(27));//OBTENER EL ID DEL FUNCIONARIO
-                    String funSelect = new Funcionario().Select(27);
-                    if (funAsignar.Insert() == true && funSelect != null) {
-                        Elomac fu = new Elomac(18, 1);
-                        fu.load(funSelect);
-                        String[] fun2 = M_Crud.M_toArray(fu.atributos, 2);
-                        fun2[8] = new vasos().getVaso();
-                        DJCorreoHTML correoHTML = new DJCorreoHTML();
-                        correoHTML.mandarCorreo(fun2[5], "Confirmacion de Cuenta SARA PRO1", fun2[2], fun2[8]);
-                        respuesta.println("true$$El Funcionario fue Registrado");
-                    } else {
-                        respuesta.println("false$$El Funcionario no fue Registrado");
-                    }
-                    break;
+//                    String[] datos = Elomac.M_toArray(jData.getString("datos"));
+//                    Elomac funAsignar = new Elomac(26, 1, datos);
+//                    System.out.println(new Funcionario().Select(27));//OBTENER EL ID DEL FUNCIONARIO
+//                    String funSelect = new Funcionario().Select(27);
+//                    if (funAsignar.Insert() == true && funSelect != null) {
+//                        Elomac fu = new Elomac(18, 1);
+//                        fu.load(funSelect);
+//                        String[] fun2 = M_Crud.M_toArray(fu.atributos, 2);
+//                        fun2[8] = new vasos().getVaso();
+//                        DJCorreoHTML correoHTML = new DJCorreoHTML();
+//                        correoHTML.mandarCorreo(fun2[5], "Confirmacion de Cuenta SARA PRO1", fun2[2], fun2[8]);
+//                        respuesta.println("true$$El Funcionario fue Registrado");
+//                    } else {
+//                        respuesta.println("false$$El Funcionario no fue Registrado");
+//                    }
+//                    break;
                 case 5:
                     
                     Elomac fun1 = new Elomac(35, 1);
@@ -114,11 +114,11 @@ public class Funcionario_Controller extends HttpServlet {
                     //jso[0] = ['Funcionario_Controller','[{opcion:6,asignarRol:[1,'+idCentro+','+idFuncionarioEscogido+','+idRolEscogido+']}]']; 
                     //Cambia el rol del funcionario seleccionado (Solo puede cambiar el rol a LE tecnico o LE pedagogico ya que por default todos tienen
                     // el rol basico asignado)
-                    try {
-                        respuesta.println(new Rol().AsignarRol(Elomac.M_toArray(jData.getString("asignarRol"))));
-                    } catch (Exception e) {
-                        respuesta.println(e.getMessage());
-                    }
+                    //try {
+                      //  respuesta.println(new Rol().AsignarRol(Elomac.M_toArray(jData.getString("asignarRol"))));
+                    //} catch (Exception e) {
+                      //  respuesta.println(e.getMessage());
+                    //}
                     break;
             }
         }

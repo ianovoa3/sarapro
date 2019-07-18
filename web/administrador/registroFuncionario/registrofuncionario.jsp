@@ -55,9 +55,7 @@
                             <label>Ip SENA:</label>
                             <input type="text" class="form-control input" placeholder=" Digite Ip SENA" id="ipSena" maxlength="6">
                             <label  for="cargo">Cargo</label>
-                            <input type="text" class="form-control input" placeholder=" Digite cargo" id="cargo" maxlength="45">
-                            <label for="">Clave</label>
-                            <input type="text" class="form-control input" placeholder=" Digite clave" id="clave" maxlength="45">
+                            <input type="text" class="form-control input" placeholder=" Digite cargo" id="cargo" maxlength="45">              
                             <center>
                                 <br/>
                                 <div id="divBtn">

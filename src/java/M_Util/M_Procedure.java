@@ -9,7 +9,7 @@ public class M_Procedure extends M_Connection{
             protected   ResultSet rs    = null;
             private static final String[] procedure = {"{Call SARA_CRUD(?,?,?,?)}",
                                                   "{call RegistrarLista(?)}",
-                                                  "{call RegistrarFuncionario(?)}",
+                                                  "{}",
                                                   "{call Registrar_PV(?,?)}",
                                                   "{call MACC(?)}",
                                                   "{call RegistrarEvaluacion(?)}",
@@ -36,7 +36,7 @@ public class M_Procedure extends M_Connection{
                                                   "{call Centro_Procedure(?)}",
                                                   "{call Formato_Procedure(?)}",
                                                   "{call TipoFormato_Procedure(?)}",
-                                                  "{call Asignar_Rol(?)}",
+                                                  "{}",
                                                   "{call MisProductos(?)}"
                                                   };    
                                                   

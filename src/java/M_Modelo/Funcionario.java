@@ -85,6 +85,7 @@ public class Funcionario extends Elomac{
                }
                  System.out.println("tipo:"+funcionariovo.getTipoUsuario());
                  
+                 
                sentencia.executeUpdate("INSERT INTO rol_funcionario(id_rol,id_funcionario,vigencia) VALUES ('"+funcionariovo.getTipoUsuario()+"','"+id_rolfuncionario+"','"+1+"')");
                operacion=true;
             } catch (SQLException e) {

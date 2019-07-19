@@ -2,6 +2,34 @@
 <%@page import="java.util.ArrayList"%>
 <div class="content">
     <link href="css/carg.css" rel="stylesheet"/>
+    <div class="modal" tabindex="-1" role="dialog" id="modalcargamasiva">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title">Carga Masiva</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                      <form action="CargaMasiva" method="POST" enctype="multipart/form-data">
+                                    <div class="modal-body">
+                                      <p>Seleccione tipo de funcionario a cargar</p>
+                                      <select class="form-control select" name="cargaselect">
+                                          <option>Seleccione..</option>
+                                          <option value="1">Instructor</option>
+                                          <option value="2">Lider Tecnico</option>
+                                          <option value="3">Lider Equipo</option>
+                                          <option value="4">Coordinador</option>
+                                      </select>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="file" name="archivoacargar" accept=".csv">
+                                     <button type="submit" class="btn btn-secondary" data-dismiss="modal" id="subirarchivo">Carga Masiva</button>
+                                    </div>
+                                      </form>
+                                  </div>
+                                </div>
+                              </div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -60,6 +88,7 @@
                                 <br/>
                                 <div id="divBtn">
                                     <button type="action" id="boton1" class="btn btn-info">Registrar Funcionario</button>
+                                    <button type="action" id="cargarmasivamente" class="btn btn-info">Registrar Varios funcionarios</button>
                                 </div>
                             </center>
                         </section>
@@ -72,5 +101,12 @@
     <script type="text/javascript" src="js/notify.js"></script>
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
     <script type="text/javascript" src="administrador/registroFuncionario/js/registroCoordinador.js"></script>
-    
+    <script>
+$("#cargarmasivamente").click(function(){
+ $("#modalcargamasiva").show();
+});
+$("#subirarchivo").click(function(){
+    $("#modalcargamasiva").hide();
+});
+    </script>
 </div>

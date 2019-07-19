@@ -5,7 +5,7 @@ jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:10,tipo:2,elegir:["2","3"],delim
 selector[0] = $("#centroFormacion");
 datos[0] = {nombre: "Select"};
 ajax(0, datos[0]);
-
+//$("#modalcargamasiva").hide();
 //$("#centroFormacion").change(function () {
 //    $("#area").empty().append("<option selected='selected'>selecciona...</option>");
 //    jso[4] = ['Crud_Controller', '[{opcion:3,tabla2:10,tipo:2,elegir:[0,1],delimitador:"[{colum:2 ,operador:0 ,valor1:' + $("#centroFormacion").val() + '}]",id:0,opSelect:6}]'];
@@ -80,7 +80,6 @@ function ajax(i, datos) {
         peticionCompleta(i);
     };
 }
-
 function peticionCompleta(i) {
    if (i == 0) {
        jso[1] = ['Crud_Controller', '[{opcion:3,tabla2:49,tipo:1,elegir:["0","1"],delimitador:[],id:0,opSelect:4}]'];

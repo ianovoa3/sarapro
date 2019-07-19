@@ -5,6 +5,10 @@
  */
 package M_Controller.Archivos;
 
+import M_Modelo.Archivo;
+import com.opencsv.CSVReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,13 +16,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
- * @author Isaac
+ * @author userdata06
  */
-@WebServlet(name = "descargar", urlPatterns = {"/descargar"})
-public class descargar extends HttpServlet {
+@WebServlet(name = "CargaMasiva", urlPatterns = {"/CargaMasiva"})
+public class CargaMasiva extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,16 +38,15 @@ public class descargar extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet descargar</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet descargar at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+           String valorrol=request.getParameter("cargaselect");
+           String archivo=request.getParameter("archivoacargar");
+           Archivo archivos=new Archivo();
+           Part ruta=request.getPart("archivoacargar");
+            System.out.println("Part:"+ruta);
+           archivos.escritura(archivo);
+           request.getRequestDispatcher("administradorPrincipal.jsp").forward(request, response);
+            
+            
         }
     }
 

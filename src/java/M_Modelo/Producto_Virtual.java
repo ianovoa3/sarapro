@@ -39,13 +39,14 @@ FileReader entrada;
      try {
          cnn=obtenerConn();
           sentencia=cnn.createStatement();
-          rs=sentencia.executeQuery("select DISTINCT pv.nom_p_virtual,f.nom_funcionario,v.fecha_publicacion,pv.des_p_virtual,v.url_version from funcionario f inner join autor a on a.id_funcionario=f.id_funcionario inner join producto_virtual pv inner join version v on v.id_p_virtual=pv.id_p_virtual WHERE pv.nom_p_virtual='"+nombreproducto+"' OR f.nom_funcionario='"+autor+"' AND v.id_estado=6");
+          rs=sentencia.executeQuery("select DISTINCT pv.nom_p_virtual,f.nom_funcionario,v.fecha_publicacion,pv.des_p_virtual,v.url_version,tipofor.nom_tipo_formato from funcionario f inner join autor a on a.id_funcionario=f.id_funcionario inner join producto_virtual pv inner join version v on v.id_p_virtual=pv.id_p_virtual inner join formato form on pv.id_formato=form.id_formato inner join tipo_formato tipofor on form.id_tipo_formato=tipofor.id_tipo_formato WHERE pv.nom_p_virtual='"+nombreproducto+"' OR f.nom_funcionario='"+autor+"' AND v.id_estado=6");
           while(rs.next()){
           lista.add(rs.getString("pv.nom_p_virtual"));
           lista.add(rs.getString("f.nom_funcionario"));
           lista.add(rs.getString("v.fecha_publicacion"));
           lista.add(rs.getString("pv.des_p_virtual"));
           lista.add(rs.getString("v.url_version"));
+          lista.add(rs.getString("tipofor.nom_tipo_formato"));
           }
         } catch (Exception e) {
              Logger.getLogger(Producto_Virtual.class.getName()).log(Level.SEVERE, null, e);

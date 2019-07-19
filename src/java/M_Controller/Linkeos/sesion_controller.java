@@ -55,8 +55,7 @@ public class sesion_controller extends HttpServlet {
                         request.getRequestDispatcher("index.jsp").forward(request, response);
                     } else {
                         JSONObject funJ = new JSONArray(resultado).getJSONObject(0);
-                        int rol = funJ.getJSONArray("id_rol").getInt(0);
-                        
+                        int rol = funJ.getJSONArray("id_rol").getInt(0);               
                         if(rol != 5){
                             sesion.setAttribute("idUser", funJ.getJSONArray("id_funcionario").getInt(0));
                             sesion.setAttribute("nomUser",funJ.getJSONArray("nom_funcionario").getString(0));

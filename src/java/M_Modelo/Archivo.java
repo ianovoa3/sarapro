@@ -5,11 +5,16 @@
  */
 package M_Modelo;
 
+import com.opencsv.CSVReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,8 +24,19 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Archivo {
     
-    public void escritura(int bytes,HttpServletResponse response,File f){   
-       
+    public void escritura(String archivo) throws FileNotFoundException{   
+       String archCSV = "C:\\fakepath\\"+archivo;
+       CSVReader csvReader = new CSVReader(new FileReader(archCSV));
+        String[] fila = null;
+        try {
+            while((fila = csvReader.readNext()) != null) {
+                System.out.println(fila[0]
+                        + " | " + fila[1]
+                        + " |  " + fila[2]);
+            }       } catch (IOException ex) {
+            Logger.getLogger(Archivo.class.getName()).log(Level.SEVERE, null, ex);
+        }
             
     }
+    
 }

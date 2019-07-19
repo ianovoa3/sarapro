@@ -80,7 +80,8 @@ if($("#cerrar").click(function (){
         var fecha=2;
         var descripcion=3;
         var archivo=4;
-        var x=datarespuesta.length/5;
+        var formato=5;
+        var x=datarespuesta.length/6;
         $("#formulario1").hide();
         $("#resultadosProductos").show();
        for(var i=0;i<x;i++){
@@ -93,12 +94,16 @@ if($("#cerrar").click(function (){
           $("#answer").append("<div><label id='fecharespuesta'>"+datarespuesta[fecha]+"</label></div>");
           $("#answer").append("<div><label>Descripcion</label></div>");
           $("#answer").append("<div><label id='descripcionrespuesta'>"+datarespuesta[descripcion]+"</label></div>");
+          $("#answer").append("<div><label>Formato</label></div>");
+          $("#answer").append("<div><label id='formatorespuesta'>"+datarespuesta[formato]+"</label></div>");
           $("#answer").append("<div><a class='btn btn-info' href=DescargaArchivo?archivo="+datarespuesta[archivo]+">Descargar P.V</a></div>");
-            titulo=titulo+5;
-            autor=autor+5;
-            fecha=fecha+5;
-            descripcion=descripcion+5;
-            archivo=archivo+5;
+          
+            titulo=titulo+6;
+            autor=autor+6;
+            fecha=fecha+6;
+            descripcion=descripcion+6;
+            archivo=archivo+6;
+            formato=formato+6;
         }
         $("#btnBuscar").hide();   
     }

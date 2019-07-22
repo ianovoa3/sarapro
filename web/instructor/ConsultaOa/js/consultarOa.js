@@ -113,7 +113,7 @@ if($("#cerrar").click(function (){
      data:{opcion:2,titulo:$("#txtBuscarTitle").val(),autor:$("#Autores").val(),ciudad:$("#CiudadFormacion").val(),centro:$("#CentroF").val(),area:$("#Area").val(),palabraclave:$("Palabras").val(),categoria:$("#SelectCategoria").val()},
      url:'consulta',
     success: function(data){
-        
+        console.log(data);
     }
         });  
      }

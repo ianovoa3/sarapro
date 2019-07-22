@@ -117,7 +117,7 @@ jQuery.Luna = function (Datos, selector) {
     function cargarTabla(json, selector, datos) {
         try {
             var c = 1;
-            console.log("json"+json+"datosn:"+datos.nombre);
+           console.log("json"+json+"datosn:"+datos.nombre);
             switch (datos.nombre) {
                 case "MutiCategoria":
                     //Lo mirare posee el mismo dilema que encontre con multiselect con la busqueda de quicksechars =0
@@ -430,17 +430,17 @@ jQuery.Luna = function (Datos, selector) {
                     break;
                 case "consultaTipoFormatos":
                     console.log("TIPO");
-//                    var jsSelect = jQuery.parseJSON(json);
-//                    var data = "";
-//                    selector.dataTable().fnClearTable();
-//                   for (var i = 0; i < jsSelect.length; i++) {
-//                       data = jsSelect[i].id_tipo_formato + "$$" + jsSelect[i].nom_tipo_formato + "$$" + jsSelect[i].urlimgtipoformato;
-//                       table = selector.dataTable().fnAddData([
-//                            i+1,
-//                            jsSelect[i].nom_tipo_formato,
-//                            "<button id='" + data + "' class='btnModificarTipoFor btn btn-info'>Modificar</button>"
-//                      ]);
-//                  }
+                    var jsSelect = jQuery.parseJSON(json);
+                    var data = "";
+                    selector.dataTable().fnClearTable();
+                   for (var i = 0; i < jsSelect.length; i++) {
+                       data = jsSelect[i].id_tipo_formato + "$$" + jsSelect[i].nom_tipo_formato + "$$" + jsSelect[i].urlimgtipoformato;
+                       table = selector.dataTable().fnAddData([
+                            i+1,
+                            jsSelect[i].nom_tipo_formato,
+                            "<button id='" + data + "' class='btnModificarTipoFor btn btn-info'>Modificar</button>"
+                      ]);
+                  }
                     break;
                 case "ConsOaP":
 //                    var pag = 1;

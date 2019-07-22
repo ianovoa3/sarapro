@@ -6,7 +6,7 @@ $(document).on('ready', function () {
     jso[0] = ['Modificar_Controller', '[{opcion:2,ProgramaAdmin:[0,0,0,0,0]}]'];
     selector[0] = $("#tablaPrograma");
     ob.TablaEspa(selector[0]);
-    datos[0] = {nombre: "ConsultaPrograma"};
+    datos[0] = {nombre:"ConsultaPrograma"};
     ajax(0, datos[0]);
 
     $(document).on('click', '.btnModificarPrograma', function (e) {
@@ -120,7 +120,7 @@ $(document).on('ready', function () {
             ajax(3, datos[3]);
         } else {
             men = $("#nomPro").val();
-            jso[4] = ['Modificar_Controller', '[{opcion:2,ProgramaAdmin:[1,0,' + $("#nomPro").val() + ',' + $("#nivel").val() + ',\"' + arrayTemas + '\"]}]'];
+            jso[4] = ['Modificar_Controller', '[{opcion:2,ProgramaAdmin:[0,' + $("#nomPro").val() + ',' + $("#nivel").val() + ',\"' + arrayTemas + '\"]}]'];
             datos[4] = {nombre: "btn"};
             ajax(4, datos[4]);
         }
@@ -134,6 +134,7 @@ $(document).on('ready', function () {
         hilo[i].postMessage(jso[i]);
         hilo[i].onmessage = function (event) {
             data[i] = event.data;
+           
             ob.cargarTabla(data[i], selector[i], datos);
             hilo[i].terminate();
             peticionCompleta(i, datos);
@@ -166,7 +167,7 @@ $(document).on('ready', function () {
             datos[2] = {nombre: "MultiSelect"};
             peticionCompleta(0, datos[2]);
         } else if (i == 4) {//Agregar elemento
-            if (data[4].length > data[0].length) {
+            if (data[4].length > data[0].length) {   
                 selector[1] = $("#tablaPrograma");
                 datos[7] = {nombre: "ConsultaPrograma"};
                 ob.cargarTabla(data[i], selector[1], datos[7]);

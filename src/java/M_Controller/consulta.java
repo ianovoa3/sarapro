@@ -77,7 +77,8 @@ public class consulta extends HttpServlet {
                     String palabraclave=request.getParameter("palabraclave");
                     String categoria=request.getParameter("categoria");
                     ConsultaVO consultavo=new ConsultaVO(titulo, autor, ciudad, centro, area, palabraclave, categoria);
-                    pv.searchadvance(consultavo);
+                    String respuestaadvance=new Gson().toJson(pv.searchadvance(consultavo));
+                    out.println(respuestaadvance);
                     }   
                 break;
         }

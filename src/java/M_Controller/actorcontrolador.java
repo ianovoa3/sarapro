@@ -89,11 +89,11 @@ public class actorcontrolador extends HttpServlet {
            }
             FuncionarioVO funcionariovo=new FuncionarioVO(nombre, apellido, tipoUsuario, tipoIdenti, numeroIdentificacion, email, centroFormacion, reddeconocimiento, ipSena, cargo,clave);
            Funcionario funcionario=new Funcionario();
-           DJCorreoHTML correo=new DJCorreoHTML();
-           correo.mandarCorreo(email,"Clave de Sarapro",clave);
+          // DJCorreoHTML correo=new DJCorreoHTML();
            if(funcionario.registrarUsuario(funcionariovo)){
                request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
-           }    
+           }
+          // correo.mandarCorreo(email,"Clave de Sarapro",clave);
             break;
             }
             

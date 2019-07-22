@@ -38,12 +38,13 @@ public class CargaMasiva extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           String valorrol=request.getParameter("cargaselect");
+           String valorrol=request.getParameter("TipoUsuario");
            String archivo=request.getParameter("archivoacargar");
-           Archivo archivos=new Archivo();
-           Part ruta=request.getPart("archivoacargar");
-            System.out.println("Part:"+ruta);
-           archivos.escritura(archivo);
+            System.out.println(valorrol+""+archivo);
+//           Archivo archivos=new Archivo();
+//           Part ruta=request.getPart("archivoacargar");
+//            System.out.println("Part:"+ruta);
+//           archivos.escritura(archivo);
            request.getRequestDispatcher("administradorPrincipal.jsp").forward(request, response);
             
             

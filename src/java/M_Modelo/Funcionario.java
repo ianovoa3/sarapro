@@ -57,7 +57,6 @@ public class Funcionario extends Elomac{
             Connection cnn=null;
             Statement sentencia=null;
             boolean operacion=false;
-            ResultSet rs;
             String clave=DigestUtils.md5Hex(funcionariovo.getClave());
             try {
                cnn=obtenerConn();
@@ -84,8 +83,6 @@ public class Funcionario extends Elomac{
                id_rolfuncionario=rs.getInt("id_funcionario");
                }
                  System.out.println("tipo:"+funcionariovo.getTipoUsuario());
-                 
-                 
                sentencia.executeUpdate("INSERT INTO rol_funcionario(id_rol,id_funcionario,vigencia) VALUES ('"+funcionariovo.getTipoUsuario()+"','"+id_rolfuncionario+"','"+1+"')");
                operacion=true;
             } catch (SQLException e) {

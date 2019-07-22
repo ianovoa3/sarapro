@@ -4,6 +4,10 @@
     height:18px;
     margin:auto;
 }
+#escogertipoUsuario{
+    color: #000;
+    padding-right: 10px;
+}
 #caja{
     background-color: #8EF3C5;
     width: 20%;

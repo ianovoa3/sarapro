@@ -5,20 +5,15 @@ jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:10,tipo:2,elegir:["2","3"],delim
 selector[0] = $("#centroFormacion");
 datos[0] = {nombre: "Select"};
 ajax(0, datos[0]);
-//$("#modalcargamasiva").hide();
-//$("#centroFormacion").change(function () {
-//    $("#area").empty().append("<option selected='selected'>selecciona...</option>");
-//    jso[4] = ['Crud_Controller', '[{opcion:3,tabla2:10,tipo:2,elegir:[0,1],delimitador:"[{colum:2 ,operador:0 ,valor1:' + $("#centroFormacion").val() + '}]",id:0,opSelect:6}]'];
-//    selector[4] = $("#area");
-//    datos[4] = {nombre: "Select"};
-//    ajax(4, datos[4]);
-//});
-     
-
-//$("#tipoUsuario").change(function(){
-//  console.log("tipous:"+document.getElementById('tipoUsuario').value);  
-//    
-//});  
+$("#archivocsv").click(function(){
+   $("#archivocsv").hide();
+    $("#camposrol").append("<label>Seleccione tipo de funcionario a cargar</label>");
+    $("#camposrol").append("<div><img src='Archivos/Formatos/instructor.JPG'><input type='radio' value='1' name='TipoUsuario'><div>");
+    $("#camposrol").append("<div><img src='Archivos/Formatos/equipopedagogico.JPG'><input type='radio' value='2' name='TipoUsuario'><div>");
+    $("#camposrol").append("<div><img src='Archivos/Formatos/equipotecnico.JPG'><input type='radio' value='3' name='TipoUsuario'><div>");
+    $("#camposrol").append("<div><img src='Archivos/Formatos/coordinador.JPG'><input type='radio' value='4' name='TipoUsuario'><div>");
+    $("#camposrol").append('<button type="submit" class="btn btn-info">Registra tus Funcionarios!</button>');  
+});
 $("#boton1").click(function () {
     $(".remove").remove();
     var boo = 0;
@@ -62,14 +57,6 @@ $("#boton1").click(function () {
         });
         }  
     });
-//function btn() {
-  //  $("#divBtn").hide();
-    //$("#AnimacionCargando").show();
-    //jso[3] = ['Funcionario_Controller', "[{opcion:1,datos:['" + $("#tipoUsuario").val() + "','" + $("#tipoIdenti").val() + "','" + $("#numeroIdentificacion").val() + "','" + $("#nombre").val() + "','" + $("#apellido").val() + "','" + $("#email").val() + "','" + $("#cargo").val() + "','" + $("#ipSena").val() + "','1','" + $("#centroFormacion").val() + "','" + $("#area").val() + "']}]"];
-   // men = $("#nombre").val();
-   // datos[1] = {nombre: "btn"};
-   // ajax(3, datos[1]);
-//}
 function ajax(i, datos) {
     hilo[i] = new Worker("js/worker.js");
     hilo[i].postMessage(jso[i]);

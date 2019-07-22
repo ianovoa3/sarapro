@@ -2,29 +2,21 @@
 <%@page import="java.util.ArrayList"%>
 <div class="content">
     <link href="css/carg.css" rel="stylesheet"/>
-    <div class="modal" tabindex="-1" role="dialog" id="modalcargamasiva">
+   <div class="modal" tabindex="-1" role="dialog" id="modalcargamasiva">
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
                                       <h5 class="modal-title">Carga Masiva</h5>
+                                      <label>Seleccione un archivo y el tipo de Usuario</label>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
-                                      <form action="CargaMasiva" method="POST" enctype="multipart/form-data">
+                                      <form action="CargaMasiva" method="GET">
                                     <div class="modal-body">
-                                      <p>Seleccione tipo de funcionario a cargar</p>
-                                      <select class="form-control select" name="cargaselect">
-                                          <option>Seleccione..</option>
-                                          <option value="1">Instructor</option>
-                                          <option value="2">Lider Tecnico</option>
-                                          <option value="3">Lider Equipo</option>
-                                          <option value="4">Coordinador</option>
-                                      </select>
+                                       <input type="file" name="archivoacargar" accept=".csv" id="archivocsv">       
                                     </div>
-                                    <div class="modal-footer">
-                                        <input type="file" name="archivoacargar" accept=".csv">
-                                     <button type="submit" class="btn btn-secondary" data-dismiss="modal" id="subirarchivo">Carga Masiva</button>
+                                    <div class="modal-footer" id="camposrol">
                                     </div>
                                       </form>
                                   </div>
@@ -105,8 +97,9 @@
 $("#cargarmasivamente").click(function(){
  $("#modalcargamasiva").show();
 });
-$("#subirarchivo").click(function(){
+$(".close").click(function(){
     $("#modalcargamasiva").hide();
+    $(".modal-footer").empty();
 });
     </script>
 </div>

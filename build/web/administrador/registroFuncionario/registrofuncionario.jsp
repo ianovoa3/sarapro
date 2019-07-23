@@ -85,7 +85,7 @@
                             </center>
                         </section>
                     </div>
-                    </div>
+                  </div>
                 </div>
             </div>
         </div>

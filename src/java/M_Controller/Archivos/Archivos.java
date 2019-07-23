@@ -31,7 +31,9 @@ public class Archivos{
      return "\\Archivos\\";
      //return "/Archivos/ArchivosA/";
     }
-
+    public String getBaseCarga(){
+    return "\\CargaMasiva\\";
+    }
     public String rutaTem() {
       return "\\Archivos\\";
      //return "/Archivos/TemArchivos/";

@@ -12,7 +12,7 @@ $("#archivocsv").click(function(){
     $("#camposrol").append("<div><img src='Archivos/Formatos/equipopedagogico.JPG'><input type='radio' value='2' name='TipoUsuario'><div>");
     $("#camposrol").append("<div><img src='Archivos/Formatos/equipotecnico.JPG'><input type='radio' value='3' name='TipoUsuario'><div>");
     $("#camposrol").append("<div><img src='Archivos/Formatos/coordinador.JPG'><input type='radio' value='4' name='TipoUsuario'><div>");
-    $("#camposrol").append('<button type="submit" class="btn btn-info">Registra tus Funcionarios!</button>');  
+    $("#camposrol").append('<button type="submit" class="btn btn-info" id="registrocarga">Registra tus Funcionarios!</button>');  
 });
 $("#boton1").click(function () {
     $(".remove").remove();

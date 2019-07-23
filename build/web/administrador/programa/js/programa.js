@@ -153,30 +153,30 @@ $(document).on('ready', function () {
             try {
                 var response = jQuery.parseJSON(data[i]);
                 if (typeof response == 'object') {
+                     men = "El programa " + men + " se ha modificado correctamente";
                     selector[1] = $("#tablaPrograma");
                     datos[7] = {nombre: "ConsultaPrograma"};
                     ob.cargarTabla(data[i], selector[1], datos[7]);
-                    estado = ("success");
-                    men = "El programa " + men + " se a modificado correctamente";
+                    estado = ("success");  
                 }
             } catch (e) {
                 estado = ("error");
-                men = "El programa " + men + " no se a modificado";
+                men = "El programa " + men + " no se ha modificado";
             }
             $.notify(men, estado);
             datos[2] = {nombre: "MultiSelect"};
             peticionCompleta(0, datos[2]);
         } else if (i == 4) {//Agregar elemento
+            console.log("data[4].length"+data[4]);
             if (data[4].length > data[0].length) {   
                 selector[1] = $("#tablaPrograma");
                 datos[7] = {nombre: "ConsultaPrograma"};
                 ob.cargarTabla(data[i], selector[1], datos[7]);
                 estado = ("success");
                 men = "El programa " + men + "  correctamente";
-
             } else {
                 estado = ("error");
-                men = "El programa  " + men + " no se a agregado";
+                men = "El programa  " + men + " no se ha agregado";
             }
             $.notify(men, estado);
             datos[2] = {nombre: "MultiSelect"};

@@ -87,18 +87,15 @@ public class actorcontrolador extends HttpServlet {
            for(int j=0;j<6;j++){
                clave=clave+guardarabcedario.get(random.nextInt(26));
            }
-            FuncionarioVO funcionariovo=new FuncionarioVO(nombre, apellido, tipoUsuario, tipoIdenti, numeroIdentificacion, email, centroFormacion, reddeconocimiento, ipSena, cargo,clave);
-           Funcionario funcionario=new Funcionario();
-          // DJCorreoHTML correo=new DJCorreoHTML();
+          FuncionarioVO funcionariovo=new FuncionarioVO(nombre, apellido, tipoUsuario, tipoIdenti, numeroIdentificacion, email, centroFormacion, reddeconocimiento, ipSena, cargo,clave);
+          Funcionario funcionario=new Funcionario();
+          DJCorreoHTML correo=new DJCorreoHTML();
            if(funcionario.registrarUsuario(funcionariovo)){
                request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
            }
           // correo.mandarCorreo(email,"Clave de Sarapro",clave);
             break;
-            }
-            
-            
-            
+            }  
         }
                 
     }

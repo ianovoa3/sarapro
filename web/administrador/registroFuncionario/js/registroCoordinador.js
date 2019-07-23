@@ -5,6 +5,7 @@ jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:10,tipo:2,elegir:["2","3"],delim
 selector[0] = $("#centroFormacion");
 datos[0] = {nombre: "Select"};
 ajax(0, datos[0]);
+
 $("#archivocsv").click(function(){
    $("#archivocsv").hide();
     $("#camposrol").append("<label>Seleccione tipo de funcionario a cargar</label>");
@@ -12,7 +13,7 @@ $("#archivocsv").click(function(){
     $("#camposrol").append("<div><img src='Archivos/Formatos/equipopedagogico.JPG'><input type='radio' value='2' name='TipoUsuario'><div>");
     $("#camposrol").append("<div><img src='Archivos/Formatos/equipotecnico.JPG'><input type='radio' value='3' name='TipoUsuario'><div>");
     $("#camposrol").append("<div><img src='Archivos/Formatos/coordinador.JPG'><input type='radio' value='4' name='TipoUsuario'><div>");
-    $("#camposrol").append('<button type="submit" class="btn btn-info" id="registrocarga">Registra tus Funcionarios!</button>');  
+    $("#camposrol").append('<button type="submit" class="btn btn-info" id="registrocarga" onclick="validararchivo()">Registra tus Funcionarios!</button>');  
 });
 $("#boton1").click(function () {
     $(".remove").remove();

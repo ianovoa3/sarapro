@@ -12,13 +12,13 @@
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
-                                      <form action="CargaMasiva" method="GET">
+                                      <form action="CargaMasiva" method="POST" enctype="multipart/form-data">
                                     <div class="modal-body">
                                        <input type="file" name="archivoacargar" accept=".csv" id="archivocsv">       
                                     </div>
                                     <div class="modal-footer" id="camposrol">
                                     </div>
-                                      </form>
+                                     </form>
                                   </div>
                                 </div>
                               </div>

@@ -6,24 +6,36 @@
 package M_Controller.Archivos;
 
 import M_Modelo.Archivo;
+import M_Modelo.Funcionario;
 import com.google.gson.Gson;
 import com.opencsv.CSVReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
+@MultipartConfig
 /**
  *
  * @author userdata06
@@ -44,22 +56,32 @@ public class CargaMasiva extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           String valorrol=request.getParameter("TipoUsuario");
-           String archivo=request.getParameter("archivoacargar");
+           Archivos a=new Archivos();
            String mensaje="INSERTE UN ARCHIVO CSV VALIDO!!!";
-    if(archivo.charAt(archivo.length()-1)=='v' && archivo.charAt(archivo.length()-2)=='s' && archivo.charAt(archivo.length()-3)=='c'){
-        System.out.println("ARCHIVO VALIDO"); 
-        
-    }else{
-    String gson=new Gson().toJson(mensaje);
-   out.println("<script type=\"text/javascript\">");
-   out.println("alert('"+mensaje+"');");
-   out.println("location='principal';");
-   out.println("</script>");
-     }
+           int contador=0;
+            HttpSession sesion = request.getSession();
+        try{
+        ServletFileUpload sf=new ServletFileUpload(new DiskFileItemFactory());
+        List<FileItem> multifiles=sf.parseRequest(request);
+        if(multifiles.get(contador).getName().charAt(multifiles.get(contador).getName().length()-1)=='v' && multifiles.get(contador).getName().charAt(multifiles.get(contador).getName().length()-2)=='s' && multifiles.get(contador).getName().charAt(multifiles.get(contador).getName().length()-3)=='c'){
+        ArrayList lista=new ArrayList();
+        Funcionario funcionario=new Funcionario();
+        for(FileItem item:multifiles){
+        lista.add(item.getString());        
         }
-    }
-
+        funcionario.CargaMasiva(lista);
+        }else{
+       out.println("<script type=\"text/javascript\">");
+       out.println("alert('"+mensaje+"');");
+       out.println("</script>");
+       request.setAttribute("rol",5);
+       request.getRequestDispatcher("principal").forward(request, response);
+        }
+        } catch (FileUploadException ex) {
+            Logger.getLogger(CargaMasiva.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   }
+ }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

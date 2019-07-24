@@ -112,8 +112,24 @@ public class Funcionario extends Elomac{
       public boolean CargaMasiva(ArrayList listafuncionario){
           try {
               for(int i=0;i<listafuncionario.size();i++){
-                  System.out.println(listafuncionario.get(0));
+                  System.out.println(listafuncionario.get(i));
               }
+//             String contador="";
+//             ArrayList lista=new ArrayList();
+//                    for(int i=0;i<listafuncionario.toString().length();i++){
+//                     if(listafuncionario.get(i).toString().charAt(i)!=';'){
+//                         contador=contador+listafuncionario.get(i).toString().charAt(i);
+//                    }else{
+//                     lista.add(contador);
+//                     contador="";
+//                     }
+//                    }
+//                    for(int j=0;j<lista.size();j++){
+//                        System.out.println(lista.get(j));
+//                    }
+                    
+                
+              
           } catch (Exception e) {
               
           }

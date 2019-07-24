@@ -120,7 +120,7 @@ $(document).on('ready', function () {
             ajax(3, datos[3]);
         } else {
             men = $("#nomPro").val();
-            jso[4] = ['Modificar_Controller', '[{opcion:2,ProgramaAdmin:[0,' + $("#nomPro").val() + ',' + $("#nivel").val() + ',\"' + arrayTemas + '\"]}]'];
+            jso[4] = ['Programa_Controller', '[{opcion:1,ProgramaAdmin:[0,' + $("#nomPro").val() + ',' + $("#nivel").val() + ',\"' + arrayTemas + '\"]}]'];
             datos[4] = {nombre: "btn"};
             ajax(4, datos[4]);
         }
@@ -167,7 +167,7 @@ $(document).on('ready', function () {
             datos[2] = {nombre: "MultiSelect"};
             peticionCompleta(0, datos[2]);
         } else if (i == 4) {//Agregar elemento
-            console.log("data[4].length"+data[4]);
+            console.log("[0]:"+data[0]);
             if (data[4].length > data[0].length) {   
                 selector[1] = $("#tablaPrograma");
                 datos[7] = {nombre: "ConsultaPrograma"};

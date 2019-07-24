@@ -9,6 +9,7 @@ import M_Modelo.Archivo;
 import M_Modelo.Funcionario;
 import com.google.gson.Gson;
 import com.opencsv.CSVReader;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,7 +18,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -59,23 +62,25 @@ public class CargaMasiva extends HttpServlet {
            Archivos a=new Archivos();
            String mensaje="INSERTE UN ARCHIVO CSV VALIDO!!!";
            int contador=0;
-            HttpSession sesion = request.getSession();
         try{
         ServletFileUpload sf=new ServletFileUpload(new DiskFileItemFactory());
         List<FileItem> multifiles=sf.parseRequest(request);
         if(multifiles.get(contador).getName().charAt(multifiles.get(contador).getName().length()-1)=='v' && multifiles.get(contador).getName().charAt(multifiles.get(contador).getName().length()-2)=='s' && multifiles.get(contador).getName().charAt(multifiles.get(contador).getName().length()-3)=='c'){
         ArrayList lista=new ArrayList();
         Funcionario funcionario=new Funcionario();
+        InputStream in=null;
         for(FileItem item:multifiles){
-        lista.add(item.getString());        
+            in=item.getInputStream();
+         BufferedReader bfreader=new BufferedReader(new InputStreamReader(in));
+         while(bfreader.readLine()!=null){
+        lista.add(bfreader.readLine());
+         } 
         }
         funcionario.CargaMasiva(lista);
         }else{
        out.println("<script type=\"text/javascript\">");
        out.println("alert('"+mensaje+"');");
        out.println("</script>");
-       request.setAttribute("rol",5);
-       request.getRequestDispatcher("principal").forward(request, response);
         }
         } catch (FileUploadException ex) {
             Logger.getLogger(CargaMasiva.class.getName()).log(Level.SEVERE, null, ex);

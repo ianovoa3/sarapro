@@ -62,6 +62,7 @@ public class CargaMasiva extends HttpServlet {
            Archivos a=new Archivos();
            String mensaje="INSERTE UN ARCHIVO CSV VALIDO!!!";
            int contador=0;
+           int valor=0;
         try{
         ServletFileUpload sf=new ServletFileUpload(new DiskFileItemFactory());
         List<FileItem> multifiles=sf.parseRequest(request);
@@ -70,13 +71,16 @@ public class CargaMasiva extends HttpServlet {
         Funcionario funcionario=new Funcionario();
         InputStream in=null;
         for(FileItem item:multifiles){
-            in=item.getInputStream();
+        contador=contador+1;
+        if(contador==2)
+        valor=Integer.parseInt(item.getString());
+         in=item.getInputStream();
          BufferedReader bfreader=new BufferedReader(new InputStreamReader(in));
          while(bfreader.readLine()!=null){
         lista.add(bfreader.readLine());
          } 
         }
-        funcionario.CargaMasiva(lista);
+        funcionario.CargaMasiva(lista,valor);
         }else{
        out.println("<script type=\"text/javascript\">");
        out.println("alert('"+mensaje+"');");

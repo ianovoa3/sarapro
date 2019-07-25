@@ -109,31 +109,41 @@ public class Funcionario extends Elomac{
                 }
                  return id_estado;
         }
-      public boolean CargaMasiva(ArrayList listafuncionario){
+      public void CargaMasiva(ArrayList listafuncionario,int rol){
           try {
-              for(int i=0;i<listafuncionario.size();i++){
-                  System.out.println(listafuncionario.get(i));
+            ArrayList info=new ArrayList();
+             int contador=0;
+             String palabras=""; 
+             for(int i=0;i<listafuncionario.size();i++){
+                 if(listafuncionario.get(i)!=null){
+                for(int j=0;j<listafuncionario.get(i).toString().length();j++){
+                   if(listafuncionario.get(i).toString().charAt(j)==';' || contador==listafuncionario.get(i).toString().length()-1){
+                   info.add(palabras);
+                   palabras="";                  
+                   }else{
+                   palabras=palabras+listafuncionario.get(i).toString().charAt(j);
+                   }
+                   contador=contador+1;
+                }    
               }
-//             String contador="";
-//             ArrayList lista=new ArrayList();
-//                    for(int i=0;i<listafuncionario.toString().length();i++){
-//                     if(listafuncionario.get(i).toString().charAt(i)!=';'){
-//                         contador=contador+listafuncionario.get(i).toString().charAt(i);
-//                    }else{
-//                     lista.add(contador);
-//                     contador="";
-//                     }
-//                    }
-//                    for(int j=0;j<lista.size();j++){
-//                        System.out.println(lista.get(j));
-//                    }
-                    
-                
-              
-          } catch (Exception e) {
-              
+             contador=0;
           }
-          return true;
-      } 
+          CargaMasivafinal(info,rol);
+          }catch (Exception e) {
+              e.printStackTrace();
+          }
+      }
+
+    public boolean CargaMasivafinal(ArrayList info, int rol) {
+        try {
+            for(Object datos:info){
+                System.out.println(datos);
+            }
+            System.out.println("CARGANDO A BASE...");
+        } catch (Exception e) {
+        }
+        return true;
+    }
+      
        
 }

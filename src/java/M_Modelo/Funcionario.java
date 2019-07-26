@@ -1,5 +1,6 @@
 package M_Modelo;
 
+import M_Controller.Correos.DJCorreoHTML;
 import M_Util.Elomac;
 import VO.FuncionarioVO;
 import java.sql.Connection;
@@ -7,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -109,17 +111,17 @@ public class Funcionario extends Elomac{
                 }
                  return id_estado;
         }
-      public void CargaMasiva(ArrayList listafuncionario,int rol){
+      public boolean CargaMasiva(ArrayList listafuncionario,int rol){
+           ArrayList info=new ArrayList();
           try {
-            ArrayList info=new ArrayList();
              int contador=0;
-             String palabras=""; 
+             String palabras="";
              for(int i=0;i<listafuncionario.size();i++){
-                 if(listafuncionario.get(i)!=null){
+                 if(listafuncionario.get(i)!=null && i>0){
                 for(int j=0;j<listafuncionario.get(i).toString().length();j++){
                    if(listafuncionario.get(i).toString().charAt(j)==';' || contador==listafuncionario.get(i).toString().length()-1){
                    info.add(palabras);
-                   palabras="";                  
+                   palabras=""; 
                    }else{
                    palabras=palabras+listafuncionario.get(i).toString().charAt(j);
                    }
@@ -128,21 +130,83 @@ public class Funcionario extends Elomac{
               }
              contador=0;
           }
-          CargaMasivafinal(info,rol);
+          
           }catch (Exception e) {
               e.printStackTrace();
           }
+          return CargaMasivafinal(info,rol);
       }
-
+     public String clavegenerica(){
+           Random random =new Random();
+           String clave=String.valueOf(random.nextInt(1000));
+           ArrayList guardarabcedario=new ArrayList();
+           for(int i=97;i<123;i++){
+               guardarabcedario.add((char)i);
+           } 
+           for(int j=0;j<6;j++){
+               clave=clave+guardarabcedario.get(random.nextInt(26));
+           }
+           return clave;
+     } 
     public boolean CargaMasivafinal(ArrayList info, int rol) {
-        try {
-            for(Object datos:info){
-                System.out.println(datos);
-            }
-            System.out.println("CARGANDO A BASE...");
-        } catch (Exception e) {
+        Connection cnn;
+        Statement sentencia=null;
+        Statement sentencia2=null;
+        ResultSet resultset;
+        boolean operacion=false;
+        int numdocumento=2;
+        int nombrefuncionario=0;
+        int apellidos=1;
+        int correo=3;
+        int telefono=6;
+        String cargo="";
+        String clave="";
+        DJCorreoHTML correoenvio=new DJCorreoHTML();
+        int idfuncionario=0;
+        switch(rol){
+            case 1:
+                cargo="Instructor";
+                break;
+            case 2:
+                cargo="lider equipo tecnico";
+                break;
+            case 3:
+                cargo="lider equipo pedagogico";
+                break;
+            case 4:
+                cargo="coordinador";
+                break;
         }
-        return true;
+        try {
+           cnn=obtenerConn();
+           sentencia=cnn.createStatement();
+           sentencia2=cnn.createStatement();
+           for(int i=0;i<info.size();i++){
+           clave=clavegenerica();
+           sentencia.execute("INSERT INTO funcionario(id_tipo_documento,num_documento,nom_funcionario,apellidos,correo,cargo,ip_sena,contraseña,id_estado,id_area_centro) VALUES('"+1+"','"+info.get(numdocumento)+"','"+info.get(nombrefuncionario)+"','"+info.get(apellidos)+"','"+info.get(correo)+"','"+cargo+"','"+info.get(telefono)+"','"+clave+"','"+1+"','"+1+"')");
+           resultset=sentencia2.executeQuery("SELECT MAX(id_funcionario) FROM  funcionario");
+           while(resultset.next()){
+           idfuncionario=resultset.getInt(1);
+           }
+           sentencia.execute("INSERT INTO rol_funcionario(id_rol,id_funcionario,vigencia)VALUES('"+rol+"','"+idfuncionario+"',1)");
+           //enviocorreo//
+           numdocumento=numdocumento+7;
+           nombrefuncionario=nombrefuncionario+7;
+           apellidos=apellidos+7;
+           correo=correo+7;
+           telefono=telefono+7;
+           }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            try {
+                sentencia.close();
+                sentencia2.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Funcionario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return operacion;
     }
       
        

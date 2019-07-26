@@ -70,17 +70,24 @@ public class CargaMasiva extends HttpServlet {
         ArrayList lista=new ArrayList();
         Funcionario funcionario=new Funcionario();
         InputStream in=null;
+        String lector="";
         for(FileItem item:multifiles){
         contador=contador+1;
         if(contador==2)
         valor=Integer.parseInt(item.getString());
          in=item.getInputStream();
          BufferedReader bfreader=new BufferedReader(new InputStreamReader(in));
-         while(bfreader.readLine()!=null){
-        lista.add(bfreader.readLine());
-         } 
+         while((lector=bfreader.readLine())!=null){
+             lista.add(lector);
+         }
+         bfreader.close();
+         in.close();
         }
-        funcionario.CargaMasiva(lista,valor);
+       String mensajeexitoso=new Gson().toJson("FUNCIONARIOS REGISTRADOS!!!!");
+        out.println("<script type=\"text/javascript\">");
+        out.println("alert('"+mensajeexitoso+"');");
+        out.println("</script>");
+            request.getRequestDispatcher("principal.jsp").forward(request, response);
         }else{
        out.println("<script type=\"text/javascript\">");
        out.println("alert('"+mensaje+"');");

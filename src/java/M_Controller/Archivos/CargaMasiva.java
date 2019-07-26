@@ -83,11 +83,11 @@ public class CargaMasiva extends HttpServlet {
          bfreader.close();
          in.close();
         }
-       String mensajeexitoso=new Gson().toJson("FUNCIONARIOS REGISTRADOS!!!!");
-        out.println("<script type=\"text/javascript\">");
-        out.println("alert('"+mensajeexitoso+"');");
-        out.println("</script>");
-            request.getRequestDispatcher("principal.jsp").forward(request, response);
+        funcionario.CargaMasiva(lista,valor);
+       out.println("<script type=\"text/javascript\">");
+       out.println("alert('FUNCIONARIOS REGISTRADOS');");
+       out.println("</script>");
+        request.getRequestDispatcher("principal").forward(request, response);
         }else{
        out.println("<script type=\"text/javascript\">");
        out.println("alert('"+mensaje+"');");

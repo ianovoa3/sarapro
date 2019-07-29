@@ -161,6 +161,7 @@ public class Funcionario extends Elomac{
         int telefono=6;
         String cargo="";
         String clave="";
+        String claveencriptada="";
         DJCorreoHTML correoenvio=new DJCorreoHTML();
         int idfuncionario=0;
         switch(rol){
@@ -183,13 +184,13 @@ public class Funcionario extends Elomac{
            sentencia2=cnn.createStatement();
            for(int i=0;i<info.size();i++){
            clave=clavegenerica();
-           sentencia.execute("INSERT INTO funcionario(id_tipo_documento,num_documento,nom_funcionario,apellidos,correo,cargo,ip_sena,contraseña,id_estado,id_area_centro) VALUES('"+1+"','"+info.get(numdocumento)+"','"+info.get(nombrefuncionario)+"','"+info.get(apellidos)+"','"+info.get(correo)+"','"+cargo+"','"+info.get(telefono)+"','"+clave+"','"+1+"','"+1+"')");
+           //correoenvio.mandarCorreo(info.get(correo).toString(),"Clave de Registro SARAPRO",clave);
+           sentencia.execute("INSERT INTO funcionario(id_tipo_documento,num_documento,nom_funcionario,apellidos,correo,cargo,ip_sena,contraseña,id_estado,id_area_centro) VALUES('"+1+"','"+info.get(numdocumento)+"','"+info.get(nombrefuncionario)+"','"+info.get(apellidos)+"','"+info.get(correo)+"','"+cargo+"','"+info.get(telefono)+"','"+DigestUtils.md5Hex(clave)+"','"+1+"','"+1+"')");
            resultset=sentencia2.executeQuery("SELECT MAX(id_funcionario) FROM  funcionario");
            while(resultset.next()){
            idfuncionario=resultset.getInt(1);
            }
            sentencia.execute("INSERT INTO rol_funcionario(id_rol,id_funcionario,vigencia)VALUES('"+rol+"','"+idfuncionario+"',1)");
-           //enviocorreo//
            numdocumento=numdocumento+7;
            nombrefuncionario=nombrefuncionario+7;
            apellidos=apellidos+7;

@@ -37,13 +37,12 @@
                                 <%
                                 Red_deConocimiento reddeconocimiento=new Red_deConocimiento();
                                 ArrayList lista=reddeconocimiento.selectred();
-                                for(int i=0;i<lista.size();i++){
-                                   
+                                for(int i=0;i<lista.size();i++){   
                                 %>
                             <tr class="active">
                             <td><%=j=j+1%></td>
                             <td id="redconocimiento" value="<%=lista.get(i)%>"><%=lista.get(i)%></td>
-                            <td><button  class='btn btn-info botonArea' id="modificar" value="<%=i%>">Modificar</button></td>
+                            <td><button  class='btn btn-info botonArea' onclick="modificarred('<%=lista.get(i)%>')">Modificar</button></td>
                             </tr>
                              <%}%>
                             </tbody>
@@ -53,6 +52,11 @@
             </div>
         </div>
     </div>
+  <script>
+     function modificarred(nombre){
+      document.getElementById("areaC").value=nombre;
+    }
+   </script>
     <script type="text/javascript" charset="utf8" type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/notify.js"></script>
     <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>

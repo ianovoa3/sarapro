@@ -48,9 +48,6 @@ $(document).on('ready', function () {
         }
     });
 
-    $("#modificar").click(function (){
-        console.log($("#modificar").val());
-    });
 
     $("#btnArea").on('click', function () {
         $(".remove").remove();
@@ -66,46 +63,75 @@ $(document).on('ready', function () {
                 boo++;
             }
         }
-
-        if ((boo == 2) && (arraySelecion.length > 0)) {
+        if ((boo == 1) && (arraySelecion.length > 0)) {
             BtnArea();
         }
     });
-
     $(document).on('click', '.botonArea', function (e) {
-        campo = this.value;
-        var ca = campo.split("$$");
-        idArea = ca[0];
-        $("#areaC").val(ca[1]);
-        $("#areaL").val(ca[2]);
-        $("#SelectItem").html("");
-
-        jso[6] = ['Modificar_Controller', '[{opcion:3,AreaAdmin:[3,' + idArea + ',0,0,0]}]'];
-        selector[6] = $("#SelectItem");
-        datos[6] = {nombre: "MultiSelectArray", compuesto: true};
-        ajax(6, datos[6]);
-        $("#btnArea").html("Modificar Área");
+//        campo = this.value;
+//        var ca = campo.split("$$");
+//        $("#SelectItem").html("");
+//
+//        jso[6] = ['Modificar_Controller', '[{opcion:3,AreaAdmin:[3,' + idArea + ',0,0,0]}]'];
+//        selector[6] = $("#SelectItem");
+//        datos[6] = {nombre: "MultiSelectArray", compuesto: true};
+//        ajax(6, datos[6]);
+        $("#btnArea").html("Modificar Área");  
+        $.ajax({
+        type:'POST',
+        data:{opcion:2,redconsulta:$("#areaC").val()},
+        url:'Red_Controller',
+        success: function (data) {
+           for(var i=0;i<data.length;i++){
+               arraySelecion.push(data[i]);
+           }
+        },
+        error: function (xhr) { 
+            xhr.statusText;
+            }    
+        });
+        
     });
-
     function BtnArea() {
-        var Nom = $("#btnArea").text();
-        selector[1] = $("#tablaarea");
-        men = $("#areaC").val();
-        if (Nom == "Guardar Área") {
-            jso[1] = ['Modificar_Controller', '[{opcion:3,AreaAdmin:[1,0,' + $("#areaC").val() + ',' + $("#areaL").val() + ',' + arraySelecion + ']}]']
-            datos[1] = {nombre: "btn"};
-            ajax(1, datos[1]);
-        } else if (Nom == "Modificar Área") {
-            jso[2] = ['Modificar_Controller', '[{opcion:3,AreaAdmin:[2,' + idArea + ',' + $("#areaC").val() + ',' + $("#areaL").val() + ',' + arraySelecion + ']}]']
-            datos[2] = {nombre: "btn"};
-            $("#btnArea").html("Guardar Área");
-            ajax(2, datos[2]);
+        $.ajax({
+        type:'POST',
+        data:{opcion:1,reddeconocimiento:$("#areaC").val(),"programas[]":arraySelecion.valueOf()},
+        url:'Red_Controller',
+        success: function (data) {
+        if(data==1){
+        estado=("success");
+        data=$("#areaC").val()+" registrada";
+        $.notify(data,estado);
+        }else{
+        estado=("error");
+        data=$("#areaC").val()+" no fue registrada";
+        $.notify(data,estado);  
         }
-        $("#areaL").val("");
-        $("#areaC").val("");
-        $("#SelectItem").html("");
-        peticionCompleta(0);
+        },
+        error: function (xhr) { 
+            xhr.statusText;
+        }    
+        });
     }
+    
+        
+//        var Nom = $("#btnArea").text();
+//        selector[1] = $("#tablaarea");
+//        men = $("#areaC").val();
+//        if (Nom == "Guardar Área") {
+//            jso[1] = ['Modificar_Controller', '[{opcion:3,AreaAdmin:[1,0,' + $("#areaC").val() + ',' + arraySelecion + ']}]']
+//            datos[1] = {nombre: "btn"};
+//            ajax(1, datos[1]);
+//        } else if (Nom == "Modificar Área") {
+//            jso[2] = ['Modificar_Controller', '[{opcion:3,AreaAdmin:[2,' + idArea + ',' + $("#areaC").val() + ',' + $("#areaL").val() + ',' + arraySelecion + ']}]']
+//            datos[2] = {nombre: "btn"};
+//            $("#btnArea").html("Guardar Área");
+//            ajax(2, datos[2]);
+//        }
+//        $("#areaC").val("");
+//        $("#SelectItem").html("");
+//        peticionCompleta(0);
+   // }
    
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");
@@ -124,35 +150,35 @@ $(document).on('ready', function () {
             datos[5] = {nombre: "MultiSelect"};
             ajax(5, datos[5]);
         }
-        if (i == 1) {//agregar area
-            if (data[1].length > data[0].length) {
-                ob.limpiarTabla($("#tablaformato"));
-                datos[7] = {nombre: "Area"};
-                ob.cargarTabla(data[i], selector[1], datos[7]);
-                estado = ("success");
-                men = "La area " + men + "  correctamente";
-
-            } else {
-                estado = ("error");
-                men = "La area " + men + " no se a agregado";
-            }
-            $.notify(men, estado);
-
-        } else if (i == 2) {
-            try {
-                var response = jQuery.parseJSON(data[i]);
-                if (typeof response == 'object') {
-                    ob.limpiarTabla($("#tablaformato"));
-                    datos[7] = {nombre: "Formato"};
-                    ob.cargarTabla(data[i], selector[1], datos[7]);
-                    estado = ("success");
-                    men = "La area" + men + " se a modificado correctamente";
-                }
-            } catch (e) {
-                estado = ("error");
-                men = "La area" + men + " no se a modificado";
-            }
-            $.notify(men, estado);
-        }
-    }
+//        if (i == 1) {//agregar area
+//            if (data[1].length > data[0].length) {
+//                ob.limpiarTabla($("#tablaformato"));
+//                datos[7] = {nombre: "Area"};
+//                ob.cargarTabla(data[i], selector[1], datos[7]);
+//                estado = ("success");
+//                men = "La area " + men + "  correctamente";
+//
+//            } else {
+//                estado = ("error");
+//                men = "La area " + men + " no se a agregado";
+//            }
+//            $.notify(men, estado);
+//
+//        } else if (i == 2) {
+//            try {
+//                var response = jQuery.parseJSON(data[i]);
+//                if (typeof response == 'object') {
+//                    ob.limpiarTabla($("#tablaformato"));
+//                    datos[7] = {nombre: "Formato"};
+//                    ob.cargarTabla(data[i], selector[1], datos[7]);
+//                    estado = ("success");
+//                    men = "La area" + men + " se a modificado correctamente";
+//                }
+//            } catch (e) {
+//                estado = ("error");
+//                men = "La area" + men + " no se a modificado";
+//            }
+//            $.notify(men, estado);
+//        }
+   }
 });

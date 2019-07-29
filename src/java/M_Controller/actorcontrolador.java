@@ -93,7 +93,7 @@ public class actorcontrolador extends HttpServlet {
            if(funcionario.registrarUsuario(funcionariovo)){
                request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
            }
-          // correo.mandarCorreo(email,"Clave de Sarapro",clave);
+           correo.mandarCorreo(email,"Clave de Sarapro",clave);
             break;
             }  
         }

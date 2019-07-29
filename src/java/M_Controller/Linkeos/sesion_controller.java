@@ -46,7 +46,6 @@ public class sesion_controller extends HttpServlet {
                 System.out.println(opcion);
                 System.out.println("Cerrar sesion");
             }
-            
             switch (opcion) {
                 case 1:
                     String[] loguinUser = {request.getParameter("user"),DigestUtils.md5Hex(request.getParameter("pwd"))};
@@ -99,6 +98,9 @@ public class sesion_controller extends HttpServlet {
                 case 3:
                     request.getRequestDispatcher("inicio/olvidoCuenta/olvidoCuenta.jsp").forward(request, response);
                     break;
+                case 4:
+                     request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
+                     break;
                 default:
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                     break;

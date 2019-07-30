@@ -1,6 +1,28 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="M_Modelo.Red_deConocimiento"%>
 <%int j=0;%>
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Añadir otro programa</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <select id="selectprograma">
+          <% Red_deConocimiento reddecon=new Red_deConocimiento();
+            ArrayList programa=reddecon.selectprograma();
+            for(int i=0;i<programa.size();i++){
+          %>
+         <option><%=programa.get(i)%></option>
+          <%}%>
+          </select>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="content" style="margin-left: 10%;">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="css/multi-select.css">
@@ -16,10 +38,13 @@
                         <label>Líder de la red</label>
                         <input required placeholder="Lider de la Red" type="text" class="form-control inputs"  name="redlider" id="areaL" >
                     </div>-->
-                    <div class="col-md-6">
+                    <div class="col-md-6" id="programas">
                         <label>Programas de formacion</label>
-                        <select id="SelectItem" class="itemselect" multiple="multiple">
+                        <!--<select id="SelectItem" class="itemselect" multiple="multiple">
+                        </select>!-->
+                        <select class="custom-select" multiple>                  
                         </select>
+                        <button type="button" class="btn btn-info" id="btnprograma" style="margin-bottom:2%">Añadir Programa</button> 
                     </div>
                     <div class="col-md-7"> 
                         <button type="button" class="btn btn-info" id="btnArea" style="margin-bottom:2%" name="button">Guardar Red</button>    

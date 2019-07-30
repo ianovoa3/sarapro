@@ -1,5 +1,5 @@
 $(document).on('ready', function () {
-    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", idArea, arraySelecion = [];
+    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", idArea, arraySelecion = [], nuevosprogramas=[];
     var ob = new $.Luna("Area", $("#tablaarea"));
     ob.Vivo("Areaq");
     jso[0] = ['Modificar_Controller', '[{opcion:3,AreaAdmin:[0,0,0,0,0]}]']
@@ -8,7 +8,8 @@ $(document).on('ready', function () {
     ob.TablaEspa(selector[0]);
     ajax(0, datos[0]);
     var men = "";
-
+    $("#programas").hide();
+    $(".modal").hide();
     $('.itemselect').multiSelect({
         selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
         selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
@@ -66,31 +67,37 @@ $(document).on('ready', function () {
         if ((boo == 1) && (arraySelecion.length > 0)) {
             BtnArea();
         }
+        if($("#btnArea").text()=="Modificar Área"){
+            console.log("MODIFICANDO.."+nuevosprogramas);
+            //modificar y despues vaciar nuevosprogramas
+        }
+    });
+    $("#btnprograma").click(function (){
+        $(".modal").show();
+    });
+    $("#selectprograma").change(function(){
+        $(".custom-select").append("<option selected>'"+document.getElementById("selectprograma").value+"'</option>");
+        nuevosprogramas.push(document.getElementById("selectprograma").value);
+        $(".modal").hide();
     });
     $(document).on('click', '.botonArea', function (e) {
-//        campo = this.value;
-//        var ca = campo.split("$$");
-//        $("#SelectItem").html("");
-//
-//        jso[6] = ['Modificar_Controller', '[{opcion:3,AreaAdmin:[3,' + idArea + ',0,0,0]}]'];
-//        selector[6] = $("#SelectItem");
-//        datos[6] = {nombre: "MultiSelectArray", compuesto: true};
-//        ajax(6, datos[6]);
-        $("#btnArea").html("Modificar Área");  
+        $("#btnArea").html("Modificar Área");
+        $(".custom-select").empty();
         $.ajax({
         type:'POST',
         data:{opcion:2,redconsulta:$("#areaC").val()},
         url:'Red_Controller',
         success: function (data) {
-           for(var i=0;i<data.length;i++){
-               arraySelecion.push(data[i]);
-           }
+        var jsondata=JSON.parse(data);
+        for(var i=0;i<jsondata.length;i++){
+        $(".custom-select").append("<option selected>'"+jsondata[i]+"'</option>");    
+         }
+         $("#programas").show();
         },
         error: function (xhr) { 
             xhr.statusText;
             }    
-        });
-        
+        });  
     });
     function BtnArea() {
         $.ajax({

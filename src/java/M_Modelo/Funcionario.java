@@ -184,6 +184,8 @@ public class Funcionario extends Elomac{
            sentencia2=cnn.createStatement();
            for(int i=0;i<info.size();i++){
            clave=clavegenerica();
+           // en el primer parametro ponga su correo
+           //correoenvio.mandarCorreo(bsayala2@misena.edu.co,"Clave de Registro SARAPRO",clave);
            //correoenvio.mandarCorreo(info.get(correo).toString(),"Clave de Registro SARAPRO",clave);
            sentencia.execute("INSERT INTO funcionario(id_tipo_documento,num_documento,nom_funcionario,apellidos,correo,cargo,ip_sena,contraseña,id_estado,id_area_centro) VALUES('"+1+"','"+info.get(numdocumento)+"','"+info.get(nombrefuncionario)+"','"+info.get(apellidos)+"','"+info.get(correo)+"','"+cargo+"','"+info.get(telefono)+"','"+DigestUtils.md5Hex(clave)+"','"+1+"','"+1+"')");
            resultset=sentencia2.executeQuery("SELECT MAX(id_funcionario) FROM  funcionario");

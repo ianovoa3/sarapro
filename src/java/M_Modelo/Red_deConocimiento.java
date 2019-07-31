@@ -93,5 +93,35 @@ public class Red_deConocimiento extends M_Connection{
           }
           return consultaprogramas;
       }
+
+    public void actualizar(String redconsultanueva, String[] nuevosprogramas) {
+        Connection cnn=null;
+        Statement sentencia=null;
+        ResultSet rs=null;
+        ResultSet rs1=null;
+        int idredconsultanueva=0;
+        int [] nuevosprogramasid=new int[nuevosprogramas.length];
+        int contador=0;
+        try {
+            cnn=obtenerConn();
+            sentencia=cnn.createStatement();
+            rs=sentencia.executeQuery("SELECT id_area FROM area WHERE nom_area='"+redconsultanueva+"'");
+            while(rs.next()){
+               idredconsultanueva=rs.getInt("id_area");
+            }
+           for(int i=0;i<nuevosprogramas.length;i++){
+               rs1=sentencia.executeQuery("SELECT id_programa from programa  WHERE nom_programa='"+nuevosprogramas[i]+"'");
+               while(rs1.next()){
+               nuevosprogramasid[i]=rs1.getInt("id_programa");
+               }
+           }
+           for(int j=0;j<nuevosprogramasid.length;j++){
+               sentencia.execute("INSERT INTO detalles_area(id_area,id_programa) VALUES('"+idredconsultanueva+"','"+nuevosprogramasid[j]+"')");
+           }
+           
+        } catch (Exception e) {
+              Logger.getLogger(Red_deConocimiento.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
     
 }

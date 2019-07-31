@@ -38,10 +38,15 @@
                         <label>Líder de la red</label>
                         <input required placeholder="Lider de la Red" type="text" class="form-control inputs"  name="redlider" id="areaL" >
                     </div>-->
+                    
+                    <div class="col-md-6" id="programasnuevos">
+                        <label>Programas de formacion</label>
+                        <select id="SelectItem" class="itemselect" multiple="multiple">
+                        </select> 
+                    </div>
+
                     <div class="col-md-6" id="programas">
                         <label>Programas de formacion</label>
-                        <!--<select id="SelectItem" class="itemselect" multiple="multiple">
-                        </select>!-->
                         <select class="custom-select" multiple>                  
                         </select>
                         <button type="button" class="btn btn-info" id="btnprograma" style="margin-bottom:2%">Añadir Programa</button> 

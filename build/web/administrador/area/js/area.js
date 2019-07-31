@@ -8,8 +8,8 @@ $(document).on('ready', function () {
     ob.TablaEspa(selector[0]);
     ajax(0, datos[0]);
     var men = "";
-    $("#programas").hide();
     $(".modal").hide();
+    $("#programas").hide();
     $('.itemselect').multiSelect({
         selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
         selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
@@ -68,8 +68,20 @@ $(document).on('ready', function () {
             BtnArea();
         }
         if($("#btnArea").text()=="Modificar Área"){
-            console.log("MODIFICANDO.."+nuevosprogramas);
-            //modificar y despues vaciar nuevosprogramas
+        //console.log("MODIFICANDO.."+nuevosprogramas);
+        $.ajax({
+        type:'POST',
+        data:{opcion:3,redconsultanueva:$("#areaC").val(),nuevosprogramas:nuevosprogramas},
+        url:'Red_Controller',
+        success: function (data) {
+        estado=("success");
+        data=$("#areaC").val()+" modificada";
+        $.notify(data,estado);
+        },
+        error: function (xhr) { 
+            xhr.statusText;
+            }    
+        });  
         }
     });
     $("#btnprograma").click(function (){
@@ -88,10 +100,12 @@ $(document).on('ready', function () {
         data:{opcion:2,redconsulta:$("#areaC").val()},
         url:'Red_Controller',
         success: function (data) {
+        $("#programasnuevos").hide();
         var jsondata=JSON.parse(data);
         for(var i=0;i<jsondata.length;i++){
         $(".custom-select").append("<option selected>'"+jsondata[i]+"'</option>");    
          }
+         $("#programasnuevos").hide();
          $("#programas").show();
         },
         error: function (xhr) { 
@@ -99,6 +113,7 @@ $(document).on('ready', function () {
             }    
         });  
     });
+    
     function BtnArea() {
         $.ajax({
         type:'POST',
@@ -120,6 +135,7 @@ $(document).on('ready', function () {
         }    
         });
     }
+    
     
         
 //        var Nom = $("#btnArea").text();

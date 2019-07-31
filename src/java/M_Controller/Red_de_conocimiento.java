@@ -52,6 +52,11 @@ public class Red_de_conocimiento extends HttpServlet {
                  String redconsulta=request.getParameter("redconsulta");
                  out.println(new Gson().toJson(red.consultaprogramas(redconsulta)));
                  break;
+             case 3:
+                 String redconsultanueva=request.getParameter("redconsultanueva");
+                 String nuevosprogramas[]=request.getParameterValues("nuevosprogramas[]");
+                 red.actualizar(redconsultanueva,nuevosprogramas);
+                 break;
             }
         }
     }

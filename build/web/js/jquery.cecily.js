@@ -429,8 +429,8 @@ jQuery.Luna = function (Datos, selector) {
                     }
                     break;
                 case "consultaTipoFormatos":
-                    console.log("TIPO");
                     var jsSelect = jQuery.parseJSON(json);
+                    //console.log("jsSelect:"+jsSelect);
                     var data = "";
                     selector.dataTable().fnClearTable();
                    for (var i = 0; i < jsSelect.length; i++) {

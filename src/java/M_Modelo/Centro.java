@@ -36,9 +36,31 @@ public class Centro extends Elomac{
                 lista.add(rs.getString("nom_centro"));
                 }
             } catch (Exception e) {
-                 Logger.getLogger(Ciudad.class.getName()).log(Level.SEVERE, null, e);
+                 Logger.getLogger(Centro.class.getName()).log(Level.SEVERE, null, e);
             }
             
             return lista;
         }
+    public void insertarCentros(String nom,int num,String direccion,int ciudad,String [] areas){
+            Connection cnn;
+            Statement sentencia=null;
+            ResultSet rs;
+        try {
+            int idcentro=0;
+            cnn=obtenerConn();
+            sentencia=cnn.createStatement();
+            sentencia.execute("INSERT INTO centro(num_centro,nom_centro,direccion,id_ciudad) VALUES('"+num+"','"+nom+"','"+direccion+"','"+ciudad+"')");
+            rs=sentencia.executeQuery("SELECT MAX(id_centro) FROM centro");
+            while(rs.next()){
+            idcentro=rs.getInt(1);
+            }
+            for(int i=0;i<areas.length;i++){     
+            sentencia.execute("INSERT INTO area_centro(id_area,id_centro) VALUES('"+areas[i]+"','"+idcentro+"')");
+            }
+            sentencia.close();
+            rs.close();
+        } catch (Exception e) {
+            Logger.getLogger(Centro.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
 }

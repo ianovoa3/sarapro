@@ -99,15 +99,28 @@ $(document).on('ready', function () {
             aTemas = aTemas + "," + (arrayTemas[a]);
         }
         men = $("#nomCentro").val();
-        if ($("#btnCentro").html() == "Modificar ccentro") {
-            jso[3] = ['Modificar_Controller', '[{opcion:4,CentroAdmin:[2,' + idCentro + ',' + $("#nomCentro").val() + ',' + $("#numCentro").val() + ',' + $("#nomDirrecion").val() + ',' + $("#ciudad").val() + ',' + arrayTemas + ']}]']
-            datos[3] = {nombre: "btn"};
-            ajax(3, datos[3]);
+        var opcion=0;
+        if ($("#btnCentro").html() == "Modificar centro") {
+//            jso[3] = ['Modificar_Controller', '[{opcion:4,CentroAdmin:[2,' + idCentro + ',' + $("#nomCentro").val() + ',' + $("#numCentro").val() + ',' + $("#nomDirrecion").val() + ',' + $("#ciudad").val() + ',' + arrayTemas + ']}]']
+//            datos[3] = {nombre: "btn"};
+//            ajax(3, datos[3]);
+              console.log("MODIFICANDO...");
+              opcion=2;
         } else {
-            jso[4] = ['Modificar_Controller', '[{opcion:4,CentroAdmin:[1,0,' + $("#nomCentro").val() + ',' + $("#numCentro").val() + ',' + $("#nomDirrecion").val() + ',' + $("#ciudad").val() + ',\"' + arrayTemas + '\"]}]'];
-            datos[4] = {nombre: "btn"};
-            ajax(4, datos[4]);
+//            jso[4] = ['Modificar_Controller', '[{opcion:4,CentroAdmin:[1,0,' + $("#nomCentro").val() + ',' + $("#numCentro").val() + ',' + $("#nomDirrecion").val() + ',' + $("#ciudad").val() + ',\"' + arrayTemas + '\"]}]'];
+//            datos[4] = {nombre: "btn"};
+//            ajax(4, datos[4]);
+        opcion=1;
         }
+        $.ajax({
+            type:"POST",
+            url:"Centro_Controller",
+            data:{opcion:opcion,nom:$("#nomCentro").val(),num:$("#numCentro").val(),direccion:$("#nomDirrecion").val(),ciudad:$("#ciudad").val(),"areas[]":arrayTemas.valueOf()},
+                success:function (data) {
+                 estado=("success");
+                    $.notify(data,estado); 
+                }
+            });
     }
 
     function ajax(i, datos) {
@@ -137,48 +150,49 @@ $(document).on('ready', function () {
             $("#ciudad").empty().append("<option value='A0'>Seleccionar...</option>");
             datos[19] = {nombre: "Select"};
             ajax(19, datos[19]);
-        } else if (i == 3) {//Modificar
-            try {
-                var response = jQuery.parseJSON(data[i]);
-                if (typeof response == 'object') {
-                    selector[1] = $("#tablaCentro");
-                    datos[7] = {nombre: "ConsultaCentros"};
-                    ob.cargarTabla(data[i], selector[1], datos[7]);
-                    estado = ("success");
-                    men = "El centro de formacion " + men + " se a modificado correctamente";
-                }
-            } catch (e) {
-                estado = ("error");
-                men = "El centro de formacion " + men + " no se a modificado";
-            }
-            $("#btnCentro").html("Guardar centro de formacion");
-            $("#nomCentro").val("");
-            $("#numCentro").val("");
-            $("#nomDirrecion").val("");
-            $("#ciudad option[value='A0']").attr("selected", true);
-            $.notify(men, estado);
-            datos[2] = {nombre: "MultiSelect"};
-            peticionCompleta(0, datos[2]);
-        } else if (i == 4) {//Agregar elemento
-            $("#btnCentro").html("Guardar centro de formacion");
-            $("#nomCentro").val("");
-            $("#numCentro").val("");
-            $("#nomDirrecion").val("");
-            $("#ciudad option[value='A0']").attr("selected", true);
-            if (data[4].length > data[0].length) {
-                selector[1] = $("#tablaCentro");
-                datos[7] = {nombre: "ConsultaCentros"};
-                ob.cargarTabla(data[i], selector[1], datos[7]);
-                estado = ("success");
-                men = "Centro de formacion " + men + " se a guardado correctamente";
-
-            } else {
-                estado = ("error");
-                men = "Centro de formacion " + men + " no se a agregado";
-            }
-            $.notify(men, estado);
-            datos[2] = {nombre: "MultiSelect"};
-            peticionCompleta(0, datos[2]);
-        }
-    }
+       } 
+ //       else if (i == 3) {//Modificar
+//            try {
+//                var response = jQuery.parseJSON(data[i]);
+//                if (typeof response == 'object') {
+//                    selector[1] = $("#tablaCentro");
+//                    datos[7] = {nombre: "ConsultaCentros"};
+//                    ob.cargarTabla(data[i], selector[1], datos[7]);
+//                    estado = ("success");
+//                    men = "El centro de formacion " + men + " se a modificado correctamente";
+//                }
+//            } catch (e) {
+//                estado = ("error");
+//                men = "El centro de formacion " + men + " no se a modificado";
+//            }
+//            $("#btnCentro").html("Guardar centro de formacion");
+//            $("#nomCentro").val("");
+//            $("#numCentro").val("");
+//            $("#nomDirrecion").val("");
+//            $("#ciudad option[value='A0']").attr("selected", true);
+//            $.notify(men, estado);
+//            datos[2] = {nombre: "MultiSelect"};
+//            peticionCompleta(0, datos[2]);
+//        } else if (i == 4) {//Agregar elemento
+//            $("#btnCentro").html("Guardar centro de formacion");
+//            $("#nomCentro").val("");
+//            $("#numCentro").val("");
+//            $("#nomDirrecion").val("");
+//            $("#ciudad option[value='A0']").attr("selected", true);
+//            if (data[4].length > data[0].length) {
+//                selector[1] = $("#tablaCentro");
+//                datos[7] = {nombre: "ConsultaCentros"};
+//                ob.cargarTabla(data[i], selector[1], datos[7]);
+//                estado = ("success");
+//                men = "Centro de formacion " + men + " se a guardado correctamente";
+//
+//            } else {
+//                estado = ("error");
+//                men = "Centro de formacion " + men + " no se a agregado";
+//            }
+//            $.notify(men, estado);
+//            datos[2] = {nombre: "MultiSelect"};
+//            peticionCompleta(0, datos[2]);
+//        }
+   }
 });

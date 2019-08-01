@@ -79,6 +79,7 @@ public class Modificar_Controller extends HttpServlet {
                         respuesta.println(new Centro().CentroAdmin(parametrosCentroAdmin));
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());
+                        e.printStackTrace();
                     }
                 break;
                 case 5: //MODIFICAR FORMATO
@@ -99,15 +100,18 @@ public class Modificar_Controller extends HttpServlet {
                     //jso[0] = ['Modificar_Controller','[{opcion:6,TipoFormatoAdmin:[2,'+idTipoFormato+','+nomTipoFormato+','+urlTipoFormato+']}]']--- Modificar Tipo Formato
                     //jso[0] = ['Modificar_Controller','[{opcion:6,TipoFormatoAdmin:[0,0,0,0]}]']--- Retorna todos los Tipos Formatos
                     try {
-                        String[] parametrosTipoFormatoAdmin = Elomac.M_toArray(jData.getString("TipoFormatoAdmin"));
-                           
-                        ArchivosController arch = new ArchivosController();
+                        String[] parametrosTipoFormatoAdmin = Elomac.M_toArray(jData.getString("TipoFormatoAdmin"));  
+                        try {
+                        ArchivosController arch = new ArchivosController();    
                         //parametrosTipoFormatoAdmin[3]  Nombre Archivo Real
                         //parametrosTipoFormatoAdmin[2]  Nombre TipoFormato
                         String nombreNuevo = parametrosTipoFormatoAdmin[2]+".png";
                         String path = request.getRealPath("");
                           arch.CambiarNombre(path,parametrosTipoFormatoAdmin[3], nombreNuevo,0,3);
                         respuesta.println(new Formato().TipoFormatoAdmin(parametrosTipoFormatoAdmin));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());
                     }

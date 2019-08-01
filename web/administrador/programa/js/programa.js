@@ -114,16 +114,20 @@ $(document).on('ready', function () {
         }
         men = $("#nomPro").val();
         if ($("#btnPrograma").html() == "Modificar programa") {
-            men = $("#nomPro").val();
             jso[3] = ['Modificar_Controller', '[{opcion:2,ProgramaAdmin:[2,' + idPrograma + ',' + $("#nomPro").val() + ',' + $("#nivel").val() + ',\"' + arrayTemas + '\"]}]'];
             datos[3] = {nombre: "btn"};
             ajax(3, datos[3]);
         } else {
-            men = $("#nomPro").val();
-            jso[4] = ['Programa_Controller', '[{opcion:1,ProgramaAdmin:[0,' + $("#nomPro").val() + ',' + $("#nivel").val() + ',\"' + arrayTemas + '\"]}]'];
-            datos[4] = {nombre: "btn"};
-            ajax(4, datos[4]);
+         $.ajax({
+         type: "POST",
+         data:{programa:$("#nomPro").val(),nivel:$("#nivel").val(),"temas[]":arrayTemas.valueOf()},
+         url: "Programa_Controller",
+        success: function (data) {
+             estado = ("success");
+            $.notify(data,estado);
         }
+       });
+      }
         $("#btnPrograma").html("Guardar Programa");
         $("#nomPro").val("");
         $("#nivel option[value='A0']").attr("selected", true);
@@ -167,7 +171,6 @@ $(document).on('ready', function () {
             datos[2] = {nombre: "MultiSelect"};
             peticionCompleta(0, datos[2]);
         } else if (i == 4) {//Agregar elemento
-            console.log("[0]:"+data[0]);
             if (data[4].length > data[0].length) {   
                 selector[1] = $("#tablaPrograma");
                 datos[7] = {nombre: "ConsultaPrograma"};

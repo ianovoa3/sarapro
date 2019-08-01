@@ -1,10 +1,11 @@
 
 package M_Controller;
-
 import M_Modelo.Programa;
 import M_Util.Elomac;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,32 +21,34 @@ public class Programa_Controller extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            String data = request.getParameter("data");
-            JSONObject jData = new JSONArray(data).getJSONObject(0);
-            int opcion = jData.getInt("opcion");
-            
            response.setContentType("application/json;charset=UTF-8");
            PrintWriter respuesta = response.getWriter();
-           switch(opcion){
-               case 1:
-                   String[] programainfo =  Elomac.M_toArray(jData.getString("infoP"));
-                   String[] areas =  Elomac.M_toArray(jData.getString("areas"));
-                   String[] temas =  Elomac.M_toArray(jData.getString("temas"));
-                   
-                   Programa p = new Programa();
-                   try {
-                       if(p.RegistrarPrograma(programainfo, areas, temas))
-                            respuesta.println("[{valor:true,mensaje:'Registro Completo'}]");
-                        else
-                            respuesta.println("[{valor:false,mensaje:'Registro Fallido'}]");
-                    } catch (Exception e) {
-                         respuesta.println("[{valor:false,mensaje:'"+e.getMessage()+"'}]");
-                    }
-                   break;
-           }
+            String programa=request.getParameter("programa");
+            String nivel=request.getParameter("nivel");
+            String [] temas=request.getParameterValues("temas[]");
+             Programa p = new Programa();
+            for(String tema:temas){
+                 System.out.println(""+tema);
+             }
+            if(p.RegistrarPrograma(programa,nivel,temas)){
+            out.print(new Gson().toJson(programa+" ha sido insertado"));
+            }
+//                   try {
+//                       if(p.RegistrarPrograma(programainfo, areas, temas)){
+//                            respuesta.println("[{valor:true,mensaje:'Registro Completo'}]");
+//                            System.out.println("bien registroprograma");
+//                       } else{
+//                            respuesta.println("[{valor:false,mensaje:'Registro Fallido'}]");
+//                            System.out.println("mal registroprograma");
+//                       }
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                         respuesta.println("[{valor:false,mensaje:'"+e.getMessage()+"'}]");
+//                    }
+           
         }catch(Exception ex){
             response.getWriter().print(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 

@@ -52,15 +52,15 @@ public class FormacionPro_Controller extends HttpServlet {
                     String[] areas = Elomac.M_toArray(jData.getString("areas"));
                     String[] temas = Elomac.M_toArray(jData.getString("temas"));
                     Programa p = new Programa();
-                    try {
-                        if (p.RegistrarPrograma(programainfo, areas, temas)) {
-                            respuesta.println("true$$registro correctamente");
-                        } else {
-                            respuesta.println("false$$el registro fallo");
-                        }
-                    } catch (Exception e) {
-                        respuesta.println("false$$" + e.getMessage() + "");
-                    }
+//                    try {
+//                        if (p.RegistrarPrograma(programainfo, areas, temas)) {
+//                            respuesta.println("true$$registro correctamente");
+//                        } else {
+//                            respuesta.println("false$$el registro fallo");
+//                        }
+//                    } catch (Exception e) {
+//                        respuesta.println("false$$" + e.getMessage() + "");
+//                    }
                     break;
                 case 2:
                     String[] infoAre = Elomac.M_toArray(jData.getString("datos"));

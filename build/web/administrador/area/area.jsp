@@ -86,6 +86,9 @@
      function modificarred(nombre){
       document.getElementById("areaC").value=nombre;
     }
+    $(".close").click(function(){
+        $(".modal").hide();
+    });
    </script>
     <script type="text/javascript" charset="utf8" type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/notify.js"></script>

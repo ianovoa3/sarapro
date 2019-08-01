@@ -10,7 +10,6 @@
                             <label>Programa de Formación</label>
                             <input required type="text" id="nomPro" class="form-control inputs" placeholder="Digite el programa de formacion">
                         </div>
-
                         <div class="col-md-12" style="margin-top:3%;">
                             <label>Nivel de Formación</label>
                             <select class="form-control select" id="nivel">
@@ -39,9 +38,8 @@
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <button id="btnPrograma" type="button" class="btn btn-primary">Guardar Programa</button>
+                        <button id="btnPrograma" type="button" class="btn btn-primary">Guardar Programa</button>
                         </div>
-
                         <div class="col-md-10 col-md-offset-1">
                             <table id="tablaPrograma" class="table table-hover">
                                 <thead>

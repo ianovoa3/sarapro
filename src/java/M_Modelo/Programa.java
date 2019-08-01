@@ -15,27 +15,29 @@ public class Programa extends Elomac{
 		super("Programa",1);
 	}
         
-        public boolean RegistrarPrograma(String[] programainfo,String[] areas,String[] temas){
+        public boolean RegistrarPrograma(String programa,String nivel,String[] temas){
+            Connection cnn=null;
+            Statement sentencia=null;
+            ResultSet rs;
+            boolean operacion=false;
+            int idultimo=0;
             try {
-                Elomac programa = new Elomac(23,1,programainfo);
-                programa.Insert(); 
-                String idP = (String)programa.atributos.get("id_programa");
-                System.out.println(idP);
-                
-                for(int i = 0; i < areas.length; i++ ){
-                    String[] dtA = {"",areas[i],idP};
-                    System.out.println(areas[i]+" "+idP);
-                    new Elomac(8,1,dtA).Insert();
+                cnn=obtenerConn();
+                sentencia=cnn.createStatement();
+                sentencia.execute("INSERT INTO programa(nom_programa,nivel_formacion) VALUES('"+programa+"','"+nivel+"')");
+                rs=sentencia.executeQuery("SELECT MAX(id_programa) FROM programa");
+                while(rs.next()){
+                    idultimo=rs.getInt(1);
                 }
-                for(int j = 0;j < temas.length;j++){
-                    String[] dtP = {"",temas[j],idP};
-                    System.out.println(temas[j]+" "+idP);
-                    new Elomac(13,1,dtP).Insert();
-                }
-                return true;
+                for(int i=0;i<temas.length;i++){
+                    sentencia.execute("INSERT INTO detalles_programa(id_tema,id_programa) VALUES('"+temas[i]+"','"+idultimo+"')");
+               }
+                sentencia.close();
+                operacion=true;
             } catch (Exception e) {
-                return false; 
+                Logger.getLogger(Red_deConocimiento.class.getName()).log(Level.SEVERE, null, e); 
             }
+            return operacion;
         }
         
         

@@ -13,7 +13,7 @@
 
                         <div class="col-md-12">
                             <label>Numero del centro de formación</label>
-                            <input required type="text" id="numCentro" class="form-control inputs" placeholder="Digite el numero del centro de formación">
+                            <input required type="text"  id="numCentro" class="form-control inputs" placeholder="Digite el numero del centro de formación">
                         </div>
                         
                         

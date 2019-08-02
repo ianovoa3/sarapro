@@ -16,6 +16,7 @@ $(document).on('ready', function () {
         $("#numCentro").val(valors[3]);
         $("#nomDirrecion").val(valors[4]);
         $("#ciudad option[value=" + valors[1] + "]").attr("selected", true);
+        $("#numCentro").attr("readonly",true);
         $("#btnCentro").html("Modificar centro");
         jso[7] = ['Modificar_Controller', '[{opcion:4,CentroAdmin:[3,' + idCentro + ',0,0,0,0,0]}]'];
         selector[7] = $("#MultTemasFormacion");

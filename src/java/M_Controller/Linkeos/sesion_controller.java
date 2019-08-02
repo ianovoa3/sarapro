@@ -60,7 +60,7 @@ public class sesion_controller extends HttpServlet {
                             sesion.setAttribute("nomUser",funJ.getJSONArray("nom_funcionario").getString(0));
                             sesion.setAttribute("idRol", rol);
                             sesion.setAttribute("idCentro", funJ.getJSONArray("id_centro").getInt(0));
-                             id_condicion=funJ.getJSONArray("id_funcionario").getInt(0);
+                            id_condicion=funJ.getJSONArray("id_funcionario").getInt(0);
                         }else{
                             sesion.setAttribute("idRol", rol);
                         }
@@ -92,6 +92,7 @@ public class sesion_controller extends HttpServlet {
                         sesion.invalidate();
                         request.getRequestDispatcher("index.jsp").forward(request, response);
                     } catch (Exception e) {
+                        e.printStackTrace();
                         request.getRequestDispatcher("index.jsp").forward(request, response);
                     }
                     break;

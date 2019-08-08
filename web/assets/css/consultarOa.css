@@ -1,0 +1,137 @@
+#formato{
+/*    background-color: blue;*/
+    margin-top: 3%;
+    margin-right: 30%;
+} 
+#titulop{
+/*    background-color: yellow;*/
+   margin-left: 34%;
+   margin-top: -18%;
+}
+#autorp{
+/*    background-color: darkblue;*/
+    margin-left:34%;
+}
+#fechap{
+/*    background-color: red;*/
+    margin-left:34%;
+}
+#descripcionp{
+/*    background-color: orange;*/
+    margin-left:34%;
+}
+#eltitulo{
+/*    background-color: palevioletred;*/
+    margin-left:49.3%;
+    margin-top: -2.4%; 
+    color:#00bfa5;
+}
+#elautor{
+/*    background-color: fuchsia;*/
+    margin-left:40.9%;
+    margin-top: -2.4%;
+    color:#00bfa5;
+}
+#lafecha{
+/*    background-color:  gray;*/
+    margin-left:48.3%;
+    margin-top: -2.4%;
+    color:#00bfa5;
+}
+#ladescripcion{
+/*    background-color: green;*/
+    margin-left:42.3%;
+     margin-top: -2.4%;
+    color:#00bfa5;
+}
+#descargar{
+/*    background-color: brown;*/
+    margin-left:34%;    
+}
+#btnddescar{
+/*    background-color: greenyellow;*/
+    margin-top: -2%;
+}
+#mensaje{
+    color:#f98900;
+}
+
+#formatos{
+/*    background-color: red;*/
+}
+#TtTtulo{
+/*    background-color: yellow;*/
+}
+#titulorespuesta{
+/*    background-color: red;*/
+    margin-left: 5.8%;
+    margin-top: -2.8%;
+      color:#00bfa5;
+}
+#autorrespuesta{
+/*    background-color: pink;*/
+     margin-left: 5.6%;
+    margin-top: -2.8%;
+      color:#00bfa5;
+    
+}
+#latitulo{
+/*    background-color: blue;*/
+}
+#laformato{
+/*    background-color: yellow;*/
+}
+#laautor{
+/*    background-color: orange;*/
+}
+#elfecha{
+/*    background-color: darkblue;*/
+}
+#fecharespuesta{
+/*    background-color: greenyellow;*/
+       margin-left: 6.1%;
+    margin-top: -2.8%;
+      color:#00bfa5;
+    
+}
+#eldescripcion{
+/*    background-color: salmon; */
+}
+#descripcionrespuesta{
+/*    background-color: aqua;*/
+     margin-left: 10.5%;
+    margin-top: -2.8%;
+      color:#00bfa5;
+    
+}
+#leformato{
+/*    background-color: fuchsia;*/
+}
+#formatorespuesta{
+/*    background-color: gold;*/
+        margin-left: 7.7%;
+    margin-top: -2.8%;
+      color:#00bfa5;
+}
+#imagen{
+/*    background-color: brown;*/
+    margin-top: 2.5%;
+    margin-bottom: 1%;
+}
+#ladescargav{
+/*    background-color: green;*/
+    margin-top: -3%;
+}
+
+.Consulta{
+    width: 1060px !important;
+   float: none;
+    margin: 0 auto; 
+}
+@media(max-width: 600px){
+   .Consulta{
+    width: 100%;
+   float: left;
+    margin: 0;  
+    }
+}

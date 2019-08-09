@@ -173,6 +173,9 @@
     <div class="col-md-8 col-md-offset-1" id='answer'>
         
     </div>
+    <div id="resultadosAdvance" class="col-md-8 col-md-offset-1">
+        
+    </div>
     <ul class="pagination col-md-8 col-md-offset-2" id="paginador">
         <li id="pag1" class='pagination'><a><lavel>1</label></a></li>
     </ul>

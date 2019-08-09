@@ -13,7 +13,9 @@ $("#archivocsv").click(function(){
     $("#camposrol").append("<div><img src='Archivos/Formatos/equipopedagogico.JPG'><input type='radio' value='2' name='TipoUsuario'><div>");
     $("#camposrol").append("<div><img src='Archivos/Formatos/equipotecnico.JPG'><input type='radio' value='3' name='TipoUsuario'><div>");
     $("#camposrol").append("<div><img src='Archivos/Formatos/coordinador.JPG'><input type='radio' value='4' name='TipoUsuario'><div>");
-    $("#camposrol").append('<button type="submit" class="btn btn-info" id="registrocarga" onclick="validararchivo()">Registra tus Funcionarios!</button>');  
+    $("#camposrol").append("<div><a href='DescargaArchivo?archivo=formato.csv' style='color:red'>REVISE EL FORMATO DE REGISTRO DE CARGA MASIVA</a></div>");
+    $("#camposrol").append('<button type="submit" class="btn btn-info" id="registrocarga">Registra tus Funcionarios!</button>');  
+//quite onclick();
 });
 $("#boton1").click(function () {
     $(".remove").remove();

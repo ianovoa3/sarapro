@@ -316,8 +316,7 @@ jQuery.Luna = function (Datos, selector) {
                                 opcion = "<option value=" + json[i][j[0]] + " selected>" + json[i][j[1]] + "</option>";
                             }
                         
-                            selector.append(opcion);
-                        
+                            selector.append(opcion);  
                     }
                     } else {
                         var jso = jQuery.parseJSON(json);

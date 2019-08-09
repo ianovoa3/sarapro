@@ -203,7 +203,7 @@ public class Elomac extends M_Crud {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(concat);
+        System.out.println("con"+concat);
         return concat;
     }
 
@@ -238,6 +238,7 @@ public class Elomac extends M_Crud {
     public String Select(String delimitador) {
         String bandera = null;
         try {
+            System.out.println("parametros:"+this.tabla+atributos);
             bandera =  this.SuperP("SELECT", this.tabla, atributos, this.DelimitarSentencia(delimitador));
         } catch (Exception e) {
             System.out.println(e.getMessage());

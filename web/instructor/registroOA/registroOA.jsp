@@ -129,6 +129,7 @@
                                                 <p>Reconocimiento - No comercial - Compartir igual : El material creado por un artista puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial y las obras derivadas tienen que estar bajo los mismos términos de licencia que el trabajo original.</p>
                                             </div>
                                             <input type="submit" class=" btn btn-info  col-md-4" value="Añadir" id="botonderechos">
+                                            <input type="submit" class=" btn btn-info  col-md-4" value="Restablecer" id="restablecerbtn">
                                             </div>
                                     </div>
                                     <div class="col-md-6" id="TTTema">

@@ -14,6 +14,14 @@ $(document).ready(function () {
 
     //EXTENCION DE ACUERDO AL IDFORMATO SELECCIONADO (JPJ ETC)
     ///jso[0] = ['SubirPv_Controller','[{opcion:1,tipoFormato:[2,'+idTipoFormato+']}]'];
+    $("#restablecerbtn").click(function(){
+            $("#divr").show();
+            $("#divrs").show();
+            $("#divrcs").show();
+            $("#divrc").show();
+            $("#divrnc").show();
+             alert('Recuerde seleccionar solo un derecho de autor');
+    });
     var valorchecked;
     $("#botonderechos").click(function(){
         valorchecked=1;
@@ -22,7 +30,7 @@ $(document).ready(function () {
             $("#divrcs").hide();
             $("#divrc").hide();
             $("#divrnc").hide();
-            valorchecked=document.getElementById('r').value;
+            valorchecked=document.getElementById('r').value;        
         }
         if(document.getElementById('rs').checked){
             $("#divr").hide();
@@ -50,8 +58,7 @@ $(document).ready(function () {
             $("#divrcs").hide();
             $("#divrc").hide(); 
             valorchecked=document.getElementById('rnc').value;
-        }
-        
+        } 
     });
     $("#formato").change(function () {
         $("#myfile").val("");
@@ -184,6 +191,7 @@ $(document).ready(function () {
     $('#programasdeformacion').hide();
     ///Peticiones del programa de formacion
     $("#SelectArea").change(function () {
+        $("#selectProgramaF").empty();
         var option = $("#SelectArea").val();
         $.ajax({
         type:'POST',
@@ -367,7 +375,8 @@ $(document).ready(function () {
 
     function peticionCompleta(i) {
         if (i == 0) {
-            jso[1] = ['Crud_Controller', '[{arr:0,opcion:3,tabla2:7,tipo:2,elegir:[4,8],delimitador:"[{colum:16,operador:0,valor1:' + idCentro + ',añadir:0},{colum:4,operador:7,valor1:' + idUser + ',añadir:0},{colum:1,operador:0,valor1:1}]",id:0,opSelect:6}]",id:0,opSelect:4}]'];
+            //,id:0,opSelect:4==al final de la consulta que se va a hacer jso[i]
+            jso[1] = ['Crud_Controller', '[{arr:0,opcion:3,tabla2:7,tipo:2,elegir:[4,8],delimitador:"[{colum:16,operador:0,valor1:' + idCentro + ',añadir:0},{colum:4,operador:7,valor1:' + idUser + ',añadir:0},{colum:1,operador:0,valor1:1}]",id:0,opSelect:6}]"}]'];
             selector[1] = $("#SelectAutores");
             datos[1] = {nombre: "MultiSelect"};
             ob.cargarTabla(arrFuciona, selector[1], datos[1]);
@@ -375,9 +384,10 @@ $(document).ready(function () {
         } else if (i == 1) {
             var jsonR = jQuery.parseJSON(data[i]);
             arrFuciona = [{Id_Item_Lista: idUser, Des_Item_Lista: nomUser, tipo: true}];
-            for (var i = 0; i < jsonR.length; i++) {
-                arrFuciona.push({Id_Item_Lista: jsonR[i].Id_Funcionario, Des_Item_Lista: jsonR[i].Nom_Funcionario, tipo: false});
-            }
+//            for (var i = 0; i < jsonR.length; i++) {
+//                console.log("datos="+jsonR[i].Id_Funcionario);
+//                arrFuciona.push({Id_Item_Lista: jsonR[i].Id_Funcionario, Des_Item_Lista: jsonR[i].Nom_Funcionario, tipo: false});
+//            }
             selector[1] = $("#SelectAutores");
             datos[1] = {nombre: "MultiSelect", compuesto: true};
             ob.cargarTabla(arrFuciona, selector[1], datos[1]);
@@ -427,7 +437,7 @@ $(document).ready(function () {
                 men = "El producto  " + men + " " + daMen[1];
             } else {
                 estado = ("error");
-                men = "El producto " + men + " " + daMen[1];
+                men = "El producto no fue registrado satisfactoriamente";
             }
             jso[22] = ['Instrutor_Controller', '[{opcion:3,ti:' + idRol + '}]'];
             datos[22] = {caso: "Notificaciones productos virtuales"};

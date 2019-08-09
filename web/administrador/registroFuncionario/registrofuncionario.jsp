@@ -101,5 +101,8 @@ $(".close").click(function(){
     $("#modalcargamasiva").hide();
     $(".modal-footer").empty();
 });
+ if(document.getElementById('r').checked){
+       $("#rs").hide();
+   }
     </script>
 </div>

@@ -85,8 +85,10 @@ public class M_Procedure extends M_Connection{
         
         protected Object Registar(String todo,int val){
             try {
+                
                 Connection co = this.obtenerConn();
                 CallableStatement cst3 = co.prepareCall(procedure[val]);
+                System.out.println("valor:"+val);
                 cst3.setString(1,todo);
                 cst3.execute();
                 if(val == 4 || val == 10 || val == 11 || val == 12 || val == 13 

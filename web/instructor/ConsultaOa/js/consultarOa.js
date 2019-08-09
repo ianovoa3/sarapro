@@ -84,6 +84,7 @@ if($("#cerrar").click(function (){
         var archivo=4;
         var formato=5;
         var x=datarespuesta.length/6;
+        //x las veces que lo va a hacer 
         $("#formulario1").hide();
         $("#resultadosProductos").show();
        for(var i=0;i<x;i++){
@@ -114,7 +115,34 @@ if($("#cerrar").click(function (){
      data:{opcion:2,titulo:$("#txtBuscarTitle").val(),autor:$("#Autores").val(),ciudad:$("#CiudadFormacion").val(),centro:$("#CentroF").val(),area:$("#Area").val(),palabraclave:$("Palabras").val(),categoria:$("#SelectCategoria").val()},
      url:'consulta',
     success: function(data){
+        var dataadvance=JSON.parse(data);
+        console.log(dataadvance);
+        var tituloadvance=0;
+        var numero=1;
+        var fechaadvance=2;
+        var descripcionadvance=3;
+        var archivoadvance=4;
+        $("#formulario1").hide();
+        $("#resultadosProductos").show();
+        for(var i=0;i<dataadvance.length/5;i++){
+            $("#resultadosAdvance").append("<div id='imagenadvance'><img style='background-color: orange;' src='Archivos/Formatos/searchadvance.jpg'></img></div>");
+            $("#resultadosAdvance").append("<div id='latitulo'><label>Titulo :</label></div>");
+            $("#resultadosAdvance").append("<div id='titulorespuesta'><label>"+dataadvance[tituloadvance]+"</label></div>");
+            $("#resultadosAdvance").append("<div id='laautor'><label>Autor :</label></div>");
+            $("#resultadosAdvance").append("<div id='autorrespuesta'><label>"+dataadvance[numero]+"</label></div>");
+            $("#resultadosAdvance").append("<div id='elfecha'><label>Fecha :</label></div>");
+            $("#resultadosAdvance").append("<div id='fecharespuesta'><label>"+dataadvance[fechaadvance]+"</label></div>");
+            $("#resultadosAdvance").append("<div id='eldescripcion'><label>Descripcion :</label></div>");
+            $("#resultadosAdvance").append("<div id='descripcionrespuesta'><label>"+dataadvance[descripcionadvance]+"</label></div>");
+            $("#resultadosAdvance").append("<div id='ladescargav'><a class='btn btn-info' href=DescargaArchivo?archivo="+dataadvance[archivoadvance]+">Descargar P.V</a></div>");
+            tituloadvance=tituloadvance+5;
+            numero=numero+5;
+            fechaadvance=fechaadvance+5;
+            descripcionadvance=descripcionadvance+5;
+            archivoadvance=archivoadvance+5;
+            }
         
+        $("#btnBuscar").hide(); 
     }
         });  
      }
@@ -124,6 +152,7 @@ if($("#cerrar").click(function (){
          $("#btnBuscar").show();
          $("#formulario1").show();
          $("#answer").empty();
+         $("#resultadosAdvance").empty();
     });
    
 //    var selector = [], hilo = [], jso = [], data = [], datos = [], arraySelecionPrograma = [], arraySelectCategoria = [];

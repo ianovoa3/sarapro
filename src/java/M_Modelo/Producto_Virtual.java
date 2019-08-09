@@ -68,16 +68,14 @@ FileReader entrada;
             String categoria=consultaVO.getCategoria();
             conex=obtenerConn();
           sentence=conex.createStatement();
-          //select DISTINCT pv.nom_p_virtual,f.nom_funcionario,v.fecha_publicacion,pv.des_p_virtual,v.url_version from producto_virtual pv inner join version v ON pv.id_p_virtual=v.id_p_virtual inner join autor a inner join funcionario f on f.id_funcionario=a.id_funcionario inner join ciudad ci inner join centro ce on ci.id_ciudad=ce.id_ciudad inner join area ar inner join WHERE pv.nom_p_virtual='' OR f.nom_funcionario='' OR ci.nom_ciudad='bogotá'  OR ce.nom_centro='centro de gestion de mercados, logistica y tecnologias de la información' AND v.id_estado=6;
-          resultset=sentence.executeQuery("");
+          resultset=sentence.executeQuery("select DISTINCT pv.nom_p_virtual,f.nom_funcionario,v.fecha_publicacion,pv.des_p_virtual,v.url_version from categoria,producto_virtual pv inner join version v on pv.id_p_virtual=v.id_p_virtual inner join funcionario f inner join autor a on a.id_funcionario=f.id_funcionario  inner join ciudad ci inner join centro ce on ce.id_ciudad=ci.id_ciudad inner join area ar inner join area_centro arce on ar.id_area=arce.id_area WHERE pv.nom_p_virtual like '%"+titulo+"' or f.nom_funcionario like '%"+autor+"' OR ci.nom_ciudad ='"+ciudad+"' or ce.nom_centro='"+centro+"' or ar.nom_area='"+area+"' or pv.palabras_clave like '%"+palabraclave+"' or categoria.nom_categoria='"+categoria+"' and v.id_estado=6");
           while(resultset.next()){
           lista.add(resultset.getString("pv.nom_p_virtual"));
           lista.add(resultset.getString("f.nom_funcionario"));
           lista.add(resultset.getString("v.fecha_publicacion"));
           lista.add(resultset.getString("pv.des_p_virtual"));
           lista.add(resultset.getString("v.url_version"));
-          }
-            
+          }  
         } catch (Exception e) {
          Logger.getLogger(Producto_Virtual.class.getName()).log(Level.SEVERE, null, e);
         }

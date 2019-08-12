@@ -1,7 +1,7 @@
 <%@page session = "true" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
-<html lang="en" id="estru">
+<html lang="en" id="estru"> 
     <head>  
         <meta charset="utf-8" />
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">

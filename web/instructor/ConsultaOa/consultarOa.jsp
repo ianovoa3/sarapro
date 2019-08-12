@@ -112,11 +112,11 @@
             <div class="col-md-offset-1 col-md-6">
     <div class="col-md-6">
         <br>    
-        <button id="btnBuscar" type="button" class="btn  btn-info">Buscar Productos Virtuales</button>        
+        <button id="btnBuscar" type="button" class="btn  btn-info btnbuscar">Buscar Productos Virtuales</button>        
     </div> 
     <div class="col-md-6">
         <br>   
-        <button id="btnActu" type="button" class="btn btn-info">Actualizar Lista</button>        
+        <button id="btnActu" type="button" class="btn btn-info btnbuscar">Actualizar Lista</button>        
     </div>
 </div>
         </div>

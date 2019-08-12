@@ -134,4 +134,17 @@
    float: left;
     margin: 0;  
     }
+   
 }
+.btnbuscar{
+     overflow: auto;
+     max-width: 200px;
+  min-width: 200px;
+}
+/* @media(min-width: 601px){
+   .Consulta{
+    width: 100% !important;
+   float: left;
+    margin: 0;  
+    }
+ }*/

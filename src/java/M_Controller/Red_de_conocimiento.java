@@ -59,7 +59,7 @@ public class Red_de_conocimiento extends HttpServlet {
                  break;
              case 4:
                  String nombres[]=request.getParameterValues("nombres[]");
-                 red.consultadatosestadisticos(nombres);
+                // red.consultadatosestadisticos(nombres);
                  break;
             }
         }

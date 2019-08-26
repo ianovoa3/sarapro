@@ -123,5 +123,13 @@ public class Red_deConocimiento extends M_Connection{
               Logger.getLogger(Red_deConocimiento.class.getName()).log(Level.SEVERE, null, e);
         }
     }
+    public String[] consultadatosestadisticos(String[] datos){
+        try {
+            
+        } catch (Exception e) {
+        
+        }
+        return datos;
+    }
     
 }

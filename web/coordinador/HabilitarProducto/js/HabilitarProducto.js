@@ -3,6 +3,7 @@ $(document).on('ready', function () {
     var ob = new $.Luna("Producto(s) Virtual(es)", selector);
     ob.Vivo("Habilitar Producto1");
     $("#ccNoti").empty();
+    var arregloconsulta=[];
     //jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:9,tipo:2,elegir:[0,1,2],delimitador:"[{colum:4,operador:0,valor1:' + idCentro + '}]",id:0,opSelect:6}]'];
     
     //-------Consulta Notificaciones
@@ -19,8 +20,6 @@ $(document).on('ready', function () {
         datos[1] = {nombre: "btn"};
         ajax(1, datos[1]);
     });
-
-
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");
         hilo[i].postMessage(jso[i]);
@@ -47,6 +46,8 @@ $(document).on('ready', function () {
             selector[0] = $("#tablaAprobar");
             datos[0] = {nombre: "Habilitar"};
             ajax(0, datos[0]);
+            //tratar de area
+            
         }
     }
 });

@@ -656,6 +656,7 @@ jQuery.Luna = function (Datos, selector) {
                     var selecNo = selector.selector + "P";
                     $(selecNo).empty();
                     $("#ccNoti").empty();
+                    var arreglo=[];
                     for (var i = 0; i < jsSelect.length; i++) {
                         table = selector.dataTable().fnAddData([
                             i + 1,
@@ -670,7 +671,9 @@ jQuery.Luna = function (Datos, selector) {
                         } else if (i == 4) {
                             $(selecNo).append('<li><a><label class="Notify" id=verMasNotificaciones>Ver mas productos</label></a></li>');
                         }
+                        arreglo.push(jsSelect[i].nom_p_virtual);
                     }
+                    consulta(arreglo);
                     $("#ccNoti").append(i);
                     break;
                 case "Area":                
@@ -765,7 +768,7 @@ jQuery.Luna = function (Datos, selector) {
                         });
                         $("#" + selector + "_filter").hide();
                     } else {
-                        alert("No se encontaron registros");
+                        //alert("No se encontaron registros");
                     }
                     break;
             }
@@ -783,3 +786,11 @@ jQuery.Luna = function (Datos, selector) {
         return pub;
     }();
 };
+function consulta(nombres){
+    $.ajax({
+        type:'POST',
+        data:{"nombres[]":nombres.valueOf(),opcion:4},
+        url:'Red_Controller'
+        });
+      
+ }

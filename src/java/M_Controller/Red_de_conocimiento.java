@@ -57,6 +57,10 @@ public class Red_de_conocimiento extends HttpServlet {
                  String nuevosprogramas[]=request.getParameterValues("nuevosprogramas[]");
                  red.actualizar(redconsultanueva,nuevosprogramas);
                  break;
+             case 4:
+                 String nombres[]=request.getParameterValues("nombres[]");
+                 red.consultadatosestadisticos(nombres);
+                 break;
             }
         }
     }

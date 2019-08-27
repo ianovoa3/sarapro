@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import org.json.JSONArray;
 
 public class Centro extends Elomac{
-	public  Centro ( ){ 
+	public  Centro (){ 
 		super("centro",1);
 	}
         
@@ -55,7 +55,7 @@ public class Centro extends Elomac{
             idcentro=rs.getInt(1);
             }
             for(int i=0;i<areas.length;i++){     
-            sentencia.execute("INSERT INTO area_centro(id_area,id_centro) VALUES('"+areas[i]+"','"+idcentro+"')");
+            sentencia.execute("INSERT INTO area_centro(id_area,id_centro) VALUES('"+(Integer.parseInt(areas[i]))+"','"+idcentro+"')");
             }
             sentencia.close();
             rs.close();
@@ -77,7 +77,7 @@ public class Centro extends Elomac{
             idcentro=rs.getInt("id_centro");
             }
             for(int i=0;i<areas.length;i++){
-            sentencia.execute("INSERT INTO area_centro(id_area,id_centro) VALUES('"+areas[i]+"','"+idcentro+"')");
+            sentencia.execute("INSERT INTO area_centro(id_area,id_centro) VALUES('"+(Integer.parseInt(areas[i]))+"','"+idcentro+"')");
             }
             sentencia.execute("UPDATE centro SET centro.nom_centro = '"+nom+"',centro.direccion='"+direccion+"',centro.id_ciudad='"+ciudad+"' WHERE centro.id_centro ='"+idcentro+"'");
         } catch (Exception e) {

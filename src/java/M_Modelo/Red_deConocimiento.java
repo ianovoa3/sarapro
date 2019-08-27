@@ -123,13 +123,40 @@ public class Red_deConocimiento extends M_Connection{
               Logger.getLogger(Red_deConocimiento.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-    public String[] consultadatosestadisticos(String[] datos){
+    public ArrayList consultadatosestadisticos(){
+        Connection cnn=null;
+        Statement sentencia=null;
+        ResultSet rs=null;
+        //ResultSet rs1=null;
+        String consulta="SELECT count(id_area) as 'cantidad' FROM 11_v_area";
+        int cantidad=0;
+        ArrayList resultado=new ArrayList();
+        ArrayList finalresultado=new ArrayList();
         try {
-            
+            cnn=obtenerConn();
+            sentencia=cnn.createStatement();
+            rs=sentencia.executeQuery(consulta);
+            while(rs.next()){
+            cantidad=rs.getInt("cantidad");
+            }
+            System.out.println("cant:"+cantidad);
+            rs=sentencia.executeQuery("SELECT DISTINCT(id_area) as 'idarea' FROM area");
+            while(rs.next()){
+              resultado.add(rs.getInt("idarea"));
+                System.out.println("idarea:"+rs.getInt("idarea"));
+            }
+            for (int i = 0; i < resultado.size(); i++) {
+                rs=sentencia.executeQuery("SELECT count(id_area) as 'cantidad',nom_area FROM 11_v_area WHERE id_area='"+resultado.get(i)+"'");
+                while(rs.next()){
+                finalresultado.add(rs.getInt("cantidad"));
+                finalresultado.add(rs.getString("nom_area"));
+                }
+            }
+             finalresultado.add(cantidad);
         } catch (Exception e) {
-        
+         Logger.getLogger(Red_deConocimiento.class.getName()).log(Level.SEVERE, null, e);
         }
-        return datos;
+      return finalresultado;
     }
     
 }

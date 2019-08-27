@@ -1,5 +1,24 @@
 $(document).ready(function () {
-
+    var arreglo=[];
+    var contador=0;
+    var contador1=1;
+$.ajax({
+        type:'POST',
+        data:{opcion:4},
+        url:'Red_Controller',
+        success: function (data) {
+            var info=jQuery.parseJSON(data);
+            console.log("info"+info.length);
+            while(info[contador1]!==undefined){
+             arreglo.push({label: info[contador1], value: (info[contador]*100)/info[info.length-1]}); 
+             contador1=contador1+2;
+             contador=contador+2;
+         }
+            },
+           error: function (xhr) { 
+            xhr.statusText;
+        }    
+        }); 
     var selector = [], hilo = [], jso = [], data = [], datos = [], arrAnios = [];
     var ob = new $.Luna("usuario", selector[0]);
     ob.Vivo("Estadistica");
@@ -176,7 +195,7 @@ $(document).ready(function () {
                             "legendItemFontSize": '10',
                             "legendItemFontColor": '#666666'
                         },
-                        "data": datas
+                        "data": arreglo
                     }
                 }).render();
                 if (datos[1].btn == false) {

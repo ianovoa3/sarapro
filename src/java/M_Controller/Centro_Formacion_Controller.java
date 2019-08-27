@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package M_Controller;
-
 import M_Modelo.Centro;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -26,7 +25,8 @@ public class Centro_Formacion_Controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-           Centro centro=new Centro();
+           Centro centroredcrud;
+            centroredcrud = new Centro();
            String nom=request.getParameter("nom");
            int num=Integer.parseInt(request.getParameter("num"));
            String direccion=request.getParameter("direccion");
@@ -35,11 +35,11 @@ public class Centro_Formacion_Controller extends HttpServlet {
            int opcion=Integer.parseInt(request.getParameter("opcion"));
            switch(opcion){
                case 1:
-                   centro.insertarCentros(nom, num, direccion, ciudad, areas);
-                   out.print(new Gson().toJson(nom+"se registró correctamente") );
+                   centroredcrud.insertarCentros(nom, num, direccion,ciudad,areas);
+                   out.print(new Gson().toJson(nom+"se registró correctamente"));
                    break;
                case 2:
-                   centro.actualizarCentro(nom,num,direccion,ciudad,areas);
+                   centroredcrud.actualizarCentro(nom,num,direccion,ciudad,areas);
                    out.print(new Gson().toJson(nom+"se actualizo de forma correcta"));
                    break;
            }

@@ -1,17 +1,31 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="M_Modelo.Red_deConocimiento"%>
 <%int j=0;%>
+
 <div class="modal" tabindex="-1" role="dialog">
+  
   <div class="modal-dialog" role="document">
+   
     <div class="modal-content">
       <div class="modal-header">
+             <link rel="stylesheet" href="assets/css/estilo_1.css"/>
+             <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
         <h5 class="modal-title">Añadir otro programa</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-          <select id="selectprograma">
+<!--        <div class="modal-body">
+            <select id="soflow-color">
+   This method is nice because it doesn't require extra div tags, but it also doesn't retain the style across all browsers. 
+  <option>Select an Option</option>
+  <option>Option 1</option>
+  <option>Option 2</option>
+</select>
+      </div>-->
+            
+        <div class="modal-body">
+          <select id="selectprograma" class="form-control">
           <% Red_deConocimiento reddecon=new Red_deConocimiento();
             ArrayList programa=reddecon.selectprograma();
             for(int i=0;i<programa.size();i++){
@@ -26,8 +40,9 @@
 <div class="content" style="margin-left: 10%;">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="css/multi-select.css">
+    <link rel="stylesheet" href="assets/css/estilo_1.css"/>
     <div class="container-fluid">
-        <div class="row">
+        <div class="row" id="rowww">
             <div class="col-md-12">
                 <div class="contenedorFormulario col-md-10" style="margin-top: 3%;">
                     <div class="col-md-6">
@@ -41,18 +56,18 @@
                     
                     <div class="col-md-6" id="programasnuevos">
                         <label>Programas de formacion</label>
-                        <select id="SelectItem" class="itemselect" multiple="multiple">
+                        <select id="SelectItem" class="itemselect form-control " multiple="multiple">
                         </select> 
                     </div>
 
                     <div class="col-md-6" id="programas">
                         <label>Programas de formacion</label>
-                        <select class="custom-select" multiple>                  
+                        <select class="custom-select form-control" multiple>                  
                         </select>
-                        <button type="button" class="btn btn-info" id="btnprograma" style="margin-bottom:2%">Añadir Programa</button> 
+                        <button type="button" class="btn btn-info" id="btnprograma">Añadir Programa</button> 
                     </div>
                     <div class="col-md-7"> 
-                        <button type="button" class="btn btn-info" id="btnArea" style="margin-bottom:2%" name="button">Guardar Red</button>    
+                        <button type="button" class="btn btn-info" id="btnArea" name="button">Guardar Red</button>    
                     </div>
                     <div class="col-md-11 col-md-offset-1">
                         <article  class="col-md-11 testilo">

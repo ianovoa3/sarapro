@@ -74,10 +74,24 @@ form{
         margin-top: 3%;
 
 }
-#btnCentro{
-    margin-left: 49%;
-    margin-top: -2.5%;
+#idcentro{
+   
+    margin-left: 4%;
+    margin-top: 3%;        
+}
+#idtabla{
+    margin-left: 0.1%;
+    margin-top: 3%;
  
+}
+#btnCentro{
+   
+    margin-left: -1%;
+margin-top: 2.5%;
+margin-bottom: 2%;
+}
+#idpre{
+    
 }
 #buscar{
   
@@ -127,9 +141,21 @@ form{
     margin-top:  2%;
 }
 #btnArea{
-    margin-left: 55%;
-    margin-top: -2.4%;
-    margin-bottom: 3%;
+    
+    margin-left: 1%;
+
+    margin-bottom: 10%;
+}
+#idbtnf{
+   margin-top: 3%;
+    margin-bottom: 4%;
+}
+#idforcon{
+    margin-left: 5%;
+    margin-top: 3%;
+}
+#articlefor{
+    margin-left: 5%;
 }
 #tablarea{
     
@@ -181,7 +207,15 @@ form{
     margin-top: -2%;
 }
 #percent{
-    margin-top: 1%;
+    margin-top: -3%;
+}
+#btnAccionFormato{
+  margin-bottom: 3%;
+}
+#idtipo{
+/*    background-color: green;*/
+    margin-left: 5%;
+    margin-top: 3%;
 }
 #tablaN{
     margin-left: 0.1%;
@@ -459,9 +493,67 @@ table.testilos{
 }
 
 #temma{
-    background-color: blue;
+/*    background-color: blue;*/
+     max-width: 1600px;
+  min-width: 100px;
+  overflow-x: scroll;
+  margin-top: 2%;
+}
+#idaarea{
+     max-width: 1600px;
+  min-width: 100px;
+  overflow-x: scroll;
+/*  background-color: blue;*/
+} 
+#programasnuevos{
+/*    background-color: red;*/
+     max-width: 1600px;
+  min-width: 100px;
+  overflow-x: scroll;
+}
+#rowww{
+     max-width: 1600px;
+  min-width: 100px;
+  overflow-x: scroll;
+}
+#btnTemaP{
+    margin-left: 30%;
+}
+#idnomf{
+/*   margin-left: 8%;*/
+/*    background-color: blueviolet;*/
+}
+#idadjun{
+/*    background-color: orange;*/
+}
+#idcrear{ 
+    margin-top: 5%;
+}
+#idprograma{
+    margin-top: 3%;
+    margin-bottom: 4%;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+select#soflow-color {
+   color: #fff;
+   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#779126, #779126 40%, #779126);
+   background-color: #779126;
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+   padding-left: 15px;
+}
 
 
 

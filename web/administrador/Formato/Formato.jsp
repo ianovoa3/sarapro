@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="contenedorFormulario col-md-10"style="margin-top: 3%;">
+                <div class="contenedorFormulario col-md-11" id="idforcon">
                     <div class="form-group contenedorInsert">
                         <div class="col-md-6">
                             <label for="formato">Nombre del Formato:</label>
@@ -19,14 +19,14 @@
                                 <option value="A0">Selecionar...</option>
                             </select>
                         </div> 
-                        <div class="col-md-12 col-md-offset-1 espacio">
+                        <div class="col-md-6 col-md-offset-1 espacio" id="idbtnf">
                             <button type="button" class="btn btn-info espacio" id="btnformato"  name="button">Guardar formato</button>    
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <article  class="col-md-10 testilo">
+        <article  class="col-md-11 testilo" id="articlefor">
             <table id="tablaformato" class="table table-hover">
                 <thead>
                     <tr class="active">

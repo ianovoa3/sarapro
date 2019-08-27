@@ -8,23 +8,22 @@
         <link rel="stylesheet" href="assets/css/estilo_1.css"/>
         <div class="row">
             <div class="col-md-12">
-                <div class="contenedorFormulario col-md-10"style="margin-top: 3%;">
-
-                    <label class="col-md-8 col-md-offset-1">Nombre del formato:</label>
-                    <div class="col-md-8 col-md-offset-1">
+                <div class="contenedorFormulario col-md-11" id="idtipo">
+                    <div class="col-md-6 col-md-offset-1" id="idnomf">
+                         <label>Nombre del formato:</label>
                         <input required class="form-control inputs" type="text" id="formato">
-                    </div>
-
-                    <label for="" class="col-md-10">Adjuntar imagen de formato</label>
-                    <form id="UploadForm" action="archivos" method="post" enctype="multipart/form-data">
-                        <div class="col-md-offset-1">
+                    </div>                  
+                    <form id="UploadForm" action="archivos" method="post" enctype="multipart/form-data">                          
+                        <div class="col-md-7 col-md-offset-1" id="idadjun">
+                            <label>Adjuntar imagen de formato</label>
                             <input type="file" size="26120" id="myfile" class="inputs input-file" name="myfile">
-                        </div>
-                        <input type="submit" class=" btn btn-info  col-md-4 col-md-offset-1"  value="Agregar formato" id="btnAccionFormato">
-                        <div id="progressbox" class="col-md-12 col-md-offset-1">
+                             <div id="progressbox" class="col-md-12 col-md-offset-1">
                             <div id="progressbar"></div>
                             <div id="percent">0%</div>
+                            </div>
                         </div>
+                        <input type="submit" class=" btn btn-info  col-md-4 col-md-offset-1"  value="Agregar formato" id="btnAccionFormato">
+                       
                         <br />
                         <div id="message" class="col-md-12 col-md-offset-1"></div>
                         <br/>

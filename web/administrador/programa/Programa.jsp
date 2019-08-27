@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
     <link rel="stylesheet" href="assets/css/estilo_1.css"/>
     <div class="container-fluid">
-        <div class="row">
+        <div class="row" id="rowww">
             <div class="col-md-12">
                 <div class="contenedorFormulario col-md-10"style="margin-top: 3%;">
                     <div class="form-group contenedorInsert">
@@ -20,8 +20,8 @@
                                 <option value="Especialidad">Especialidad</option>
                             </select>
                         </div>
-                          <div class="col-md-6">
-                                <div class="col-md-6">
+                          <div class="col-md-6" id="idcrear">
+                                <div class="col-md-6" >
                                     <label>Crear Tema</label>
                                 </div>
                                 <label for="NombreTema" class="col-md-12">Nombre del tema:</label>
@@ -39,7 +39,7 @@
                             </div>
                           
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-4" id="idprograma">
                         <button id="btnPrograma" type="button" class="btn btn-primary">Guardar Programa</button>
                         </div>
                         <div class="col-md-11 col-md-offset-1">

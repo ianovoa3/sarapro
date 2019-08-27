@@ -46,8 +46,8 @@
                                    
                                 </ol>
 
-                                <div id="fullpage">
-                                    <div class="section " id="section0">
+                                <div id="fullpage" >
+                                    <div class="section" id="section0">
                                         <!--section1-->
                                         <div class="col-md-12">
                                             <div class="col-md-12 col-md-offset-2" style="margin-top:-5%;">

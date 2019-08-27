@@ -122,7 +122,6 @@
 /*    background-color: green;*/
     margin-top: -3%;
 } 
-
 .Consulta{
     width: 1060px !important;
    float: none;
@@ -133,14 +132,80 @@
     width: 100%;
    float: left;
     margin: 0;  
+    clean:both;
     }
+/*    .btn-block{
+        width: 100%;
+   float: left;
+    margin: 0;
+    }*/
+/*    #formato{
+        width: 50px;
+    }
+    #tituloP{
+         width: 30px;
+    }
+    #eltitulo{
+         width: 50px;
+    }
+    #autorp{
+         width: 30px;
+    }
+    #elautor{
+         width: 30px;
+    }
+    #fechap{
+      width: 30px;   
+    }
+    #lafecha{
+      width: 30px;   
+    }
+    #descripcionp{
+      width: 30px;   
+    }
+    #ladescripcion{
+      width: 30px;   
+    }
+    #btnddescar{
+      width: 30px;   
+    }*/
+    
+    
+    
+    
    
+}
+/*.btnbuscar{
+     overflow: auto;
+     max-width: 200px;
+  min-width: 200px;
+}*/
+
+/*.Consulta{
+    width: 1060px !important;
+    float: none;
+    margin: 0 auto; 
+}
+@media(max-width: 600px){
+   .Consulta{
+    width: 100%;
+   float: left;
+    margin: 0;  
+    }
+    #formato{
+        width: 50px;
+    }
+}*/
+/*.pruebas{
+   max-width: 160px !important;
+   float: none;
+    margin: 0 auto; 
 }
 .btnbuscar{
      overflow: auto;
      max-width: 200px;
   min-width: 200px;
-}
+}*/
 /* @media(min-width: 601px){
    .Consulta{
     width: 100% !important;

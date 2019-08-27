@@ -53,6 +53,9 @@ public class Administrador_Controller extends HttpServlet {
                     case 9:
                         request.getRequestDispatcher("administrador/centroFormacion/CentroFormacion.jsp").forward(request, response);
                         break;
+                    case 10:
+                        request.getRequestDispatcher("administrador/paginaP/inicio.jsp").forward(request, response);
+                        break;
                 }
             } else {
                 request.getRequestDispatcher("index.jsp").forward(request, response);

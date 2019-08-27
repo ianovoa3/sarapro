@@ -1,5 +1,7 @@
 function carga(ti, rol) {
+     var toggle=false;
     var hilo = [], jso = [], data = [], datos = [];
+   
     var ob = new $.Luna("equipo", "");
     ob.Vivo("PricipalEquipos");
     jso[0] = ['Equipo_Controller', '[{opcion:2,ti:' + rol + '}]'];
@@ -31,7 +33,34 @@ function carga(ti, rol) {
             ajax(1);
         }
     });
-
+    /*clean:both*/
+    $(window).resize(function () {
+                console.log($(window).width())
+                console.log(toggle)
+            if ($(window).width() < 1000 && !toggle) {
+                toggle=true;
+                $(".navbar-toggle").click(function () {
+                    $('.navbar-nav li').click(function (e) {
+//                        alert("prueba")
+                        jso[1] = ['Equipo_Controller', '[{opcion:' + this.value + ',ti:' + rol + '}]'];
+                        casoUso = "text" + this.value;
+                        datos[1] = {caso: $("#" + casoUso).text(), tipo: 4};
+                        if (this.value == 0) {
+                            datos[1] = {caso: "Notificaciones de los Productos Virtuales", tipo: 3};
+                        } else if (this.value == 1) {
+                            datos[1] = {caso: "Crear Lista de Chequeo", tipo: 1};
+                        } else if (this.value == 2) {
+                            datos[1] = {caso: "Editar Lista de Chequeo", tipo: 1};
+                        } else if (this.value == 3) {
+                            datos[1] = {caso: "Consultar P.V", tipo: 1};
+                        } 
+                        ajax(1);
+                    });
+                })
+            }else{
+                toggle=false;
+            }
+        });
     function ajax(i) {
         hilo[i] = new Worker("js/worker.js");
         hilo[i].postMessage(jso[i]);

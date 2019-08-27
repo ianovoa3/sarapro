@@ -10,18 +10,19 @@
     <link rel="stylesheet" href="assets/css/estilo_1.css"/>
     <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
     <link href="assets/css/consultarOa.css" rel="stylesheet" type="text/css"/>
+     <link rel="stylesheet" href="assets/css/estilo_1.css"/>
 </head>
 <body>
-    <article class="col-md-12 Consulta" >
-        <div id="Tituloss"> 
-            <div id="Divbuqueda" class="col-md-11 divv" >
-            <div class="col-md-5" id="BbBusqueda">  
+    <article class="col-md-12 Consulta " >
+        <div id="" class=""> 
+            <div class="col-md-10" >
+            <div class="col-md-5" >  
                 <label for="txtBuscarTitle" class="col-md-12">Buscar producto virtual por título</label>
                 <div class="col-md-12">
                     <input required type="text" id="txtBuscarTitle" value="" class="form-control inputs" placeholder="Titulo del producto virtual">
                 </div>
             </div>
-                <div class="col-md-6" id="AaAutor"  style="margin-top: 3%;">
+                <div class="col-md-6" id="AaAutor" >
                 <label for="Autores" class="col-md-5">Autor</label>
                 <div class="col-md-10">
                     <input required type="text" id="Autores" value="" class="form-control inputs" placeholder="Autores del producto virtual">
@@ -112,11 +113,11 @@
             <div class="col-md-offset-1 col-md-6">
     <div class="col-md-6">
         <br>    
-        <button id="btnBuscar" type="button" class="btn  btn-info btnbuscar">Buscar Productos Virtuales</button>        
+        <button id="btnBuscar" type="button" class="btn btn-block">Buscar Productos</button>        
     </div> 
     <div class="col-md-6">
         <br>   
-        <button id="btnActu" type="button" class="btn btn-info btnbuscar">Actualizar Lista</button>        
+        <button id="btnActu" type="button" class="btn btn-block">Actualizar Lista</button>        
     </div>
 </div>
         </div>

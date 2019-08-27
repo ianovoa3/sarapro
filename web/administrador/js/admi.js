@@ -11,7 +11,8 @@ function cargaF(ti, rol) {
         datos[0] = {caso: "Deshabilitar Usuarios"};
         ajax(0);
     });
-    $('.menu li').click(function (e) {
+    $('.btntt').click(function (e) {
+        console.log("Entro", this.value)
         if (this.value == 7) {
             jso[2] = ['principal', '[{opcion:2,se:' + ti + '}]'];
            // ajax(2);

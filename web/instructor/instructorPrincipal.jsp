@@ -18,8 +18,8 @@
         <link href="assets/css/themify-icons.css" rel="stylesheet">
         <link href="assets/css/estilo.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
-        
-         <link href="assets/css/line-awesome-font-awesome.css" rel="stylesheet" type="text/css"/>
+
+        <link href="assets/css/line-awesome-font-awesome.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/line-awesome-font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/line-awesome.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/line-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -35,7 +35,7 @@
                     </div>
                     <ul class="nav menu" id="menus">
                         <li class="active"><a><i class="la la-user"></i><p>Instructor</p></a></li>
-                        <li class="btntt" value="4"><a><i class="la la-edit"></i><p><label style='cursor:pointer;' id="text4">Actualizar contraseña</label></p></a></li>
+                        <li class="btntt" value="4"><a><i class="la la-edit"></i><p><label style='cursor:pointer;' id="text4">Actualizar contraseña </label></p></a></li>
                         <li class="btntt" value="1"><a><i class="la la-cloud-upload"></i><label style='cursor:pointer;' id="text1">Subir </label></a></li>
                         <li class="btntt" value="0"><a><i class="la la-search"></i><label style='cursor:pointer;' id="text0">Consultar </label></a></li>
                         <li class="btntt" value="3"><a><i class="la la-bell-o"></i><label style='cursor:pointer;' id="text3">Notificaciones </label></a></li>
@@ -121,7 +121,7 @@
     <script src="assets/js/demo.js"></script>
     <script src="instructor/js/InstrutorPrincipal.js"></script>
     <script type="text/javascript">
-        
+
         var nomUser = '<%= session.getAttribute("nomUser")%>';
         var idUser = '<%= session.getAttribute("idUser")%>';
         var idRol = '<%= session.getAttribute("idRol")%>';
@@ -140,5 +140,33 @@
                 timer: 4000
             });
         }
+    </script>
+
+
+    <script>
+
+
+
+//        $(".navbar-toggle").click(function () {
+//            $('.navbar-nav li').click(function (e) {
+//                alert("prueba")
+//                jso[1] = ['Instrutor_Controller', '[{opcion:' + this.value + ',ti:' + idRol + '}]'];
+//                casoUso = "text" + this.value;
+//                datos[1] = {caso: $("#" + casoUso).text(), tipo: 4};
+//                if (this.value == 3) {
+//                    datos[1] = {caso: "Notificaciones de los Productos Virtuales", tipo: 3};
+//                } else if (this.value == 1) {
+//                    datos[1] = {caso: "Subir un Producto Virtual", tipo: 1};
+//                } else if (this.value == 0) {
+//                    datos[1] = {caso: "Consultar Productos Virtuales", tipo: 1};
+//                } else if (this.value == 2) {
+//                    datos[1] = {caso: "Correguir Productos Virtuales", tipo: 1};
+//                } else if (this.value == 6) {
+//                    datos[1] = {caso: "Agregar una Version al Producto Virtual", tipo: 1};
+//                }
+//                ajax(1);
+//            });
+//        })
+
     </script>
 </html>

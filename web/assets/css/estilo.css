@@ -241,10 +241,10 @@ border: solid 2px white;
 }
 
 .footerDown{
-  bottom: 0;
-  width: 100%;
-  height: 40px;
-  color: white;
+   bottom: 0;
+   min-width: 20px;
+   min-height: 20px;
+   background-color: red;
 }
 
 button.accordion {

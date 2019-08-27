@@ -37,8 +37,10 @@
                     </div>
 
                     <ul class="nav menu" id="menus">
-              <li class="active" value="1" ><a><i class="la la-user"></i><p><label style='cursor:pointer;' id="text1">Administrador</label></p></a></li>
-                         <li class="btntt" value="0"><a id="reg"><i class="la la-user-plus"></i><p><label style='cursor:pointer;' id="text0">registrar Usuario</label></p></a></li>
+<!--              <li class="btntt " value="10" ><a><i class="la la-user"></i><p><label style='cursor:pointer;' id="text1">Administrador</label></p></a></li>-->
+
+                        <li class="btntt" value="10"><a><i class="la la-user"></i><p><label style='cursor:pointer;' id="text10">Administrador</label></p></a></li> 
+                        <li class="btntt" value="0"><a id="reg"><i class="la la-user-plus"></i><p><label style='cursor:pointer;' id="text0">registrar Usuario</label></p></a></li>
                         <li class="btntt" value="1"><a><i class="la la-user-times"></i><p><label style='cursor:pointer;' id="text1">Deshabilitar Usuario</label></p></a></li>
                         <li class="btntt" value="2"><a><i class="la la-files-o"></i><p><label style='cursor:pointer;' id="text2">Formato de archivos</label></p></a></li>
                         <li class="btntt" value="3"><a><i class="la la-share-alt"></i><p><label style='cursor:pointer;' id="text3">Red de conocimiento</label></p></a></li>

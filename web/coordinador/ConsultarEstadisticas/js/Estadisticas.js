@@ -8,7 +8,6 @@ $.ajax({
         url:'Red_Controller',
         success: function (data) {
             var info=jQuery.parseJSON(data);
-            console.log("info"+info.length);
             while(info[contador1]!==undefined){
              arreglo.push({label: info[contador1], value: (info[contador]*100)/info[info.length-1]}); 
              contador1=contador1+2;
@@ -16,7 +15,7 @@ $.ajax({
          }
             },
            error: function (xhr) { 
-            xhr.statusText;
+            alert(xhr.statusText);
         }    
         }); 
     var selector = [], hilo = [], jso = [], data = [], datos = [], arrAnios = [];

@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package M_Modelo;
-
-import M_Controller.Linkeos.sesion_controller;
 import M_Util.M_Connection;
 import java.sql.Connection;
 import java.sql.ResultSet;

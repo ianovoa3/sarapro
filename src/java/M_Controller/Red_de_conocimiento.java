@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Array;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -58,7 +59,12 @@ public class Red_de_conocimiento extends HttpServlet {
                  red.actualizar(redconsultanueva,nuevosprogramas);
                  break;
              case 4:
-                 out.print(new Gson().toJson(red.consultadatosestadisticos()));
+                 try {
+                    ArrayList resultados=red.consultadatosestadisticos();
+                 out.print(new Gson().toJson(resultados));
+                 } catch (Exception e) {
+                     e.printStackTrace();
+                 }
                  break;
             }
         }

@@ -1,3 +1,6 @@
+<%@page import="VO.Reporte_AreaVO"%>
+<%@page import="M_Modelo.Area"%>
+<%@page import="java.util.ArrayList"%>
 <div class="content">
      <link href="assets/css/paper-dashboardCoordinador.css" rel="stylesheet"/>
        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -45,6 +48,21 @@
                                     </table>
                                  
                                 </div>
+                                <table id="tablareportearea" class="table table-striped table-dark testilos">
+                                    <th>Nombre Área</th>
+                                    <th>Nombre del Centro Correspondiente</th>
+                                    <% Area area=new Area();
+                                        Reporte_AreaVO reportearea=new Reporte_AreaVO();
+                                        ArrayList<Reporte_AreaVO> listas=area.Areareporte();
+                                        for (int i = 0; i < listas.size(); i++) {
+                                         reportearea=listas.get(i);                                           
+                                    %>
+                                    <tr>
+                                    <td><%=reportearea.getNom_area()%></td>
+                                    <td><%=reportearea.getNom_centro()%></td>
+                                    </tr>
+                                    <%}%>
+                                 </table>
                             </div>
                             <div id="tabs-2">
                                 <div>

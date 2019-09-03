@@ -376,7 +376,7 @@ margin-bottom: 2%;
      margin-top: 9.5%;
 }
 #divAgregar{
-    background-color: gold;
+/*    background-color: gold;*/
 /*    margin-right: 30%;
     margin-bottom: 7%;*/
 margin-top: 4%;
@@ -399,6 +399,18 @@ margin-top: 4%;
   overflow-x: scroll;
     margin-top: 2%;
 /*    margin-left: 50%;*/
+}
+#itemszz{
+     margin-top: 2%;
+/*     background-color: red;*/
+}
+#modital{
+/*    background-color: red;*/
+    max-width: 1600px;
+    min-width: 100px;
+    overflow-x: scroll;
+    margin-left: 4%;
+    
 }
 #Ttabla{
     background-color: yellow;
@@ -489,13 +501,39 @@ margin-top: 4%;
     margin-left: 78%;
     margin-top: 8%;
 }
-
+#clone{
+/*    background-color: red;*/
+    max-width: 1600px;
+  min-width: 100px;
+/*  overflow-x: scroll; */
+}
+#Catetable{
+/*    background-color: red;*/
+     max-width: 1600px;
+  min-width: 100px;
+  overflow-x: scroll;
+  margin-top: 2%;
+  margin-left: 1%;
+}
+.ctabla{
+/*    background-color: blue;*/
+   max-width: 1600px;
+  min-width: 100px;
+  overflow-x: scroll; 
+}
+/*.rtabla{
+    background-color: blue;
+     max-width: 1600px;
+  min-width: 100px;
+  overflow-x: scroll; 
+}*/
 article.testilo{
 /*  background-color: red;*/
   max-width: 1600px;
   min-width: 100px;
   overflow-x: scroll;
 }
+
 table.testilos{
 /*    background-color: blue;*/
   max-width: 1600px;

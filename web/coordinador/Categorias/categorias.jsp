@@ -31,7 +31,7 @@
                               <button type="button" id="btnTema" class="btn btn-info">Guardar Tema</button>
                           </form>
                       </article>
-                      <article class="col-md-6">
+                      <article class="col-md-6" id="Catetable">
                           <div id="SelectTemasDiv" class="col-md-12">
                               <label for="itemCategoria">Temas de la Categoría</label>
                               <div>

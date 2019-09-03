@@ -1714,7 +1714,11 @@ textarea.form-control {
   color: #252422;
   margin-bottom: 20px;
   position: relative;
-  z-index: 1; }
+  z-index: 1; 
+   max-width: 1600px;
+  min-width: 100px;
+  overflow-x: scroll;
+}
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_cards\.scss}line{font-family:\0000310}}
   .card .image {
     width: 100%;

@@ -42,12 +42,7 @@
                                     <div class="col-md-6 col-md-offset-5">
                                         <button type="button" class="btn btn-info btnReporte" id="1">Consultar</button>
                                     </div>
-                                   
-                                    <table id="tablaReporte1" class="table-hover testilos" style="width: 120px">
-
-                                    </table>
-                                 
-                                </div>
+                                      <article class="testilo">
                                 <table id="tablareportearea" class="table table-striped table-dark testilos">
                                     <th>Nombre Área</th>
                                     <th>Nombre del Centro Correspondiente</th>
@@ -62,7 +57,15 @@
                                     <td><%=reportearea.getNom_centro()%></td>
                                     </tr>
                                     <%}%>
-                                 </table>
+                                </table>
+                                </article>
+<!--                                    
+                                    <table id="tablaReporte1" class="table-hover testilos" style="width: 120px">
+
+                                    </table>-->
+                                </div>
+                              
+
                             </div>
                             <div id="tabs-2">
                                 <div>
@@ -81,10 +84,11 @@
                                     <div class="col-md-6 col-md-offset-5">
                                         <button type="button" class="btn btn-info btnReporte" id="2">Consultar</button>
                                     </div>
-                                   
+                                    <article class="testilo">
                                     <table id="tablaReporte2" class="table table-striped table-dark testilos">
 
                                     </table>
+                                        </article>
                                     </div>                                
                             </div>
                             <div id="tabs-3">
@@ -105,8 +109,8 @@
                                     <div class="col-md-6 col-md-offset-5">
                                         <button type="button" class="btn btn-info btnReporte" id="3">Consultar</button>
                                     </div>
-                                    <article class="col-md-11 testilo">
-                                    <table id="tablaReporte3" class="table table-striped table-dark">
+                                    <article class="testilo">
+                                    <table id="tablaReporte3" class="table table-striped table-dark testilos">
 
                                     </table>
                                     </article>
@@ -132,7 +136,7 @@
                                         <button type="button" class="btn btn-info btnReporte" id="4">Consultar</button>
                                     </div>
                                     <article class="testilo">
-                                    <table id="tablaReporte4" class="table-hover">
+                                    <table id="tablaReporte4" class="table table-striped table-dark ">
 
                                     </table>
                                         </article>
@@ -156,8 +160,8 @@
                                     <div class="col-md-6 col-md-offset-5">
                                         <button type="button" class="btn btn-info btnReporte" id="5">Consultar</button>
                                     </div>
-                                    <article class="col-md-11 testilo">
-                                    <table id="tablaReporte5" class="table-hover">
+                                    <article class="testilo">
+                                    <table id="tablaReporte5" class="table table-striped table-dark ">
 
                                     </table>
                                         </article>
@@ -180,8 +184,8 @@
                                     <div class="col-md-6 col-md-offset-5">
                                         <button type="button" class="btn btn-info btnReporte" id="6">Consultar</button>
                                     </div>
-                                    <article class="col-md-11 testilo">
-                                    <table id="tablaReporte6" class="table-hover">
+                                    <article class="testilo">
+                                    <table id="tablaReporte6" class="table table-striped table-dark ">
 
                                     </table>
                                         </article>
@@ -201,8 +205,8 @@
                                             <option value="A0">Selecione...</option>
                                         </select>
                                     </div>
-                                    <article class="col-md-11 testilo">
-                                    <table id="tablaReporte7" class="table-hover">
+                                    <article class="testilo">
+                                    <table id="tablaReporte7" class="table table-striped table-dark ">
 
                                     </table>
                                         </article>
@@ -213,8 +217,8 @@
                                     <div class="col-md-6 col-md-offset-5">
                                         <button type="button" class="btn btn-info" id="btnPublicacioneFunciones">Consultar</button>
                                     </div>
-                                    <article class="col-md-11 testilo">
-                                    <table id="tablaReporte8" class="table-hover">
+                                    <article class="testilo">
+                                    <table id="tablaReporte8" class="table table-striped table-dark ">
                                     </table>
                                         </article>
                                 </div>

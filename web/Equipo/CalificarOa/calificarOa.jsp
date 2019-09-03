@@ -17,12 +17,12 @@
                                 <label class="col-lg-6 col-md-6">Fecha de creación lista de chequeo:</label>
                                 <label class="col-lg-6 col-md-6" id="FechaLista"></label>
                             </div>     
-                            <table class="col-md-12 table">
-                                <thead class="col-md-12">
+                            <table class="col-md-12 table ctabla">
+                                <thead class="col-md-12 ">
                                 <th class="col-lg-1 col-md-1">N°</th>
-                                <th class="col-lg-3 col-md-6">Item</th>
+                                <th class="col-lg-1 col-md-1">Item</th>
                                 <th class="col-lg-1 col-md-1">Cumple</th>
-                                <th class="col-lg-4 col-md-4">Observaciones</th>
+                                <th class="col-lg-1 col-md-1">Observaciones</th>
                                 </thead>
                                 <br/>
                                 <tbody id="clone" class="col-md-12"></tbody>

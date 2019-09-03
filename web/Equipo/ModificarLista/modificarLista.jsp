@@ -18,7 +18,7 @@
                                 <label>Decripción de la Lista de Chequeo:</label>
                                 <textarea required class="form-control inputs1" value="AS" id="DescripcionL" placeholder="Descripcion lista" rows="1" id="comment"></textarea>
                             </article>
-                            <article class="col-md-6" id="items">
+                            <article class="col-md-6" id="itemszz">
                                     <label class="dark-grey">Items de lista de chequeo</label>
                                     <label for="Descripcion">Descripcion de item:</label>
                                     <div class="col-md-10">
@@ -46,7 +46,7 @@
                             </table>
                         </article>
                     </section>
-                    <article style="margin-left: 12%;" class="col-md-16" class="EspacioItems">
+                    <article class="col-md-5" class="EspacioItems" id="modital">
                         <div id="SelectItemDiv" class="EspacioItems">
                             <select id="SelectItem" class="itemselect" multiple="multiple">
                                 <option>null</option>

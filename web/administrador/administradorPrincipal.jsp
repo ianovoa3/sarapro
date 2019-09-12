@@ -127,8 +127,8 @@
     <script src="assets/js/demo.js"></script>
     <script type="text/javascript" src="administrador/js/admi.js"></script>
     <script>
-
         var idRol = '<%= session.getAttribute("idRol")%>';
+        console.log(""+idRol);
         if (idRol == null ) {
             location.replace('index.jsp');
         } else {

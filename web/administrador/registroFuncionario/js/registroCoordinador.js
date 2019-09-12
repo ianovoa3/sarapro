@@ -15,6 +15,13 @@ $("#archivocsv").click(function(){
     $("#camposrol").append("<div><img src='Archivos/Formatos/coordinador.JPG'><input type='radio' value='4' name='TipoUsuario'><div>");
     $("#camposrol").append('<button type="submit" class="btn btn-info" id="registrocarga" onclick="validararchivo()">Registra tus Funcionarios!</button>');  
 });
+$("#tipoUsuario").change(function (){
+    if($("#tipoUsuario").val()==4){
+     $("#reddeconocimiento").hide();  
+     $("#redlabel").hide();
+     $("#reddeconocimiento").val("N/A");
+    }      
+});
 $("#boton1").click(function () {
     $(".remove").remove();
     var boo = 0;

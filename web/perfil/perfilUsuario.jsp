@@ -41,15 +41,14 @@
                 <div class="clearfix"></div>
             </div>
         </div>
-
-    </div>
-</div>
-
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="assets/js/jquery-1.10.2.js" ></script>
 <script type="text/javascript" src="js/bootstrap.js" ></script>
+<script src="js/perfilUsuario.js" type="text/javascript"></script>
+<script type="text/javascript" src="perfil/js/perfilUsuario.js"></script>
 <script type="text/javascript" src="js/notify.js"></script> 
 <script type="text/javascript" src="js/jquery.cecily.js"></script>
-<script type="text/javascript" src="perfil/js/perfilUsuario.js"></script>
+
 </html>
 

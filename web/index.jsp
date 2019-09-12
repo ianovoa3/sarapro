@@ -11,12 +11,10 @@
                         <meta charset="utf-8">
                             <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
                             <link rel="stylesheet" type="text/css" href="css/examples.css" />
-                            </head>
-                               
-                            <body onload="sinVueltaAtras();">
+                            </head>   
+                     <body  onload="sinVueltaAtras();" onpageshow="if (event.persisted) sinVueltaAtras();" onunload=""><!--  onreset="sinVueltaAtras()"--!>
                                 <div class="modal fade" id="myModalLogin" role="dialog">
                                     <div class="modal-dialog">
-
                                         <!-- Modal content-->
 <!--                                        <div class="modal-content">
                                             <div class="modal-header">
@@ -192,9 +190,9 @@
                                 <script type="text/javascript" src="js/jquery.fullPage.js"></script>
                                 <script type="text/javascript" src="js/tonny.js"></script>
                             </body>
-                            <script type="text/javascript">
+                           <script type="text/javascript">
                                 function sinVueltaAtras() {
-                                  //  location.href=('http://localhost:1437/sra005/#firstPage');
+                                    location.href=('index.jsp');
                                 }
                                 window.onload=function(){
                                     window.location.hash="no-back-button";	

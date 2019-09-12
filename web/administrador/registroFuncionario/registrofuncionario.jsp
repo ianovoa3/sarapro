@@ -62,7 +62,7 @@
                                     <option value="A0" selected="selected">Seleccionar...</option>
                                 </select>
                             </div>
-                            <label  class="col-md-12"  for="area">Red de Conocimiento:</label>
+                            <label  class="col-md-12"  for="area" id="redlabel">Red de Conocimiento:</label>
                             <select class="form-control select" id="reddeconocimiento">
                             <option value="A0" selected="selected">Seleccionar...</option>
                             <%Red_deConocimiento reddeconocimiento=new Red_deConocimiento();
@@ -72,7 +72,7 @@
                               <option><%=lista.get(i)%></option>
                             <%}%>
                             </select>
-                            <label>Ip SENA:</label>
+                            <label>Telefono:</label>
                             <input type="text" class="form-control input" placeholder=" Digite Ip SENA" id="ipSena" maxlength="6">
                             <label  for="cargo">Cargo</label>
                             <input type="text" class="form-control input" placeholder=" Digite cargo" id="cargo" maxlength="45">              

@@ -41,6 +41,7 @@ $(document).on('ready', function () {
     function peticionCompleta(i) {
         if (i == 1) {
             var daMen = data[i].split("$$");
+            console.log(daMen[0]);
             if (daMen[0] == "true") {
                 estado = ("success");
                 men = "La contraseña " + daMen[1];
@@ -48,7 +49,7 @@ $(document).on('ready', function () {
                 estado = ("error");
                 men = "La contraseña  " + daMen[1];
             }
-            $.notify(men, estado);
+            alert(men);
             $("#user").val("");
             $("#ConActual").val("");
             $("#ConNueva").val("");
@@ -56,4 +57,5 @@ $(document).on('ready', function () {
         }
     }
 });
+
 

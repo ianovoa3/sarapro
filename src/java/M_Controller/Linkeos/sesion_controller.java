@@ -61,15 +61,17 @@ public class sesion_controller extends HttpServlet {
                             sesion.setAttribute("idRol", rol);
                             sesion.setAttribute("idCentro", funJ.getJSONArray("id_centro").getInt(0));
                             id_condicion=funJ.getJSONArray("id_funcionario").getInt(0);
+                             sesion.setAttribute("estado","activo");
                         }else{
+                             sesion.setAttribute("estado","activo");
                             sesion.setAttribute("idRol", rol);
                         }
-                        if(rol==5)
+                        if(rol==5){    
                             request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
-                        
+                        }
                         if(funcionario.consultaestado(id_condicion)==1){
                         switch (rol) {
-                            case 1:
+                            case 1: 
                                 request.getRequestDispatcher("instructor/instructorPrincipal.jsp").forward(request, response);
                                 break;
                             case 2:
@@ -89,7 +91,10 @@ public class sesion_controller extends HttpServlet {
                     break;
                 case 2:
                     try {
-                        sesion.invalidate();
+                        
+                         sesion.removeAttribute("estado");  
+                         sesion.setAttribute("idRol",null);
+                         sesion.invalidate();
                         request.getRequestDispatcher("index.jsp").forward(request, response);
                     } catch (Exception e) {
                         e.printStackTrace();
